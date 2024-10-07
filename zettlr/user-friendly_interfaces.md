@@ -37,3 +37,39 @@ workspace = place to connect blocks
 generator = parser to textual representation
 
 
+### TO DO
+de drie tegen elkaar op zetten voor onderzoek
+
+Gedaan
+Labo
+Planning
+probleemstelling
+doel
+
+
+probleem zelf
+wat doen
+	IDP
+    Gebruiksvriendelijk
+probleemstelling
+	IDP kiezen
+    UI
+    Hoe in home assistent
+Wat is het beste voor home-automation
+
+Specifiek teksten in planning
+IDP-implementatie met basis van home-automation
+
+Titels
+
+###Lezen
+	Home-automation
+###Schrijven
+	context
+    probleemstelling
+    doelstellingen
+andere mp lezen
+	Wiliam dumez
+
+
+
