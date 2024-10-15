@@ -3,7 +3,7 @@ The objectives of this thesis are:
 - Create a user-friendly IDP-framework that can be used in the context of home automation.
 
 The primary research question addressed in this thesis is:
-How can an IDP-Z3 framework be designed to enable end-users to automate their homes in a user-friendly way?
+How do we design an IDP-Z3 framework that enables end-users to automate their homes in a user-friendly way?
 This overarching inquiry is further explored through the following sub-questions:
 - What is the optimal user-friendly interface for addressing this problem?
 - Which components of the IDP-Z3 framework are essential for describing and controlling a home environment?
