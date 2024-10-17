@@ -1,6 +1,6 @@
-#User-friendly interfaces
+# User-friendly interfaces
 
-##DMN
+## DMN
 Decision Model and Notation
 Two components:
 	Decision Requirements Diagram
@@ -18,14 +18,14 @@ let the user filter the solution space
 ####cDMN
 meer uitzoeken?
 
-##ACE
+## ACE
 Attempto Controlled English
 Natural controlled language created to bridge the gap from natural english and first order logic. The language is English that is narrowed down so it is preciesly definedwithout ambiguaty, vagueness and potential inconcistency.
 Two components:
 	ACE -> language
 	APE -> parsing engine who translates to DRS (variant of first order logic)
 
-##block-based editor
+## block-based editor
 Blockly by google
 very easy to use and learn
 customizable for any language using python

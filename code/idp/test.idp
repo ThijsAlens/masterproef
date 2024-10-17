@@ -1,0 +1,41 @@
+vocabulary V {
+    
+    type Entity
+    // an entity is a device/thing that needs to be monitored
+    // the time can be an entity where the status of the entity returns the time of day
+    // a lightswitch can be an entity where the status of the entity returns whether it is on, off or at a sertain dimmed level 
+    type Device
+    type Area
+
+    type Status := {on, off}
+    
+
+    
+    entity_status: Entity -> Status
+    entity_in_device: Entity * Device -> Bool
+    device_in_area: Area * Device -> Bool
+}
+
+theory T:V {
+}
+
+structure S:V {
+    Entity := {light_switch_1, light_switch_2, light_switch_3} .
+    Device := {light_1, light_2} .
+    Area := {living_room} .
+
+    entity_in_device := {   
+        (light_switch_1, light_1), 
+        (light_switch_2, light_2),
+        (light_switch_3, light_2)
+    } .
+    device_in_area := {
+        (living_room, light_1),
+        (living_room, light_2)
+    } .
+
+}
+
+procedure main() {
+    pretty_print(model_expand(T, S))
+}
