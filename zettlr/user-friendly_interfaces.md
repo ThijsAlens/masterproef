@@ -72,4 +72,34 @@ andere mp lezen
 	Wiliam dumez
 
 
+## 
+expressiviteit yaml vs idp
+geen protocols bespreken
+voorbeeld HA
+idp vermelden in intro
+IDP makkelijker maken door subset
+
+## HA
+
+### Wat is het, voorbeeld, wat is er al
+
+### Automatisatie
+
+## IDP
+
+### Wat is IDP
+paradigma, checken van online editor, meer te doen met kennisbank
+### Wat is FO(.)
+
+### Alternatieven talen
+
+#
+
+drie talen vergelijken
+
+
+
+
+
+
 

@@ -1,0 +1,19 @@
+// This example is used to introduce the FO(.) language
+vocabulary V {
+    type Person
+    canRead: Person -> Bool
+    canTalk: Person -> Bool
+    age : Person -> Int
+}
+
+theory T:V {
+    {
+        !p in Person : canRead(p) <- canTalk(p) & age(p) >= 6 .
+        !p in Person : canTalk(p) <- age(p) >= 1 .
+    }
+    !p in Person : age(p) >= 0 .
+}
+
+structure S:V {
+    Person := {Tibo, Luca, Daan} .
+}
