@@ -60,3 +60,34 @@ One of the main challenges is the steep learning curve associated with setting u
 This thesis seeks to address this issue by investigating how Intelligent Decision Procedures (IDP), specifically IDP-Z3, can be utilized to make home automation more accessible. IDP-Z3 is a reasoning engine that makes decisions based on a formal FO(.) description, which is an extension of first-order logic (FO) incorporating types, partial functions, inductive definitions, and aggregates. A key advantage of IDP-Z3 and FO(.) is the separation of knowledge from its interpretation. This allows the user to avoid programming the decision-making model themselves, as this is handled by the AI. Instead, the user only needs to provide the rules in the IDP language.
 
 However, the IDP language itself is not particularly user-friendly and can become quite complex, especially when dealing with intricate rules or scenarios. When users are confronted with a large vocabulary and theory, it can be difficult to maintain an overview and make necessary adjustments. A graphical user interface (GUI) that provides structure, along with a more limited subset of the IDP language, could help make IDP a more viable option for home automation.
+
+===============================================================================================================================================================================================================
+V4 (after feedback)
+====================
+Home automation is a way to automate tasks in a home. These can be simple tasks such as automatically turning on lights upon entering a room, to more advanced operations like regulating home climate. Recently, with the coming of Internet of Things (IoT), lots of devices became "smart" and are therefore capable of automation. This event has the potential to significantly streamline daily routines, reduce costs, and improve overall comfort. Typically, a home automation system runs on a server or Raspberry Pi in conjunction with Home Assistant. Home Assistant is an application that integrates various devices from different brands into a single functional app. It also provides a framework through which users can automate their homes.
+
+IDP-Z3 is a reasoning engine that makes decisions based on a formal FO(.) description, which is an extension of FO incorporating types, partial functions, inductive definitions, and aggregates. A key advantage of IDP-Z3 and FO(.) is the separation of knowledge from its interpretation. This allows the user to avoid programming the decision-making model themselves, as this is handled by the reasoning engine. (? link leggen tss IDP en HA ?)
+
+
+
+While Home Assistent is relatively user-friendly, it has limitations. More complex automations are not possible through the user interface (UI) and still require users to modify configuration files, which is far from ideal. Thus, seamlessly integrating home automation into an existing household presents numerous challenges, especially for individuals with limited technical expertise.
+
+One of the main challenges is the steep learning curve associated with setting up and maintaining home automation systems. If users wish to implement complex automations within their home, they must have a basic understanding of programming and be familiar with specific technical tools. For those without a technical background, this can be a daunting and difficult process. It would be unfortunate if the benefits of home automation were accessible only to those with programming skills or technical expertise.
+
+However, the IDP language itself is not particularly user-friendly and can become quite complex, especially when dealing with intricate rules or scenarios. When users are confronted with a large vocabulary and theory, it can be difficult to maintain an overview and make necessary adjustments. It also has a lot of possibilities that are not usefull in the context of home automation
+
+
+
+This thesis seeks to address this issue by investigating how IDP, specifically IDP-Z3, can be utilized to make home automation more accessible. Instead of needing to create automations, triggers, and aligning them with each other, the user only needs to describe the desired behavior of the home in the IDP language. A graphical user interface (GUI) that provides structure, along with a more limited subset of the IDP language, could help make IDP a more viable option for home automation.
+
+
+
+The objectives of this thesis are:
+- Design a user-friendly UI that is most suited for IDP in combination with home automation.
+- Deside on a subset of the IDP-language that has all the functionallity needed for home automation.
+
+The primary research question addressed in this thesis is:
+How do we design an IDP-Z3 framework that enables end-users to automate their homes in a user-friendly way?
+This overarching inquiry is further explored through the following sub-questions:
+- What is the optimal user-friendly interface for addressing this problem?
+- Which subset of the IDP-language is needed to configure a home?
