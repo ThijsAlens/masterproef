@@ -70,7 +70,7 @@ IDP-Z3 is a reasoning engine that makes decisions based on a formal FO(.) descri
 
 
 
-While Home Assistent is relatively user-friendly, it has limitations. More complex automations are not possible through the user interface (UI) and still require users to modify configuration files, which is far from ideal. Thus, seamlessly integrating home automation into an existing household presents numerous challenges, especially for individuals with limited technical expertise.
+While Home Assistent is relatively user-friendly, it has limitations. More complex automations are not possible through the user interface (UI) and still require users to modify configuration files, which is far from ideal. The user also needs to manage the various rooms individually and coordinate them with each other. Thus, seamlessly integrating home automation into an existing household presents numerous challenges, especially for individuals with limited technical expertise.
 
 One of the main challenges is the steep learning curve associated with setting up and maintaining home automation systems. If users wish to implement complex automations within their home, they must have a basic understanding of programming and be familiar with specific technical tools. For those without a technical background, this can be a daunting and difficult process. It would be unfortunate if the benefits of home automation were accessible only to those with programming skills or technical expertise.
 
