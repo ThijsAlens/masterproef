@@ -1,5 +1,7 @@
-# User-friendly interfaces
-
+# Alternatives for FO(.)
+introductiedingetje:
+alternatieven FO(.)
+gelimiteerd -> gebruiksvriendelijk
 ## DMN
 Decision Model and Notation
 Two components:
@@ -8,17 +10,10 @@ Two components:
 (S-)FEEL language is used to represent these decision models
 	S-FEEL is easy to use by domain experts (no knowledge expert required)
     FEEL is more capable and thus more complex (knowledge expert is required)
-###Systems that help with the shortcomings of S-FEEL
-####OpenRules system
-allow for constraints on the output (special type of table named Solver table)
-	BUT steep learning curve and JAVA-only API (against DMN philosophy)
-####Corticon
-let the user filter the solution space
-	BUT not very readable nor intuitive
-####cDMN
-meer uitzoeken?
-
-## ACE
+#### cDMN
+extentie voor DMN
+## ACE (CNL)
+handcrafted cnl vs ace
 Attempto Controlled English
 Natural controlled language created to bridge the gap from natural english and first order logic. The language is English that is narrowed down so it is preciesly definedwithout ambiguaty, vagueness and potential inconcistency.
 Two components:
@@ -35,6 +30,8 @@ no syntax-errors because you visually see which blocks don't fit
 
 workspace = place to connect blocks
 generator = parser to textual representation
+
+tabelletje dat vergelijkt
 
 
 ### TO DO
