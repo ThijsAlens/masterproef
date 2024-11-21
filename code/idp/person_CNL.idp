@@ -1,0 +1,27 @@
+// This example is used to introduce the FO(.) language
+// president? persident moet kunnen lezen en praten
+vocabulary {
+    type Person
+    canBePresident: () -> Person
+    canRead: Person -> Bool
+    canTalk: Person -> Bool
+    age : Person -> Int
+}
+
+theory {
+    {
+        for all p in Person : canRead(p) if canTalk(p) and age(p) is greater than 6 .
+        for all p in Person : canTalk(p) if age(p) is greater than 1 .
+    }
+    for all p in Person : age(p) is greater than 0 .
+}
+
+structure {
+    Person := {Tibo, Luca, Daan} .
+}
+
+procedure main () {
+    pretty_print(model_expand(T, S))
+}
+
+

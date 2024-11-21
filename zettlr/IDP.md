@@ -21,7 +21,12 @@ It is explained below with simple examples, it can of course handle much more co
      - It is defined that a sertain number must be greater then 2 and must be devisable by 7. IDP-Z3 can work out that the minimal value of that number is 7.
 - It can check if some knowledge is redundend (relevance)
     - It is defined that a sertain number must be positive, greater then 5 and greater then -3. IDP-Z3 can work out that the last rule is redundend.
+## online editor
+screenshot van de online editor
+In the image above, the online editor of IDP-3 is shown. This editor enables the usser to test their written knowledge. Using the example described in section \fodot, there is a way to test the written knowledge.
+when putting in an age for Luca, let's say 4, the model adapts itself to the new situation. Luca can't read, but can speak. This is forced, because when the user would like to change it so Luca can read, the editor gives an explanation of why she can't read (see screenshot below).
 
+The online editor thus functions as two thing. It can be used to check whether the knowledge is correct, and it can provide the user with usefull feedback as to why a sertain model can't exist.
 
 
 Reasoning engines enable the Knowledge Base paradigm (Denecker and Vennekens 2008), in which systems store declarative domain knowledge, and use it to solve a variety of problems.

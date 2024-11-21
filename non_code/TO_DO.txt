@@ -1,0 +1,6 @@
+tekeningetje maken van hoe HA werkt (entities, triggers...)
+describe the UI of HA
+proper referencing
+voorbeeld maken voor verschillende IDP-Z3 gebruiksmogelijkheden
+beter FO(.) uitleggen met het voorbeeld van de president
+user-friendly interfaces in zetten

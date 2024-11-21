@@ -1,9 +1,9 @@
 // This example is used to introduce the FO(.) language
-// president? persident moet kunnen lezen en praten
 vocabulary V {
     type Person
     canRead: Person -> Bool
     canTalk: Person -> Bool
+    isPresident: Person -> Bool
     age : Person -> Int
 }
 
@@ -13,6 +13,8 @@ theory T:V {
         !p in Person : canTalk(p) <- age(p) >= 1 .
     }
     !p in Person : age(p) >= 0 .
+    !p in Person : isPresident(p) => canRead(p) & canTalk(p) .
+    # {p in Person : isPresident(p)} = 1 .
 }
 
 structure S:V {
