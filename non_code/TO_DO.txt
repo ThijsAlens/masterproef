@@ -1,4 +1,2 @@
 describe the UI of HA
-voorbeeld maken voor verschillende IDP-Z3 gebruiksmogelijkheden
 beter FO(.) uitleggen met het voorbeeld van de president
-user-friendly interfaces in zetten
