@@ -1,0 +1,453 @@
+\documentclass[11pt,a4paper]{report}
+% Indien je je thesis recto-verso wil afdrukken gebruik je onderstaande opties i.p.v. bovenstaande
+%\documentclass[11pt,a4paper,twoside,openright]{report}
+\usepackage[a4paper,left=3.5cm, right=2.5cm, top=3.5cm, bottom=3.5cm]{geometry}
+\usepackage{graphicx}
+\graphicspath{{./figs/}}                        % set graphics path to figs folder, ie now all file imports can be referenced relative to figs
+\usepackage[latin1]{inputenc}                   % om niet ascii karakters rechtstreeks te kunnen inputten
+%\usepackage[utf8]{inputenc}                    % commentarieer deze regel uit als je utf8 encoded files gebruikt in plaats van latin1
+\usepackage[backend=biber, style=ieee, 
+citestyle=numeric-comp, maxnames=99]{biblatex}  % make use of the biblatex package to cite references
+\addbibresource{bib.bib}
+\AtBeginBibliography{\footnotesize}
+
+\usepackage{cmbright}                           % new improved font
+\usepackage{listings}             		        % voor het weergeven van broncode
+\usepackage[outputdir=cache]{minted}                     % for beautiful listings
+\usemintedstyle{borland}
+\usepackage{verbatim}					        % weergeven van code, commando's, ...
+\usepackage{hyperref}					        % maak PDF van de thesis navigeerbaar
+\usepackage{url}						        % URL's invoegen in tekst met behulp van \url{http://}
+\usepackage[small,bf,hang]{caption}             % om de captions wat te verbeteren
+\usepackage[final]{pdfpages}                    % gebruikt voor het invoegen van het artikel in pdf-formaat
+%\usepackage{pslatex}					        % andere lettertype's dan de standaard types
+
+%\usepackage{sectsty}					        % aanpassen van de fonts van sections en chapters
+%\allsectionsfont{\sffamily}
+%\chapterfont{\raggedleft\sffamily}
+
+\usepackage{float}                              % De optie H voor de plaatsing van figuren op de plaats waar je ze invoegt. bvb. \begin{figure}[H]
+%\usepackage{longtable}					        % tabellen die over meerdere pagina's gespreid worden
+%\usepackage[times]{quotchap}                   % indien je fancy hoofdstuktitels wil
+%\usepackage[none]{hyphenat}
+%\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\sisetup{detect-all}
+\usepackage[acronym,xindy]{glossaries}
+\makenoidxglossaries
+\usepackage[version=4]{mhchem}                  % chemical formulas
+\usepackage{tabularx}
+\usepackage{booktabs}                           % nice tables
+\usepackage{array}                              % fixed-width columns in tables
+
+%%%% Tikz %%%%
+\usepackage{pgfplots}
+\DeclareUnicodeCharacter{2212}{−}
+\usepgfplotslibrary{groupplots,dateplot}
+\usetikzlibrary{patterns,shapes.arrows}
+\pgfplotsset{compat=newest}
+%%%%%%%%%%%% MAKE FIGURES MORE UNIFORM %%%%%%%%%%%%
+\definecolor{darkgray176}{RGB}{176,176,176}
+\definecolor{color0}{RGB}{255,127,14}
+\definecolor{color1}{RGB}{44,160,44}
+\pgfplotsset{
+    every axis/.append  style={
+        title style={draw=none},
+        label style={font=\small},
+        legend style={
+            fill opacity=0.8,
+            nodes={scale=0.8, transform shape}, {draw=none}
+        },
+        tick align=outside,
+        tick pos=left,
+        x grid style={darkgray176},
+        xtick style={color=black},
+        y grid style={darkgray176},
+        ytick style={color=black},
+        grid=both,
+    },
+    every axis plot/.append style={
+        line width=1.0pt,
+        mark size=1,
+    },
+}
+
+
+% used commands
+\usepackage{xspace}
+\usepackage{idpz3syntax}
+\usepackage{decision-table}
+\newcommand{\fodot}{FO($\cdot$)\xspace}
+
+%%%%%%%%%%%% choose your campus and language %%%%%%%%%%%%
+\usepackage{fiiw} 
+
+
+
+%door onderstaande regels in commentaar te zetten, of op false, kan je pagina's weglaten
+%bijvoorbeeld het weglaten van een voorwoord, lijst met symbolen, ...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%voorwoord toevoegen?
+%\acknowledgementspagetrue
+%\acknowledgements{voorwoord}			%.tex file met daarin het voorwoord
+%abstract toevoegen?
+%\abstractpagetrue
+%\abstracts{abstract}					%.tex file met daarin het abstract
+%lijst van figuren toevoegen?
+%\listoffigurespagetrue
+%lijst van tabellen toevoegen?
+%\listoftablespagetrue
+%lijst van symbolen toevoegen?
+%\listofsymbolspagetrue
+%\listofsymbols{symbolen}				%.tex file met daarin de lijst van symbolen
+
+
+% Information about your discipline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\opleiding{Electronica-ICT}
+%\afdeling{Software Engineer}
+\campus{denayereng}                       % Define your campus and language (append "eng" to load the English template)
+                                            % campuses: denayer, geel, gent, groept, brugge (denayereng, geeleng, ghenteng, groupteng, brugeseng)
+\title{User-friendly House\\ Automation using IDP}
+\subtitle{}
+\forenameA{Thijs}
+\surnameA{Alens}
+\forenameB{} %keep empty if no 2nd author
+\surnameB{} %keep empty if no 2nd author
+\academicyear{2024 - 2025}
+
+
+\promotorA[Promotor(en)]{J. Vennekens, \\S. Vandevelde, \\L. Van Laer} %for English use Supervisor(s)
+%\promotorB[Co-promotor(en)]{(My Co-promotor)\\(My company promotor)}
+
+\input{abbreviations.tex}
+
+\begin{document}
+\preface%
+
+\printnoidxglossary[type=\acronymtype]%
+\clearpage
+
+%\input{hfdst1}
+%\input{hfdst2}
+%\input{hfdst3}
+
+
+% Eventueel enkele appendices
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Bijlage met daarin het wetenschappelijk artikel
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Beschrijving van deze masterproef in de vorm van een wetenschappelijk artikel}
+The thesis should also contain a short scientific article. If you write your thesis in Dutch, you must write the article in English, and vice versa. We advise you to employ the IEEE Manuscript Templates for Conference Proceedings (\url{https://www.overleaf.com/latex/templates/ieee-conference-template/grfzhhncsfqn}).
+
+\chapter{Introduction}
+\section{Positioning}
+We are living in a world where automation is increasing rapidly. From automatically sorting luggage to the right plane at the airport, to fully self-driving cars, automation is becoming an integral part of our lives. This evolution, paired with the emergence of the Internet of Things (IoT), where many devices have become ``smart'' and automation-ready, has not only revolutionized industries but also opened up new possibilities for homeowners.
+
+In essence, home automation is a way to automate tasks in a home. These can be simple tasks such as automatically turning on lights upon entering a room, to more advanced operations like regulating home climate. This has the potential to significantly streamline daily routines, reduce costs, and improve overall comfort.
+
+Typically, when in a home environment, a home automation system runs on a server or Raspberry Pi in conjunction with Home Assistant. Home Assistant is an application that integrates various devices from different brands into a single functional app. It also provides a framework through which users can automate their homes.
+
+A home automation environment is, in essence, a set of rules that need to be followed. With IDP-Z3 functioning as a reasoning engine that follows rules, it could be a particularly useful combination. The user defines a set of rules, and IDP-Z3 expands upon them and makes the necessary decisions.
+
+IDP-Z3 is a reasoning engine that makes decisions based on a formal description. A key advantage of IDP-Z3 is the separation of knowledge from its use. This allows the user to avoid programming the decision-making model themselves, as this is handled by the reasoning engine.
+
+\section{Problem statement}
+One of the main challenges is the steep learning curve associated with setting up and maintaining home automation systems. If users wish to implement their own home automation, they can use home assistants's user interface (UI). This, however, does not allow for complex automation, so the user still requires a basic understanding of programming and be familiar with specific technical tools, so they can manually modify the configuration files. 
+
+IDP can make this process simpler by making use of a declarative knowledge base, avoiding the need to program automations. However, the IDP language itself is not particularly user-friendly and can become quite complex, especially when dealing with intricate rules or scenarios. When users are confronted with a large problem domain, it can be difficult to maintain an overview and make necessary adjustments. It also has a lot of possibilities that are not useful in the context of home automation, which can be confusing or overwelming.
+
+\section{Objectives}
+This thesis seeks to address this issue by investigating how IDP, specifically IDP-Z3, can be utilized to make home automation more accessible. Instead of needing to create automations, triggers, and aligning them with each other, the user only needs to describe the desired behavior of the home in a declarative language. A graphical user interface (GUI) that provides structure, along with a more limited subset of the IDP language, could help make IDP a more viable option for home automation.\\
+The primary research question addressed in this thesis is:\\
+How do we design an IDP-Z3 framework that enables end-users to automate their homes in a user-friendly way?\\
+This overarching question is further explored through the following sub-questions:
+\begin{itemize}
+    \item What is the optimal user-friendly interface for addressing this problem?
+    \item Which subset of the IDP-language is needed to configure a home?
+\end{itemize}
+The objectives of this thesis are:
+\begin{itemize}
+    \item Decide on a subset of the IDP-language that has all the functionality needed for home automation.
+    \item Design a user-friendly UI that is most suited for IDP in combination with home automation.
+\end{itemize}
+
+
+\newpage
+
+
+\chapter{Literature review}
+In this chapter, we discuss previous research relevant to the topics covered in this thesis. The first one being home automation, with a brief overview of Home Assistant and how users can configure their homes using it. Next, we will explore the basics of IDP-Z3 and \fodot. Finally, we will examine existing user-friendly languages, highlighting their strengths and weaknesses in the context of this use case.
+\section{Home automation}
+Home automation is a broad term used when discussing the automation of a home. It can range from simple tasks, such as automatically turning on a light when entering a room, to complex tasks, like adjusting the house temperature based on various variables. It also refers to home security: when should the security camera automatically record, when should the doors automatically lock, what should happen if the alarm goes off, etc. Automating tasks, like automatically making coffee at the start of the day, is also considered part of home automation. Additionally, it can help manage energy consumption throughout the day to reduce costs.
+
+Home automation consists of 3 main parts:
+\begin{itemize}
+    \item Smart home devices
+    \item A smart hub/server
+    \item A, preferably, user-friendly application
+\end{itemize}
+
+\paragraph{Smart home devices}
+A smart home device (or smart device) can be either of two things: a sensor or an actuator. A sensor can detect an event, while an actuator can respond to a trigger. A simple example is a motion detector (sensor) that automatically turns on a light (actuator) when there is movement (trigger). Depending on the device, there may be some additional (smart) features. For example, the light could have an internal clock that provides the current time. This allows the light to automatically adjust its brightness based on the expected amount of natural light at that time. In summary, smart devices are the physical hardware (sensors and actuators) combined with software used for the communication between devices, which, in most cases, do not contain any smart home logic themselves.
+
+\paragraph{Smart hub/server}
+The smart hub is a central device that connects the complex hardware of smart devices to the user. Its function is to receive data from sensors and send commands to actuators, serving as a central hub for the devices, so to speak. This hub can be provided by a manufacturer specifically for their smart devices, or it can be a generic one designed to be compatible with as many devices as possible.
+
+\paragraph{Application}
+The application allows the user to configure their home. Most often, this is done through a graphical user interface (GUI) where the user can create automations, view the status of devices, monitor active automations, easily communicate with the devices, etc.
+
+\subsection{Home assistant}
+
+Home Assistant \footnote{\url{https://www.home-assistant.io/}} is an open-source, all-in-one application for home automation. In a home environment, it typically  runs a local server or Raspberry Pi, where smart devices can be connected and configured. Because it is local, it provides strong security for user data. Home Assistant has a large and growing community, which ensures compatibility with a wide range of devices and brands, eliminating the need for multiple apps to control a home environment.\\
+Home Assistant also offers multiple UIs (dashboards) where users can monitor the state of their home. Users can select a dashboard created by others, design one themselves, or build on an existing dashboard. They can interact with their devices directly through these dashboards. Additionally, users can create automations using a separate UI, which are actions executed when a set trigger occurs. Fully understanding how these automations work requires a deeper understanding of how Home Assistant functions.
+In the following paragraphs we will discuss some terminology used inside home assistant, the figure below gives a quick overview.
+
+
+
+oplijsting begrippen ha
+
+
+\paragraph{Entities}
+These are the lowest level possible. They represent single sensors/actuators like a temperature sensor, a lightswitch, a light, etc.
+\paragraph{Devices}
+These are a group of entities. It could be that a device has 1 entity (ex. a lightswitch), but it also could have multiple entities (ex. a motion sensor that is also capable of capturing the temperature).
+\paragraph{Areas}
+These are groups of devices that could correspond to rooms in a house. The living room could have devices like a light-switch, a motion sensor (that detects if someone is in the room), a set of speakers, etc. All of these devices could be grouped together in one area.
+\paragraph{Scenes}
+Scenes are used to set an enviroment to a specific state. This enviroment does not need to be an area, it could manage smaller or bigger. If the user would want to watch a movie, a scene could be set up. It would turn on the tv, dim the lights, turn off the music that was playing througout the house, etc.
+\paragraph{Automations}
+Automations are a used to automate things. These automations consist of three things.
+	\begin{itemize}
+	    \item Triggers
+        \begin{itemize}
+            \item[] These are used for the activation of the automation (ex. a motion-sensor detects movement)
+        \end{itemize}
+        \item Conditions
+        \begin{itemize}
+            \item[] These are extra conditions that need to be met before excecuting the automation (ex. someone needs to be home)
+        \end{itemize}
+        \item Actions
+        \begin{itemize}
+            \item[] These are things that happen after a trigger and the conditions are met (ex. turn on the light in the room)
+        \end{itemize}
+	\end{itemize}
+\paragraph{Scripts}
+Scripts are automations without a trigger. This means they can not be run without being activated by an automation or another trigger. This is mostly used to do the same actions from different automations. If you set the lights in a single room up in scripts (turn all the lights in the room on). You could create a script that runs all the scripts to turn on the lights when the user enters the house. This way all the lights (that are defined in different rooms), could be activated all at once.
+
+kleine samenvatting met vb
+
+\subsection{The UI for automations}
+leg uit hoe automations gedaan worden in HA.
+
+
+\section{\fodot}
+\fodot \footnote{\fodot is pronounced ``Fff-Oh-dot''} (aka FO-dot) is the Knowledge Representation Language used by the IDP-Z3 reasoning engine \cite{IDPZ3ReasoningEngine}. It is an extension of first-order logic (FOL), which makes use of operators with the following constructs $\land, \lor, \neg, \Rightarrow, \forall, \exists$.
+
+\begin{tabular}{|c|c|c|}
+\hline
+\fodot symbol & ASCII characters & meaning \\ \hline
+$\land$  & $\&$ & logical and   \\ \hline
+$\lor$   & $\mid$ & logical or   \\ \hline
+$\neg$   & $\sim$ & logical not   \\ \hline
+$\Rightarrow$ & $=>$ & implication   \\ \hline
+$\forall$ & $!$ & for all   \\ \hline
+$\exists$   & $?$ & for at least 1   \\ \hline
+\end{tabular}
+\\
+
+The IDP-Z3 language consists of, at a minimum, a vocabulary and a theory. The vocabulary is used to describe which symbols will be used in the theory. The theory consists of rules that apply to these symbols. The structure, which is optional, describes a single, specific situation. Here is a quick and simple example to illustrate these blocks and the basics of \fodot:
+
+\begin{idplisting}
+vocabulary V {
+    type Light
+    type State := {On, Off}
+    
+    stateOfLight: Light -> State
+    brightnessLvl: Light -> Int
+    isSomeoneHome: () -> Bool
+}
+
+theory T:V {
+    !l in Light : ~isSomeoneHome() => stateOfLight(l) = Off .
+    !l in Light : (brightnessLvl(l) >= 0) & (brightnessLvl(l) =< 100) & (brightnessLvl(l) % 10 = 0) .
+    !l in Light : stateOfLight(l) = Off <=> (~isSomeoneHome() | (brightnessLvl(l) = 0)) .
+    {
+       !l in Light : stateOfLight(l) = Off <- brightnessLvl(l) =< 0
+    }
+}
+
+structure S:V {
+    Light := {light1, light2, light3, light4} .
+}
+
+\end{idplisting}
+This \fodot description outlines the functionality of a light within a smart home. The following sections break down and explain each block in detail.
+
+\paragraph{Vocabulary}
+The light, as an object, is defined by creating a type called "Light" in the vocabulary. Additionally, a type called "State" is defined, which has two possible values: "On" and "Off". Within the vocabulary, several functions are defined:
+\begin{itemize}
+    \item ``stateOfLight'': it takes a ``Light'' and maps it to a ``State''. In effect, it returns the state (``On'' or ``Off'') of a given light.
+    \item ``brightnessLvl'': it takes a ``Light'' and maps it to an Integer. In effect, it returns the brightness-level of a given light.
+\end{itemize}
+As seen in the example, there is one more function. ``isSomeoneHome'' is however a special function, because it does not take any arguments and returns a Boolean. A function that returns a Boolean, is called a predicate. A function that does not take any arguments, and therefore does not change in one structure, is called a constant.
+
+\paragraph{Theory}
+In this theory, there are 4 rules, here is a breakdown of them.
+\begin{idplisting}
+    !l in Light : ~isSomeoneHome() => stateOfLight(l) = Off .
+\end{idplisting}
+For all the lights ``l'', it is true that, if not ``isSomeoneHome'' (so no one is home), the ``stateOfLight(l)'' is ``Off'' (the light ``l'' should be in state ``Off'').\\
+This rule has a ``if then'' structure, in the \fodot world, this is called an implication. If the statement on the left of the implication symbol ($\Rightarrow$) is true, then the right statement is also needs to be true. However, this does not mean that if the left statement is false, the right statement can not be true. A statement that is of type boolean, is more commonly refered to as a formula.
+\begin{idplisting}
+    !l in Light : (brightnessLvl(l) >= 0) & (brightnessLvl(l) =< 100) & (brightnessLvl(l) % 10 = 0) .
+\end{idplisting}
+For all the lights ``l'', it is true that, the ``brightnessLvl(l)'' needs to be greater or equal to 0 and the ``brightnessLvl(l)'' needs to be smaller or equal to 100 and the ``brightnessLvl(l)'' needs to be divisible by 10. The brightness level of a light needs to be in between 0 and 100, and it needs to be in increments of ten.\\
+This rule is a combination of formulas.
+\begin{idplisting}
+    !l in Light : stateOfLight(l) = Off <=> (~isSomeoneHome() | (brightnessLvl(l) = 0)) .
+\end{idplisting}
+For all the lights ``l'', it is true that, if and only if ``stateOfLight(l)'' is ``Off'', not ``isSomeoneHome'' or ``brightnessLvl(l) is 0 (the light should be off if and only if, no one is home or the brightness level of the light is 0).\\
+This kind of rule uses a ``if and only if'' structure, it is more commonly refered to as an equivalence. It is used to eliminate any room for misunderstanding in an implication. If the left formula is true, the right one is too and the other way around.
+
+\begin{idplisting}
+    {
+       !l in Light : stateOfLight(l) = Off <- brightnessLvl(l) =< 0
+    }
+\end{idplisting}
+For all the lights ``l'', it is true that, if and only if ``stateOfLight(l)'' is ``Off'', ``brightnessLvl(l)'' needs to be smaller then or equal to 0.\\
+This last rule is a definition. For the reasoner, the definition functions the exact same as an equivalence. However, using a definition explicitly indicates that the intention is to define the formula on the left-hand side based on the formula on the right-hand side. This sense of direction and purpose is less apparent when using an equivalence.
+
+\paragraph{Structure}
+In the structure, a specific situation is defined. In this case, there are 4 lights which can be used by the reasoner.
+
+\newpage
+
+\section{IDP-Z3}
+IDP-Z3 \cite{IDPZ3ReasoningEngine} is a reasoning engine capable of performing a variety of reasoning tasks on knowledge bases in the \fodot language. The idea is to provide knowledge (in the form of \fodot) that is used by the IDP-Z3 system to produce an output. Because the IDP-Z3 system is build to implement the knowledge-base paradigm, it supports multiple inferences.
+
+\subsection{The Knowledge-Base Paradigm}
+Reasoning engines implement the Knowledge Base paradigm \cite{IDPZ3KBParadigm}, in which systems store declarative domain knowledge and use it to solve a variety of problems. It states that the knowledge base of a certain domain should be separated from its inference tasks. This implies that the knowledge could be reused for multiple use cases within the same domain. Unlike an imperative programming language where every inference would need its own separate program. Furthermore, if the KB changes, all of these programs would need to be rewritten. This is where the power of a knowledge-based system lies.\\
+The multiple inference tasks are explained below using the example of the lights.\\
+? Hoe best refereren naar het voorbeeld dat al eerder besproken werd?
+
+\paragraph{model expansion}
+In the first place IDP-Z3 can generate models based on the given vocabulary, theory and structure. This is showed in the screenshot below.\\
+? Hoe afbeelding toevoegen in latex ?
+
+\paragraph{propagation}
+The reaoning engine can compute all the logical consequences of a sertain rule. In the first implication of the theory, it is stated that if no one is home, the light needs to be in the state ``Off''. This implies that if nobody is home, the light can either be in the state ``On'' or ``Off''.
+
+\paragraph{explanation}
+IDP-Z3 can provide an explanation to sertain models, why the can or can not exist. This is embedded in the interactive consultant, which is shown below in a screenshot and is further explained in ???.\\
+? weer verwijzen, hoe best doen ?
+
+\paragraph{optimisation}
+The reasoning engine can optimize models. For example, the second rule of the theory states that the brightness-level of a light needs to be between 0 and 100 and that it is divisible by 10. It can work out that the smallest possible number of the brightness is 0.
+
+\paragraph{relevance}
+IDP-Z3 can figure out if there is any redundency in the KB. The last rule of the theory states that if a light is off, either the brightness-level of that lamp needs to be 0 or nobody can be home. Because of the $\Leftrightarrow$, this rule works both ways. So, if the brightness-level of a lamp is 0 or nobody is home, that light should be off. However when nobody is home, the light should already be off (the first rule of the theory). IDP-Z3 can work this out by itself.
+
+%\begin{itemize}
+    %\item It can produce models based on the knowledge that is provided (model expansion)
+    %\begin{itemize}
+    %    afbeelding van de output (IDP-Z3\_model-generation.png)
+    %\end{itemize}
+    %\item It can understand links between types (propagation)
+    % \begin{itemize}
+    %     \item[] The light can be on or off if someone is home. This is defined in the first implication (first line in the theory).
+    % \end{itemize}
+    % \item It can explain why a sertain model can exist (explanation)
+    % \begin{itemize}
+    %     \item[] afbeelding van den interactive consultant (IDP\_Z3\_model-explanation.png)
+    % \end{itemize}
+    % \item It can optimise situations (optimisation)
+    % \begin{itemize}
+    %     \item[] The second rule of the theory states that the brightness-level of a lamp needs to be between 0 and 100 and that it is divisible by 10. It can work out that the smallest possible number of the brightness is 0.
+    % \end{itemize}
+    % \item It can check if some knowledge is redundend (relevance)
+    % \begin{itemize}
+    %     \item[] The last rule states that if a light is off, either the brightness-level of that lamp needs to be 0 or nobody can be home. Because of the $\Leftrightarrow$, this rule works both ways. So, if the brightness-level of a lamp is 0 or nobody is home, that light should be off. However when nobody is home, the light should already be off (the first rule of the theory). IDP-Z3 can work this out by itself.
+    % \end{itemize}
+%\end{itemize}
+
+%The output of the reasoning engine provides possible models, all of which comply with the provided theory. It also shows that the reasoning engine has assigned values to the ages of the individuals, even though these were never specified in the \fodot description. This demonstrates the power of separating the knowledge (\fodot description) from the interpretation (performed by IDP-Z3). A single knowledge base (KB) can be used for multiple purposes: it can generate models (as in this example), validate a model, or teach a user the thought process behind a certain decision.
+%"The KB is ``only'' a formal representation of declarative properties of the domain. This imposes a strong requirement on the KB language (\fodot): its expressions should be interpretable as (informal) propositions about the domain, and this interpretation, its informal semantics, should be as clear, precise, and objective as possible" (Building a Knowledge Base System for an Integration of Logic Programming and Classical Logic).
+%This approach contrasts strongly with declarative programming frameworks, where each operation (generation, validation, explanation, etc.) must be separately programmed. Moreover, if a change occurs, all programs must be rewritten, whereas in a system with a separated KB and interpretation, only the KB needs to be updated.
+
+\paragraph{Interactive consultant}
+
+
+\newpage
+
+\section{Alternatives for \fodot}
+Given that \fodot is not particularly user-friendly, it is necessary to explore other options for more accessible interfaces. In this section, alternative options are considered in the context of home automation. Since this exploration is limited to the home automation domain, some options may not be suitable, while others may be better.
+
+\subsection{DMN}
+The Decision Model and Notation (DMN) is a user-friendly way to describe decision logic. It is managed by the Object Management Group (OMG). It aims to be an intuative language that can be used by anyone involved in the modeling process. A DMN has two main components:
+\begin{itemize}
+	\item Decision Requirements Diagram (DRD)
+    \item Decision Tables
+\end{itemize}
+
+\paragraph{Decision Requirements Diagram}
+A DRD is a graph-like structure that represents which decision should be made. It includes input fields (rounded boxes) that provide the system with data needed for making decisions. The squared boxes denote decisions.
+\paragraph{Decision Tables}
+A Decision Table (DT) is a way to describe a decision. It defines the output based on a set of input variables.
+\paragraph{example}
+The folowing example shows the DMN representation of the lights example. In this example, the decision table for the definition the the lights example. Important to note is that only definitions can be converted to a DT, this is because they work in both directions (if the light is on, the brightnessLevel is greater then or equal to 0, but equally, when the brightnessLevel is greater then or equal to 0, the light is on). Implications, who do not work bidirectional, can therefore not be represented in a DT.
+
+\dmntable{Define state of light}{U}{brightnessLevel}{stateOfLight}{
+    $\geq 0$, on,
+    $\leq 0$, off
+}
+\paragraph{ Pros and cons}
+The main advantage of using a DMN is its clarity and user-friendliness. The user does not need any programming knowledge or understanding of how DMN works to model with it effectively. However, a significant drawback is its limited capabilities. When the user attempts to describe more complex situations, it can quickly become very unreadable, so much so that some solutions to those situations fail to meet DMN's readability goals.
+\paragraph{cDMN}
+cDMN is an extension of DMN that addresses the shortcomings of standard DMN by introducing constraint modeling, quantification, types, and functions. Although this makes DMN more complex, it is far more readable than a complex, standard DMN. By adding these things, an implication is doable (as the figure shows). There is already a cDMN-editor in the online IDP-Z3 IDE.
+
+\dmntable{Disable lights if nobody's home}{E*}{isSomeoneHome}{stateOfLight}{
+    No, off
+}
+
+? hoe best credits geven aan \cite{CombiningDMNKnowledge} als er niet echt een quote uitkomt ?
+
+\subsection{CNL}
+A Controlled Natural Language (CNL) is a subset of a natural language (e.g. english that is strictly defined. This allows it to be understood by both a computer and a human. This is useful because the domain experts do not need an expert on the language. A CNL consists of two parts:
+\begin{itemize}
+	\item A subset of a lagnuage used as "syntax" 
+    \item A parsing engine that can translate the language to a language the computer can understand
+\end{itemize}
+IDP-Z3 has its own natural language (NL), which can be used in its web IDE and, more importantly, in its interactive consultant. This thesis will use this as an example.
+
+\paragraph{The IDP-Z3 CNL}
+IDP-Z3 has its own CNL, which is used to explain certain behaviors of a model. Technically, you could also write the \fodot description in CNL, but this is not commonly done. As shown in the screenshot below, the interactive consultant tries to explain to the user that Luca cannot read because of a rule. The rule is that a person needs to be at least 6 years old to be able to read and talk, which, in this case, Luca does not meet (she is 4 years old). This explanation is useful, but it still requires some understanding of FO symbols, which is not ideal.
+The example below shows the CNL as a replacement for \fodot. While it is more readable, there is still a clear reference to the \fodot language. Normally, one wouldn't say ``for all p in Person,'' but ``for every Person p.'' While the second phrasing is clearer for humans, the order change makes it so the computer cannot understand it.
+
+\paragraph{Pros and cons}
+A CNL allows the user to create easy-to-read code because it uses a subset of a known language, removing the need of a technical expert on the used language. However, it is not the easiest to write due to its strictness with the ordering of words, which can introduce ambiguity. Two structures that seem the same to us humans, may be interpreted differently by the computer. The limited set of words available in a CNL can also pose challenges. While the user might prefer to write in natural, unrestricted text as they are accustomed to, the computer is unable to interpret such input. This restriction can lead to an unintended consequence: writing in a CNL may become more challenging than learning the actual language it is meant to simplify. Users end up learning not only the syntax but also the boundaries of what is and is not possible within the CNL, which can be frustrating and counterproductive.
+
+? hoe best credits geven aan \cite{IDPSimplifyingKnowledgeBase} en \cite{CNLAttemptoControlledEnglish} als er niet echt een quote uitkomt ?
+
+\subsection{Blocks-based editor}
+A block-based editor is a user-friendly way to write software using blocks. This allows the user to avoid memorizing syntax since the blocks are provided, and the user does not need to know the syntax rules, because the blocks visually show what is possible and what is not. In other words, syntax errors are non-existent, allowing the user to fully focus on what the application should do, rather than how to write it in a certain language. The downside of block-based programming is the space required for the blocks. The workspace can become disorganized as projects grow larger. A well-known example of this is Scratch \cite{scratch}, a block-based interface in JavaScript. It allows users to create programs in a visual workspace, while processing the blocks into runnable JavaScript code.
+
+\paragraph{\fodot blocks-based editor}
+There already exists a block-based editor for \fodot \cite{IDPStructuredBlockbasedEditor}. It uses Blockly, a block-based editor developed by Google. It has two components:
+\begin{itemize}
+	\item A workspace where blocks can be placed
+	\item A generator where blocks are translated to a textual representation (in this case \fodot)
+\end{itemize}
+This is, however, too complex for what is needed in home automation. Still, it provides a good baseline to start from.
+\paragraph{Pros and cons}
+A block-based editor is very clear and easy in how to use it. The user can not make syntax errors, because they can see what blocks fit each other and which do not. This implies that no expert of the language (or blocks) is needed to create a working project. However, by making it all visual, it can get messy quite quickly. For bigger projects, that need more complex functionality, the workspace can get very unorganised and difficult to navigate. There are some ways to try and fix this, for example by creating a new block with combined funtionality which is described in its own workspace. 
+\\\\
+een tabelletje waar alle user-friendly interfaces vergeleken worden met elkaar.
+\\\\
+\printbibliography
+\end{document}

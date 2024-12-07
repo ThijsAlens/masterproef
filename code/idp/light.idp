@@ -7,16 +7,14 @@ vocabulary V {
 }
 
 theory T:V {
-    !l in Light : ~isSomeoneHome() => stateOfLight(l) = Off . // propagation
-    !l in Light : (brightnessLvl(l) >= 0) & (brightnessLvl(l) =< 100) & (brightnessLvl(l) % 10 = 0) . //optimization (ate least 0 and %10=0 => min 0)
-    !l in Light : stateOfLight(l) = Off <=> (~isSomeoneHome() | (brightnessLvl(l) = 0)) . // redundend
-
+    !l in Light : ~isSomeoneHome() => stateOfLight(l) = Off .
+    !l in Light : (brightnessLvl(l) >= 0) & (brightnessLvl(l) =< 100) & (brightnessLvl(l) % 10 = 0) . 
+    !l in Light : stateOfLight(l) = Off <=> (~isSomeoneHome() | (brightnessLvl(l) = 0)) .
+    {
+        !l in Light : stateOfLight(l) = Off <- brightnessLvl(l) < 0
+    }
 }
 
 structure S:V {
     Light := {light1, light2, light3, light4} .
-}
-
-procedure main () {
-    pretty_print(model_expand(T, S))
 }
