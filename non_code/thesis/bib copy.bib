@@ -1,0 +1,162 @@
+@misc{IDPZ3ReasoningEngine,
+abstract = {An important sign of intelligence is the capacity to apply a body of knowledge to a particular situation in order to not only derive new knowledge, but also to determine relevant questions or provide explanations. Developing interactive systems capable of performing such a variety of reasoning tasks for the benefits of its users has proved difficult, notably for performance and/or development cost reasons. Still, recently, a reasoning engine, called IDP3, has been used to build such systems, but it lacked support for arithmetic operations, seriously limiting its usefulness. We have developed a new reasoning engine, IDP-Z3, that removes this limitation, and we put it to the test in four knowledge-intensive industrial use cases. This paper describes FO(·) (aka FO-dot), the language used to represent knowledge in the IDP3 and IDP-Z3 system. It then describes the generic reasoning tasks that IDP-Z3 can perform, and how we used them to build a generic user interface, called the Interactive Consultant. Finally, it reports on the four use cases. In these four use cases, the interactive applications based on IDP-Z3 were capable of intelligent behavior of value to users, while having a low development cost (typically 10 days) and an acceptable response time (typically below 3 seconds). Performance could be further improved, in particular for problems on larger domains.},
+author = {Carbonnelle, Pierre and Vandevelde, Simon and Vennekens, Joost and Denecker, Marc},
+title = {IDP-Z3: a reasoning engine for FO(.)},
+year = {2022-02-01},
+}
+
+@misc{IDPZ3KBParadigm,
+abstract = {This paper presents a Knowledge Base project for FO(ID), an extension of classical logic with inductive deﬁnitions. This logic is a natural integration of classical logic and logic programming based on the view of a logic program as a deﬁnition. We discuss the relationship between inductive deﬁnitions and common sense reasoning and the strong similarities and striking differences with ASP and Abductive LP. We report on inference systems that combine state-of-the-art techniques of SAT and ASP. Experiments show that FO(ID) model expansion systems are competitive with the best ASP-solvers.},
+author = {Denecker, Marc and Vennekens, Joost and Garcia de la Banda, Maria and Pontelli, Enrico},
+issn = {3540899812},
+journal = {Lecture Notes in Computer Science },
+keywords = {Logic Programming ; Knowledge Representation ; Science & Technology ; Technology ; Computer Science Artificial Intelligence ; Computer Science Theory & Methods ; Computer Science},
+language = {eng},
+publisher = {Springer},
+title = {Building a knowledge base system for an integration of logic programming and classical logic},
+volume = {5366},
+year = {2008-01-01},
+}
+
+@misc{CombiningDMNKnowledge,
+abstract = {Representing business rules and the rules governing businesses is in itself a challenging task. Supporting the enactment of the represented rules poses even greater challenges. We present a novel approach to enact decisions represented using the Decision Model and Notation standard. The IDP knowledge base system is used as an inference engine for DMN decision models. The different forms of inference provided by the knowledge base system allow for flexible decision enactment. Our approach additionally allows for decision enactment by automatically generating an interactive graphical interface from the specification of the decisions.},
+author = {Dasseville, Ingmar and Janssens, Laurent and Janssens, Gerda and Vanthienen, Jan and Denecker, Marc and Athan, Tara and Giurca, Adrian and Grütter, Rolf and Proctor, Marc and Teymourian, Kia and Van Woensel, William},
+journal = {Supplementary Proceedings of the RuleML 2016 Challenge},
+keywords = {KBS ; DMN ; 4609 Information systems},
+language = {eng},
+publisher = {CEUR-WS.org},
+title = {Combining DMN and the knowledge base paradigm for flexible decision enactment},
+volume = {1620},
+year = {2016-01-01},
+}
+
+@misc{IDPStructuredBlockbasedEditor,
+abstract = {The process of expressing our thoughts using some language is extremely complex. However, we can distinguish two main ingredients: knowing the language's syntactical rules of the language and constructing sentences that have an adequate meaning. The construction of sentences can only be accomplished when we are aware of the grammar of the language. Learning to construct correct sentences is hard and would be easier if we do not have to think about the syntax.   In this thesis, we are focussing on first-order logic with certain extensions which has a complex syntax with a lot of different symbols that have to be placed in the correct sequence. Such a formal language can be used by domain experts to formalise their knowledge to create a knowledge base that can be used to solve problems. To utilise the formal language, the experts have to learn semantics and the syntax of the new language. The goal of this thesis is to overcome the need for syntax knowledge of the formal language.   Previous studies have tried to solve this problem by using the DMN standard or controlled natural languages, such as Attempto Controlled English and Processable English. These solutions still require the domain expert to learn syntax, which is different from the formal language. In this work, the impact of syntax in the knowledge base specification process is examined by comparing a text editor with a structured, block-based editor. In a block-based editor, interlocking blocks can be connected to create first-order logic statements. While editing, the blocks are synchronously translated to the corresponding first-order logic syntax. Additionally, the possibilities and impact of translating the blocks to other formats, such as natural language and abstract syntax trees, are examined. In this thesis, the impact of syntax free editors and different representations of code on the capability to produce correct formalisations are investigated.  To answer the scientific questions, experiments were conducted in which participants compared the block-based editor with a regular text editor. During the experiments, the impact of the syntax in the process of formalising sentences has been investigated as well as the impact of providing the translation to other formats.},
+author = {Jonckheere, Michiel and Denecker, Marc and Janssens, Gerda and KU Leuven. Faculteit Ingenieurswetenschappen. Opleiding Master in de ingenieurswetenschappen. Computerwetenschappen (Leuven) degree granting institution},
+address = {Leuven},
+language = {eng},
+publisher = {KU Leuven. Faculteit Ingenieurswetenschappen},
+title = {A structured, block-based editor for FO(.), with translations to IDP-Z3 syntax, AST and NL},
+year = {2021},
+}
+
+@misc{IDPSimplifyingKnowledgeBase,
+author = {Simon Vandevelde, Joost Vennekens},
+language = {eng},
+title = {Simplifying Knowledge Base Creation for Domain Experts},
+year = {2024},
+}
+
+@incollection{CNLAttemptoControlledEnglish,
+abstract = {Attempto Controlled English (ACE) is a controlled natural language, i.e. a precisely defined subset of English that can automatically and unambiguously be translated into first-order logic. ACE may seem to be completely natural, but is actually a formal language, concretely it is a first-order logic language with an English syntax. Thus ACE is human and machine understandable. ACE was originally intended to specify software, but has since been used as a general knowledge representation language in several application domains, most recently for the semantic web. ACE is supported by a number of tools, predominantly by the Attempto Parsing Engine (APE) that translates ACE texts into Discourse Representation Structures (DRS), a variant of first-order logic. Other tools include the Attempto Reasoner RACE, the AceRules system, the ACE View plug-in for the Protege ontology editor, AceWiki, and the OWL verbaliser.},
+author = {Fuchs, Norbert E. and Kaljurand, Kaarel and Kuhn, Tobias and Marchiori, Massimo and Polleres, Axel and Maluszynski, Jan and Bonatti, Piero A and Schaffert, Sebastian and Baroglio, Cristina and Marchiori, Massimo and Schaffert, Sebastian and Polleres, Axel and Baroglio, Cristina and Maluszynski, Jan and Bonatti, Piero A.},
+address = {Germany},
+booktitle = {Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)},
+copyright = {Springer-Verlag Berlin Heidelberg 2008},
+isbn = {3540856560},
+issn = {0302-9743},
+keywords = {Noun phrase},
+language = {eng},
+pages = {104-124},
+publisher = {Springer Berlin / Heidelberg},
+series = {Lecture Notes in Computer Science},
+title = {Attempto Controlled English for Knowledge Representation},
+volume = {5224},
+year = {2008},
+}
+
+@misc{cDMN,
+author = {Simon Vandevelde, Bram Aerts, Joost Vennekens},
+issn = {1471-0684},
+keywords = {Science & Technology ; Technology ; Computer Science Software Engineering ; Computer Science Theory & Methods ; Logic ; Computer Science ; Science & Technology - Other Topics ; decision model and notation ; constraint reasoning ; expressiveness ; readability ; IDP system ; MODELS ; 0801 Artificial Intelligence and Image Processing ; 0802 Computation Theory and Mathematics ; 0803 Computer Software ; Computation Theory & Mathematics ; 4602 Artificial intelligence ; 4613 Theory of computation},
+language = {eng},
+publisher = {Cambridge University Press (CUP)},
+title = {Tackling the DM Challenges with cDMN: A Tight Integration of DMN and Constraint Reasoning},
+year = {2021},
+}
+
+@article{CNL,
+abstract = {What is here called
+has traditionally been given many different names. Especially during the last four decades, a wide variety of such languages have been designed. They are applied to improve communication among humans, to improve translation, or to provide natural and intuitive representations for formal notations. Despite the apparent differences, it seems sensible to put all these languages under the same umbrella. To bring order to the variety of languages, a general classification scheme is presented here. A comprehensive survey of existing English-based CNLs is given, listing and describing 100 languages from 1930 until today. Classification of these languages reveals that they form a single scattered cloud filling the conceptual space between natural languages such as English on the one end and formal languages such as propositional logic on the other. The goal of this article is to provide a common terminology and a common model for CNL, to contribute to the understanding of their general nature, to provide a starting point for researchers interested in the area, and to help developers to make design decisions.},
+author = {Kuhn, Tobias},
+address = {One Rogers Street, Cambridge, MA 02142-1209, USA},
+copyright = {Copyright 2020 Elsevier B.V., All rights reserved.},
+issn = {0891-2017},
+journal = {Computational linguistics - Association for Computational Linguistics},
+keywords = {Classification ; Computer programming ; Computer science ; English language ; Linguistics ; Names ; Social sciences ; Technology ; Terminology ; Translations},
+language = {eng},
+number = {1},
+pages = {121-170},
+publisher = {MIT Press},
+title = {A Survey and Classification of Controlled Natural Languages},
+volume = {40},
+year = {2014},
+}
+
+@inproceedings{SOTA_OntologyBased,
+address = {Berlin, Heidelberg},
+booktitle = {Proceedings of the 23rd international conference on Industrial engineering and other applications of applied intelligent systems - Volume Part I},
+isbn = {3642130216},
+keywords = {High performance computing},
+language = {eng},
+pages = {661-670},
+publisher = {Springer-Verlag},
+title = {Ontology-based expert system for home automation controlling},
+year = {2010},
+}
+
+@misc{SOTA_AutomationConfigurationSmarthome,
+      title={Automation Configuration in Smart Home Systems: Challenges and Opportunities}, 
+      author={Sheik Murad Hassan Anik and Xinghua Gao and Hao Zhong and Xiaoyin Wang and Na Meng},
+      year={2024},
+      eprint={2408.04755},
+      archivePrefix={arXiv},
+      primaryClass={cs.SE},
+      url={https://arxiv.org/abs/2408.04755}, 
+}
+
+@article{SOTA_SmartBlock,
+title = {Smart Block: A visual block language and its programming environment for IoT},
+journal = {Journal of Computer Languages},
+volume = {60},
+pages = {100999},
+year = {2020},
+issn = {2590-1184},
+doi = {https://doi.org/10.1016/j.cola.2020.100999},
+url = {https://www.sciencedirect.com/science/article/pii/S2590118420300599},
+author = {Nayeon Bak and Byeong-Mo Chang and Kwanghoon Choi},
+keywords = {Visual block language, IoT, SmartThings, SmartApp ECA rule, IoTa, Blockly},
+abstract = {A visual block programming language allows users to make their own programs by dragging and dropping graphic blocks rather than by writing the program. This enables users who are not proficient in programming to create programs easily. Although existing studies have applied this idea to programming Internet of things (IoT) applications, existing visual language tools have certain limitations in terms of expressiveness, extensibility, and error prevention. In this paper, we propose a visual block language called Smart Block for SmartThings home automation, together with a visual programming environment that supports the three properties. We designed the visual block language based on the Internet of things automation (IoTa) calculus, a core calculus for IoT automation that generalizes event-condition-action (ECA) rules. Each ECA rule specifies that when an event occurs, and if a condition is met, a certain action is performed. Smart Block supports writing IoT applications in the ECA style and is implemented with Google Blockly, a client-side JavaScript library for creating visual block languages. Smart Block can help users develop reliable SmartApps by checking for redundancy, inconsistency, and circularity in the ECA rules before generating the code. We demonstrate that Smart Block can build 54 out of 56 (96.4%) of the SmartApps provided by the official SmartThings IDE. Furthermore, a user study with 33 participants shows that our approach, based on the foundation of the IoTa calculus, is understandable for users.}
+}
+
+
+
+@misc{HA,
+  author = {Home Assistant},
+  url = {https://www.home-assistant.io/}
+}
+
+@misc{HA_demo,
+  author = {Home Assistant},
+  url = {https://demo.home-assistant.io/\#/lovelace/home},
+}
+
+@misc{DMN,
+  author = {Object Management Group},
+  title = {Decision model and notation},
+  year = 2020,
+}
+
+@misc{InteractiveConsultant,
+  author = {KU Leuven},
+  url = {https://interactive-consultant.idp-z3.be/},
+}
+@misc{Blockly,
+    author = {Google},
+    url = {https://developers.google.com/blockly},
+}
+
+@misc{Scratch,
+    author = {MIT},
+    url = {https://scratch.mit.edu/},
+}

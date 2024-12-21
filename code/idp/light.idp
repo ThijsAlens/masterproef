@@ -7,12 +7,18 @@ vocabulary V {
 }
 
 theory T:V {
-    !l in Light : ~isSomeoneHome() => stateOfLight(l) = Off .
-    !l in Light : (brightnessLvl(l) >= 0) & (brightnessLvl(l) =< 100) & (brightnessLvl(l) % 10 = 0) . 
-    !l in Light : stateOfLight(l) = Off <=> (~isSomeoneHome() | (brightnessLvl(l) = 0)) .
     {
-        !l in Light : stateOfLight(l) = Off <- brightnessLvl(l) < 0
+	// A light is Off if the brightnesslevel is 0 or smaler
+        !l in Light : stateOfLight(l) = Off <- brightnessLvl(l) =< 0 .
+	// A light is On if the brightnesslevel is greater then 0
+        !l in Light : stateOfLight(l) = On <- brightnessLvl(l) > 0 .
     }
+    // if nobody is home, then all the lights should be off
+    !l in Light : ~isSomeoneHome() => stateOfLight(l) = Off .
+    // the brightnesslvl of all the lights should be divisable by 10 and stay between 0 and 100
+    !l in Light : (brightnessLvl(l) >= 0) & (brightnessLvl(l) =< 100) & (brightnessLvl(l) % 10 = 0) .
+    // the light l should be off, if and only if nobody is home or the brightnessLvl is equal to 0 
+    !l in Light : stateOfLight(l) = Off <=> (~isSomeoneHome() | (brightnessLvl(l) = 0)) .
 }
 
 structure S:V {

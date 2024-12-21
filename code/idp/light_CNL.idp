@@ -1,0 +1,26 @@
+vocabulary V {
+    type Light
+    type State is {On, Off}
+    stateOfLight: Light -> State
+    brightnessLvl: Light -> Int
+    isSomeoneHome: () -> Bool
+}
+
+theory T:V {
+    {
+        for all l in Light : stateOfLight(l) = Off if brightnessLvl(l) =< 0 .
+        for all l in Light : stateOfLight(l) = On if brightnessLvl(l) > 0 .
+    }
+    for all l in Light : not isSomeoneHome() are sufficient conditions for stateOfLight(l) is Off .
+    for all l in Light : (brightnessLvl(l) is greater than 0) & (brightnessLvl(l) is less than 100) & (brightnessLvl(l) % 10 is 0) . 
+    for all l in Light : (stateOfLight(l) is Off) is the same as (not isSomeoneHome() or (brightnessLvl(l) is 0)) .
+}
+
+structure S:V {
+    Light := {light1, light2, light3, light4} .
+}
+
+
+procedure main () {
+    pretty_print(model_expand(T, S))
+}

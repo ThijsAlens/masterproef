@@ -1,0 +1,535 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{HA}{misc}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{Home Assistant}
+      \verb{urlraw}
+      \verb https://www.home-assistant.io/
+      \endverb
+      \verb{url}
+      \verb https://www.home-assistant.io/
+      \endverb
+    \endentry
+    \entry{HA_demo}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{title}{Home Assistant demo}
+      \verb{urlraw}
+      \verb https://demo.home-assistant.io/\#/lovelace/home
+      \endverb
+      \verb{url}
+      \verb https://demo.home-assistant.io/%5C#/lovelace/home
+      \endverb
+    \endentry
+    \entry{IDPZ3ReasoningEngine}{misc}{}
+      \name{author}{4}{}{%
+        {{hash=bd493fcefd6ae3eee8905b34f25193bc}{%
+           family={Carbonnelle},
+           familyi={C\bibinitperiod},
+           given={Pierre},
+           giveni={P\bibinitperiod}}}%
+        {{hash=2574654f4816ae2332d27b59fedf3bed}{%
+           family={Vandevelde},
+           familyi={V\bibinitperiod},
+           given={Simon},
+           giveni={S\bibinitperiod}}}%
+        {{hash=0ebcd20c99578ce289c2f5f31e7f5007}{%
+           family={Vennekens},
+           familyi={V\bibinitperiod},
+           given={Joost},
+           giveni={J\bibinitperiod}}}%
+        {{hash=f86638f13cb0b063c3dcbdc37f91ed41}{%
+           family={Denecker},
+           familyi={D\bibinitperiod},
+           given={Marc},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{4dcf5079fa4798f2fcd4b240b1a1937a}
+      \strng{fullhash}{4dcf5079fa4798f2fcd4b240b1a1937a}
+      \strng{bibnamehash}{4dcf5079fa4798f2fcd4b240b1a1937a}
+      \strng{authorbibnamehash}{4dcf5079fa4798f2fcd4b240b1a1937a}
+      \strng{authornamehash}{4dcf5079fa4798f2fcd4b240b1a1937a}
+      \strng{authorfullhash}{4dcf5079fa4798f2fcd4b240b1a1937a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{An important sign of intelligence is the capacity to apply a body of knowledge to a particular situation in order to not only derive new knowledge, but also to determine relevant questions or provide explanations. Developing interactive systems capable of performing such a variety of reasoning tasks for the benefits of its users has proved difficult, notably for performance and/or development cost reasons. Still, recently, a reasoning engine, called IDP3, has been used to build such systems, but it lacked support for arithmetic operations, seriously limiting its usefulness. We have developed a new reasoning engine, IDP-Z3, that removes this limitation, and we put it to the test in four knowledge-intensive industrial use cases. This paper describes FO(·) (aka FO-dot), the language used to represent knowledge in the IDP3 and IDP-Z3 system. It then describes the generic reasoning tasks that IDP-Z3 can perform, and how we used them to build a generic user interface, called the Interactive Consultant. Finally, it reports on the four use cases. In these four use cases, the interactive applications based on IDP-Z3 were capable of intelligent behavior of value to users, while having a low development cost (typically 10 days) and an acceptable response time (typically below 3 seconds). Performance could be further improved, in particular for problems on larger domains.}
+      \field{title}{IDP-Z3: a reasoning engine for FO(.)}
+      \field{year}{2022-02-01}
+    \endentry
+    \entry{IDPZ3KBParadigm}{misc}{}
+      \name{author}{4}{}{%
+        {{hash=f86638f13cb0b063c3dcbdc37f91ed41}{%
+           family={Denecker},
+           familyi={D\bibinitperiod},
+           given={Marc},
+           giveni={M\bibinitperiod}}}%
+        {{hash=0ebcd20c99578ce289c2f5f31e7f5007}{%
+           family={Vennekens},
+           familyi={V\bibinitperiod},
+           given={Joost},
+           giveni={J\bibinitperiod}}}%
+        {{hash=b29482a574fd781fb4ba70135022aca3}{%
+           family={Garcia\bibnamedelimb de\bibnamedelimb la\bibnamedelima Banda},
+           familyi={G\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim l\bibinitperiod\bibinitdelim B\bibinitperiod},
+           given={Maria},
+           giveni={M\bibinitperiod}}}%
+        {{hash=239566b8e57237e742ca2992eb4db085}{%
+           family={Pontelli},
+           familyi={P\bibinitperiod},
+           given={Enrico},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{59eb66810ef21814cc061b4c94572069}
+      \strng{fullhash}{59eb66810ef21814cc061b4c94572069}
+      \strng{bibnamehash}{59eb66810ef21814cc061b4c94572069}
+      \strng{authorbibnamehash}{59eb66810ef21814cc061b4c94572069}
+      \strng{authornamehash}{59eb66810ef21814cc061b4c94572069}
+      \strng{authorfullhash}{59eb66810ef21814cc061b4c94572069}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper presents a Knowledge Base project for FO(ID), an extension of classical logic with inductive deﬁnitions. This logic is a natural integration of classical logic and logic programming based on the view of a logic program as a deﬁnition. We discuss the relationship between inductive deﬁnitions and common sense reasoning and the strong similarities and striking differences with ASP and Abductive LP. We report on inference systems that combine state-of-the-art techniques of SAT and ASP. Experiments show that FO(ID) model expansion systems are competitive with the best ASP-solvers.}
+      \field{issn}{3540899812}
+      \field{journaltitle}{Lecture Notes in Computer Science}
+      \field{title}{Building a knowledge base system for an integration of logic programming and classical logic}
+      \field{volume}{5366}
+      \field{year}{2008-01-01}
+      \keyw{Logic Programming ; Knowledge Representation ; Science & Technology ; Technology ; Computer Science Artificial Intelligence ; Computer Science Theory & Methods ; Computer Science}
+    \endentry
+    \entry{InteractiveConsultant}{misc}{}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labeltitlesource}{title}
+      \field{title}{KU Leuven}
+      \verb{urlraw}
+      \verb https://interactive-consultant.idp-z3.be/
+      \endverb
+      \verb{url}
+      \verb https://interactive-consultant.idp-z3.be/
+      \endverb
+    \endentry
+    \entry{DMN}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=293663107c0388134bc4d4820fffe820}{%
+           family={Group},
+           familyi={G\bibinitperiod},
+           given={Object\bibnamedelima Management},
+           giveni={O\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{293663107c0388134bc4d4820fffe820}
+      \strng{fullhash}{293663107c0388134bc4d4820fffe820}
+      \strng{bibnamehash}{293663107c0388134bc4d4820fffe820}
+      \strng{authorbibnamehash}{293663107c0388134bc4d4820fffe820}
+      \strng{authornamehash}{293663107c0388134bc4d4820fffe820}
+      \strng{authorfullhash}{293663107c0388134bc4d4820fffe820}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Decision model and notation}
+      \field{year}{2020}
+    \endentry
+    \entry{cDMN}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=90347d60b73e5aa22c74f745c9f882a6}{%
+           family={Simon\bibnamedelima Vandevelde},
+           familyi={S\bibinitperiod\bibinitdelim V\bibinitperiod},
+           given={Joost\bibnamedelima Vennekens},
+           giveni={J\bibinitperiod\bibinitdelim V\bibinitperiod},
+           suffix={Bram\bibnamedelima Aerts},
+           suffixi={B\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press (CUP)}%
+      }
+      \strng{namehash}{90347d60b73e5aa22c74f745c9f882a6}
+      \strng{fullhash}{90347d60b73e5aa22c74f745c9f882a6}
+      \strng{bibnamehash}{90347d60b73e5aa22c74f745c9f882a6}
+      \strng{authorbibnamehash}{90347d60b73e5aa22c74f745c9f882a6}
+      \strng{authornamehash}{90347d60b73e5aa22c74f745c9f882a6}
+      \strng{authorfullhash}{90347d60b73e5aa22c74f745c9f882a6}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1471-0684}
+      \field{title}{Tackling the DM Challenges with cDMN: A Tight Integration of DMN and Constraint Reasoning}
+      \field{year}{2021}
+      \keyw{Science & Technology ; Technology ; Computer Science Software Engineering ; Computer Science Theory & Methods ; Logic ; Computer Science ; Science & Technology - Other Topics ; decision model and notation ; constraint reasoning ; expressiveness ; readability ; IDP system ; MODELS ; 0801 Artificial Intelligence and Image Processing ; 0802 Computation Theory and Mathematics ; 0803 Computer Software ; Computation Theory & Mathematics ; 4602 Artificial intelligence ; 4613 Theory of computation}
+    \endentry
+    \entry{CNL}{article}{}
+      \name{author}{1}{}{%
+        {{hash=74d3522e91542051f26a4f98e94e2dc2}{%
+           family={Kuhn},
+           familyi={K\bibinitperiod},
+           given={Tobias},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {One Rogers Street, Cambridge, MA 02142-1209, USA}%
+      }
+      \list{publisher}{1}{%
+        {MIT Press}%
+      }
+      \strng{namehash}{74d3522e91542051f26a4f98e94e2dc2}
+      \strng{fullhash}{74d3522e91542051f26a4f98e94e2dc2}
+      \strng{bibnamehash}{74d3522e91542051f26a4f98e94e2dc2}
+      \strng{authorbibnamehash}{74d3522e91542051f26a4f98e94e2dc2}
+      \strng{authornamehash}{74d3522e91542051f26a4f98e94e2dc2}
+      \strng{authorfullhash}{74d3522e91542051f26a4f98e94e2dc2}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{What is here called has traditionally been given many different names. Especially during the last four decades, a wide variety of such languages have been designed. They are applied to improve communication among humans, to improve translation, or to provide natural and intuitive representations for formal notations. Despite the apparent differences, it seems sensible to put all these languages under the same umbrella. To bring order to the variety of languages, a general classification scheme is presented here. A comprehensive survey of existing English-based CNLs is given, listing and describing 100 languages from 1930 until today. Classification of these languages reveals that they form a single scattered cloud filling the conceptual space between natural languages such as English on the one end and formal languages such as propositional logic on the other. The goal of this article is to provide a common terminology and a common model for CNL, to contribute to the understanding of their general nature, to provide a starting point for researchers interested in the area, and to help developers to make design decisions.}
+      \field{issn}{0891-2017}
+      \field{journaltitle}{Computational linguistics - Association for Computational Linguistics}
+      \field{number}{1}
+      \field{title}{A Survey and Classification of Controlled Natural Languages}
+      \field{volume}{40}
+      \field{year}{2014}
+      \field{pages}{121\bibrangedash 170}
+      \range{pages}{50}
+      \keyw{Classification ; Computer programming ; Computer science ; English language ; Linguistics ; Names ; Social sciences ; Technology ; Terminology ; Translations}
+    \endentry
+    \entry{CNLAttemptoControlledEnglish}{misc}{}
+      \name{author}{15}{}{%
+        {{hash=a632d0bae1c19c288294b13f6cb8a931}{%
+           family={Fuchs},
+           familyi={F\bibinitperiod},
+           given={Norbert\bibnamedelima E.},
+           giveni={N\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=e1173b8e183e2d668a74f8cc3675d74a}{%
+           family={Kaljurand},
+           familyi={K\bibinitperiod},
+           given={Kaarel},
+           giveni={K\bibinitperiod}}}%
+        {{hash=74d3522e91542051f26a4f98e94e2dc2}{%
+           family={Kuhn},
+           familyi={K\bibinitperiod},
+           given={Tobias},
+           giveni={T\bibinitperiod}}}%
+        {{hash=4803d059c0279302131fc57239b6f779}{%
+           family={Marchiori},
+           familyi={M\bibinitperiod},
+           given={Massimo},
+           giveni={M\bibinitperiod}}}%
+        {{hash=a2be0ec850b04b1f5e9fe3aca6bf5226}{%
+           family={Polleres},
+           familyi={P\bibinitperiod},
+           given={Axel},
+           giveni={A\bibinitperiod}}}%
+        {{hash=18c8e0d7429a7e67eeae90325ee8b54b}{%
+           family={Maluszynski},
+           familyi={M\bibinitperiod},
+           given={Jan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=00d61af0adef8d8d1c3e857f5fc7119b}{%
+           family={Bonatti},
+           familyi={B\bibinitperiod},
+           given={Piero\bibnamedelima A},
+           giveni={P\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=cafccc31cbed090c9f0654b1ab4ac3ed}{%
+           family={Schaffert},
+           familyi={S\bibinitperiod},
+           given={Sebastian},
+           giveni={S\bibinitperiod}}}%
+        {{hash=aaf310e8106d74d09c81b30df76fea8e}{%
+           family={Baroglio},
+           familyi={B\bibinitperiod},
+           given={Cristina},
+           giveni={C\bibinitperiod}}}%
+        {{hash=4803d059c0279302131fc57239b6f779}{%
+           family={Marchiori},
+           familyi={M\bibinitperiod},
+           given={Massimo},
+           giveni={M\bibinitperiod}}}%
+        {{hash=cafccc31cbed090c9f0654b1ab4ac3ed}{%
+           family={Schaffert},
+           familyi={S\bibinitperiod},
+           given={Sebastian},
+           giveni={S\bibinitperiod}}}%
+        {{hash=a2be0ec850b04b1f5e9fe3aca6bf5226}{%
+           family={Polleres},
+           familyi={P\bibinitperiod},
+           given={Axel},
+           giveni={A\bibinitperiod}}}%
+        {{hash=aaf310e8106d74d09c81b30df76fea8e}{%
+           family={Baroglio},
+           familyi={B\bibinitperiod},
+           given={Cristina},
+           giveni={C\bibinitperiod}}}%
+        {{hash=18c8e0d7429a7e67eeae90325ee8b54b}{%
+           family={Maluszynski},
+           familyi={M\bibinitperiod},
+           given={Jan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=00d61af0adef8d8d1c3e857f5fc7119b}{%
+           family={Bonatti},
+           familyi={B\bibinitperiod},
+           given={Piero\bibnamedelima A.},
+           giveni={P\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {Germany}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin / Heidelberg}%
+      }
+      \strng{namehash}{f4c4765d29a6391b9d7599048aef9f7d}
+      \strng{fullhash}{f4c4765d29a6391b9d7599048aef9f7d}
+      \strng{bibnamehash}{f4c4765d29a6391b9d7599048aef9f7d}
+      \strng{authorbibnamehash}{f4c4765d29a6391b9d7599048aef9f7d}
+      \strng{authornamehash}{f4c4765d29a6391b9d7599048aef9f7d}
+      \strng{authorfullhash}{f4c4765d29a6391b9d7599048aef9f7d}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Attempto Controlled English (ACE) is a controlled natural language, i.e. a precisely defined subset of English that can automatically and unambiguously be translated into first-order logic. ACE may seem to be completely natural, but is actually a formal language, concretely it is a first-order logic language with an English syntax. Thus ACE is human and machine understandable. ACE was originally intended to specify software, but has since been used as a general knowledge representation language in several application domains, most recently for the semantic web. ACE is supported by a number of tools, predominantly by the Attempto Parsing Engine (APE) that translates ACE texts into Discourse Representation Structures (DRS), a variant of first-order logic. Other tools include the Attempto Reasoner RACE, the AceRules system, the ACE View plug-in for the Protege ontology editor, AceWiki, and the OWL verbaliser.}
+      \field{booktitle}{Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)}
+      \field{isbn}{3540856560}
+      \field{issn}{0302-9743}
+      \field{series}{Lecture Notes in Computer Science}
+      \field{title}{Attempto Controlled English for Knowledge Representation}
+      \field{volume}{5224}
+      \field{year}{2008}
+      \field{pages}{104\bibrangedash 124}
+      \range{pages}{21}
+      \keyw{Noun phrase}
+    \endentry
+    \entry{scratch}{misc}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{MIT}
+      \verb{urlraw}
+      \verb https://scratch.mit.edu/
+      \endverb
+      \verb{url}
+      \verb https://scratch.mit.edu/
+      \endverb
+    \endentry
+    \entry{IDPStructuredBlockbasedEditor}{misc}{}
+      \name{author}{4}{}{%
+        {{hash=b2c2b7846410236aaca99c0a3efc6d26}{%
+           family={Jonckheere},
+           familyi={J\bibinitperiod},
+           given={Michiel},
+           giveni={M\bibinitperiod}}}%
+        {{hash=f86638f13cb0b063c3dcbdc37f91ed41}{%
+           family={Denecker},
+           familyi={D\bibinitperiod},
+           given={Marc},
+           giveni={M\bibinitperiod}}}%
+        {{hash=d25acbde65ec7504aaee6f0f80759527}{%
+           family={Janssens},
+           familyi={J\bibinitperiod},
+           given={Gerda},
+           giveni={G\bibinitperiod}}}%
+        {{hash=fd39b9d655b0fbb2af8c755680479daf}{%
+           family={Computerwetenschappen\bibnamedelimb (Leuven)\bibnamedelimb degree\bibnamedelimb granting\bibnamedelima institution},
+           familyi={C\bibinitperiod\bibinitdelim (\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim g\bibinitperiod\bibinitdelim i\bibinitperiod},
+           given={KU\bibnamedelima Leuven.\bibnamedelimi Faculteit\bibnamedelimb Ingenieurswetenschappen.\bibnamedelimi Opleiding\bibnamedelima Master},
+           giveni={K\bibinitperiod\bibinitdelim L\bibinitperiod\bibinitdelim F\bibinitperiod\bibinitdelim I\bibinitperiod\bibinitdelim O\bibinitperiod\bibinitdelim M\bibinitperiod},
+           prefix={in\bibnamedelima de\bibnamedelima ingenieurswetenschappen.},
+           prefixi={i\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim i\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {Leuven}%
+      }
+      \list{publisher}{1}{%
+        {KU Leuven. Faculteit Ingenieurswetenschappen}%
+      }
+      \strng{namehash}{dcea885f48e86c24366b797b0c1ba168}
+      \strng{fullhash}{dcea885f48e86c24366b797b0c1ba168}
+      \strng{bibnamehash}{dcea885f48e86c24366b797b0c1ba168}
+      \strng{authorbibnamehash}{dcea885f48e86c24366b797b0c1ba168}
+      \strng{authornamehash}{dcea885f48e86c24366b797b0c1ba168}
+      \strng{authorfullhash}{dcea885f48e86c24366b797b0c1ba168}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The process of expressing our thoughts using some language is extremely complex. However, we can distinguish two main ingredients: knowing the language's syntactical rules of the language and constructing sentences that have an adequate meaning. The construction of sentences can only be accomplished when we are aware of the grammar of the language. Learning to construct correct sentences is hard and would be easier if we do not have to think about the syntax. In this thesis, we are focussing on first-order logic with certain extensions which has a complex syntax with a lot of different symbols that have to be placed in the correct sequence. Such a formal language can be used by domain experts to formalise their knowledge to create a knowledge base that can be used to solve problems. To utilise the formal language, the experts have to learn semantics and the syntax of the new language. The goal of this thesis is to overcome the need for syntax knowledge of the formal language. Previous studies have tried to solve this problem by using the DMN standard or controlled natural languages, such as Attempto Controlled English and Processable English. These solutions still require the domain expert to learn syntax, which is different from the formal language. In this work, the impact of syntax in the knowledge base specification process is examined by comparing a text editor with a structured, block-based editor. In a block-based editor, interlocking blocks can be connected to create first-order logic statements. While editing, the blocks are synchronously translated to the corresponding first-order logic syntax. Additionally, the possibilities and impact of translating the blocks to other formats, such as natural language and abstract syntax trees, are examined. In this thesis, the impact of syntax free editors and different representations of code on the capability to produce correct formalisations are investigated. To answer the scientific questions, experiments were conducted in which participants compared the block-based editor with a regular text editor. During the experiments, the impact of the syntax in the process of formalising sentences has been investigated as well as the impact of providing the translation to other formats.}
+      \field{title}{A structured, block-based editor for FO(.), with translations to IDP-Z3 syntax, AST and NL}
+      \field{year}{2021}
+    \endentry
+    \entry{SOTA_OntologyBased}{inproceedings}{}
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {Berlin, Heidelberg}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag}%
+      }
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 23rd international conference on Industrial engineering and other applications of applied intelligent systems - Volume Part I}
+      \field{isbn}{3642130216}
+      \field{title}{Ontology-based expert system for home automation controlling}
+      \field{year}{2010}
+      \field{pages}{661\bibrangedash 670}
+      \range{pages}{10}
+      \keyw{High performance computing}
+    \endentry
+    \entry{SOTA_AutomationConfigurationSmarthome}{misc}{}
+      \name{author}{5}{}{%
+        {{hash=bfe0f89c119cb2a0f003efa52de19996}{%
+           family={Anik},
+           familyi={A\bibinitperiod},
+           given={Sheik\bibnamedelimb Murad\bibnamedelima Hassan},
+           giveni={S\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=cbaa75d121349f31a7c8715c844b8d85}{%
+           family={Gao},
+           familyi={G\bibinitperiod},
+           given={Xinghua},
+           giveni={X\bibinitperiod}}}%
+        {{hash=192f678f818e43547fc07f7412bd5037}{%
+           family={Zhong},
+           familyi={Z\bibinitperiod},
+           given={Hao},
+           giveni={H\bibinitperiod}}}%
+        {{hash=87100ee4184731e1623cf116d25726eb}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Xiaoyin},
+           giveni={X\bibinitperiod}}}%
+        {{hash=03a008235c7e95e475977707fc41956e}{%
+           family={Meng},
+           familyi={M\bibinitperiod},
+           given={Na},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{59ca550f2cf117587e15aa45b69fc9c0}
+      \strng{fullhash}{59ca550f2cf117587e15aa45b69fc9c0}
+      \strng{bibnamehash}{59ca550f2cf117587e15aa45b69fc9c0}
+      \strng{authorbibnamehash}{59ca550f2cf117587e15aa45b69fc9c0}
+      \strng{authornamehash}{59ca550f2cf117587e15aa45b69fc9c0}
+      \strng{authorfullhash}{59ca550f2cf117587e15aa45b69fc9c0}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.SE}
+      \field{eprinttype}{arXiv}
+      \field{title}{Automation Configuration in Smart Home Systems: Challenges and Opportunities}
+      \field{year}{2024}
+      \verb{eprint}
+      \verb 2408.04755
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2408.04755
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2408.04755
+      \endverb
+    \endentry
+    \entry{SOTA_SmartBlock}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=7f39971b0c098158ffb4926dc360cdee}{%
+           family={Bak},
+           familyi={B\bibinitperiod},
+           given={Nayeon},
+           giveni={N\bibinitperiod}}}%
+        {{hash=b31fca379627cb19ef632c6682decfa8}{%
+           family={Chang},
+           familyi={C\bibinitperiod},
+           given={Byeong-Mo},
+           giveni={B\bibinithyphendelim M\bibinitperiod}}}%
+        {{hash=8b5b18d96da27448e0e98a7e3a07bc9e}{%
+           family={Choi},
+           familyi={C\bibinitperiod},
+           given={Kwanghoon},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{2af38276c308bdd301136d9c9a687e41}
+      \strng{fullhash}{2af38276c308bdd301136d9c9a687e41}
+      \strng{bibnamehash}{2af38276c308bdd301136d9c9a687e41}
+      \strng{authorbibnamehash}{2af38276c308bdd301136d9c9a687e41}
+      \strng{authornamehash}{2af38276c308bdd301136d9c9a687e41}
+      \strng{authorfullhash}{2af38276c308bdd301136d9c9a687e41}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2590-1184}
+      \field{journaltitle}{Journal of Computer Languages}
+      \field{title}{Smart Block: A visual block language and its programming environment for IoT}
+      \field{volume}{60}
+      \field{year}{2020}
+      \field{pages}{100999}
+      \range{pages}{1}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.cola.2020.100999
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S2590118420300599
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S2590118420300599
+      \endverb
+      \keyw{Visual block language,IoT,SmartThings,SmartApp ECA rule,IoTa,Blockly}
+    \endentry
+    \entry{Blockly}{misc}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{Google}
+      \verb{urlraw}
+      \verb https://developers.google.com/blockly
+      \endverb
+      \verb{url}
+      \verb https://developers.google.com/blockly
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

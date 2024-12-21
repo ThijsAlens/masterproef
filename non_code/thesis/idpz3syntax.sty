@@ -1,0 +1,66 @@
+\ProvidesPackage{idpz3syntax}
+
+\usepackage{listings}
+\usepackage[space=true]{accsupp}
+% requires the latest version of package accsupp
+\newcommand{\copyablespace}{%
+    \BeginAccSupp{method=hex,unicode,ActualText=00A0}%
+\ %
+    \EndAccSupp{}%
+}
+\newcommand{\noncopynumber}[1]{%
+    \BeginAccSupp{method=escape,ActualText={}}%
+#1%
+    \EndAccSupp{}%
+}
+\newcommand*\LSTfont{\Small\ttfamily\SetTracking{encoding=*}{-60}\lsstyle}
+\lstdefinelanguage{IDP}
+{
+	keywords={type,theory,vocabulary,procedure,type,partial,structure, constructed, from, if, then, else},
+	sensitive=true,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	literate=
+	*{=>}{{{$\Rightarrow$}}}{2}
+	 {<=}{{{$\Leftarrow$}}}{2}
+	 {=<}{{{$\leq$}}}{2}
+	 {>=}{{{$\geq$}}}{2}
+	 {<=>}{{{$\Leftrightarrow$}}}{3}
+	 {!}{{{$\forall$}}}{1}
+	 {?}{{{$\exists$}}}{1}
+	 {&}{{{$\land$}}}{1}	 	 
+ 	 {|}{{{$\lor$}}}{1}
+ 	 {~}{{{$\lnot$}}}{1}
+  	 {~=}{{{$\neq$}}}{1}
+  	 {->}{{{$\rightarrow$}}}{2}
+  	 {<-}{{{$\leftarrow$}}}{2}
+  	 {**}{{{$\times$}}}{2}
+  	 {\ }{{\copyablespace}}{1}
+  	 {[]}{{{$\Box$}}}{2}
+  	 {<>}{{{$\Diamond$}}}{2}
+  	 {^}{{{$^{\uparrow}$}}}{1}
+  	 {'}{{{`}}}{1}
+  	 {\\in}{{{$\in$}}}{2}
+  	 {~in~}{{{${\in}$}}}{2}
+  	 {*}{{{${\times}$}}}{1}
+         {Bool}{{{${\mathbb{B}}$}}}{4}
+}
+
+\lstnewenvironment{idplistingtiny}{
+\lstset{
+  language=IDP,
+  basicstyle=\ttfamily\scriptsize,
+  mathescape=false,
+  escapechar=@,
+  breaklines
+}
+}{}
+\lstnewenvironment{idplisting}{
+\lstset{
+  language=IDP,
+  basicstyle=\ttfamily\small,
+  mathescape=false,
+  escapechar=@,
+  breaklines
+}
+}{}
