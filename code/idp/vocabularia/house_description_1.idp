@@ -1,0 +1,44 @@
+vocabulary V {
+    type Device
+    type Area
+
+    deviceIsInArea: Device -> Area
+
+    deviceIsLight: Device -> Bool
+    lightValue: Device -> Int
+
+    deviceIsBell: Device -> Bool
+    type BellState := {ringing, off}
+    bellState : Device -> BellState 
+
+    deviceIsMotionSensor: Device -> Bool
+    type MotionSenorState := {motionDetected, noMotionDetected}
+    motionSensorState: Device -> MotionSenorState
+
+    deviceIsRgbLight: Device -> Bool
+    type Colour := {red, green, blue}
+    rgbLightColour: Device -> Colour
+}
+
+theory T:V {
+    !d in Device : deviceIsLight(d) => lightValue(d) =< 100 & lightValue(d) >= 0 .
+    //!d in Device : deviceIsRgbLight(d) => rgbLightColour(d) .
+    //!d in Device : deviceIsBell(d) => bellState(d) .
+    //!d in Device : deviceIsMotionSensor(d) => motionSenorState(d) .
+}
+
+structure S:V {
+    Device := {light1, lightswitch, rgbLight, bell, light2, motionSensor} .
+    Area := {livingRoom, kitchen, none} .
+    deviceIsInArea := {light1 -> livingRoom, lightswitch -> livingRoom, rgbLight -> livingRoom, light2 -> kitchen, motionSensor -> kitchen, bell -> none} .
+
+    deviceIsLight := {light1, light2} .
+    deviceIsRgbLight := {rgbLight} .
+    deviceIsBell := {bell} .
+    deviceIsMotionSensor := {motionSensor} .
+
+}
+
+procedure main () {
+    pretty_print(model_expand(T, S))
+}

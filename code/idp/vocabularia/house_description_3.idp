@@ -1,0 +1,32 @@
+// No relation between areas is possible, but wanted...
+vocabulary V {
+    type Area := {living_room, kitchen, floor_1, floor_2, house}
+
+    light1: -> Area
+    type stateOfLight <: Int
+    stateOfLight1: -> stateOfLight
+    light2: -> Area
+    rgbLight: -> Area
+    lightSwitch: -> Area
+    motionSensor: -> Area
+    bell: -> Area
+}
+
+theory T:V {
+    
+}
+
+structure S:V {
+    light1 := living_room .
+    light2 := kitchen .
+    rgbLight := living_room .
+    lightSwitch := living_room .
+    motionSensor := kitchen .
+    bell := house .
+    
+}
+
+
+procedure main () {
+    pretty_print(model_expand(T, S))
+}

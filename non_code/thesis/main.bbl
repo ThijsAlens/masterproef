@@ -398,6 +398,18 @@
       \field{title}{A structured, block-based editor for FO(.), with translations to IDP-Z3 syntax, AST and NL}
       \field{year}{2021}
     \endentry
+    \entry{Blockly}{misc}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{Google}
+      \verb{urlraw}
+      \verb https://developers.google.com/blockly
+      \endverb
+      \verb{url}
+      \verb https://developers.google.com/blockly
+      \endverb
+    \endentry
     \entry{SOTA_OntologyBased}{inproceedings}{}
       \list{language}{1}{%
         {eng}%
@@ -516,18 +528,6 @@
       \verb https://www.sciencedirect.com/science/article/pii/S2590118420300599
       \endverb
       \keyw{Visual block language,IoT,SmartThings,SmartApp ECA rule,IoTa,Blockly}
-    \endentry
-    \entry{Blockly}{misc}{}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labeltitlesource}{title}
-      \field{title}{Google}
-      \verb{urlraw}
-      \verb https://developers.google.com/blockly
-      \endverb
-      \verb{url}
-      \verb https://developers.google.com/blockly
-      \endverb
     \endentry
   \enddatalist
 \endrefsection

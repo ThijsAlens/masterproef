@@ -52,3 +52,5 @@
 \contentsline {subsection}{\numberline {3.1.2}Structure and implementation}{21}{subsection.3.1.2}%
 \contentsline {subsection}{\numberline {3.1.3}Verification}{21}{subsection.3.1.3}%
 \contentsline {subsection}{\numberline {3.1.4}Planning}{21}{subsection.3.1.4}%
+\contentsline {chapter}{\numberline {4}An FO($\cdot $)\xspace description for home automation}{23}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Vocabulary}{23}{section.4.1}%

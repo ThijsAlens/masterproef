@@ -1,0 +1,35 @@
+vocabulary V {
+    type Device
+
+    type BinaryDevice <: Device
+    type BinaryState := {on, off}
+
+    binaryDeviceState: BinaryDevice -> BinaryState
+
+    type IntegerDevice
+    type IntegerState := {0 .. 100}
+
+    integerDeviceState: IntegerDevice -> IntegerState
+
+    type CustomDevice
+    type CustomState := {red, green, blue, yellow, green, orange, purple}
+
+    customDeviceState: CustomDevice -> CustomState
+
+    // areas ??
+}
+
+theory T:V {
+    
+}
+
+structure S:V {
+    BinaryDevice := {motionSensor, bell, lightSwitch} .
+    IntegerDevice := {light1, light2} .
+    CustomDevice := {rgbLight} .
+}
+
+
+procedure main () {
+    pretty_print(model_expand(T, S))
+}

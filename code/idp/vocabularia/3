@@ -1,0 +1,31 @@
+vocabulary {
+     type Area =: { ... }
+     // arg1 zit in arg2
+     // A
+     // B
+     // A zit in B subArea(A, B)
+     // B zit in A subArea(B, A)
+     subArea: Area * Area -> Bool
+     boven_verdiep: Area -> Bool
+     light1: -> Area
+//-----------------------------------------------------
+
+     light1: Area -> Bool
+     light2: Area -> Bool
+
+     light1State: -> Bool
+     ...
+}
+
+theory {
+     {
+         !d in Device, a in Area: deviceArea(d, a) <- ... | ?a2 in Area: subArea(a, a2).
+     }
+     !a in Area: subArea(a, a2)
+}
+
+structure {
+     light1 =: Living.
+     light1 << {Living}.
+     subArea =: {(Living, Verdiep1)}.
+}

@@ -655,5 +655,57 @@ My planning for the second semester is shown in Figure~\ref{fig:planning}.
     \caption{Planning for the second semester}
     \label{fig:planning}
 \end{figure}
+
+\chapter{An \fodot description for home automation}
+In this chapter we will discuss different ways to implement a home automation system in \fodot. The advantages and disadvantages of every implementation and what we will use going forward. To make it more understandable, we will use an example scenario shown in Figure~\ref{fig:fodot-structure_example}.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/fodot-structure_example.png}
+    \caption{An example of a home automation system used to explain the different \fodot implementations}
+    \label{fig:fodot-structure_example}
+\end{figure}
+
+\section{Vocabulary}
+The vocabulary is an important part of the \fodot description as it defines the possibilities and limits for the rest of the description. There are lots of different aproaches possible, which needs to be effective with the idea of ease of use and effectiveness in a real-world application.
+The first vocabulary we thought of is one that is easy to create from blocks due to the way devices are represented. Each device has its own constant, which is linked to an area. The states of these devices are represented through a type that defines all possible states for that device.
+
+This vocabulary provides an easy and straightforward way to model a home; however, it does have its shortcomings. There is no way to address all devices (of the same type or not) at once, which is something the user would definitely want to do. Additionally, there is no way to create a structured representation of a house using the areas, which is not ideal.
+\begin{idplisting}
+    vocabulary V {
+        type Area := {living_room, kitchen, floor_1, floor_2, house}
+
+        light1: -> Area
+        type stateOfLight <: Int
+        stateOfLight1: -> stateOfLight
+    }
+\end{idplisting}
+The second vocabulary we explored improves on both of these shortcomings by defining a type ``Device,'' under which all specific instances of devices fall. This allows for the creation of rules that apply to all devices, specific devices, and areas. The only slight drawback of this vocabulary is that IDP-Z3 does not provide much assistance if anything is wrongly defined. It would be preferable if IDP-Z3 could offer more support in preventing user mistakes.
+\begin{idplisting}
+    vocabulary V {
+        type Device
+        type Area
+
+        deviceIsInArea: Device -> Area
+
+        deviceIsBell: Device -> Bool
+        type BellState := {ringing, off}
+        bellState : Device -> BellState 
+    }
+\end{idplisting}
+This is where the third and final vocabulary comes in. Instead of focusing on the devices themselves, the focus now lies on the states of the devices and their grouping. By using subtypes, different instances of devices can be created according to their state. For example, a motion sensor is binary (motion detected or no motion detected), but a light switch is also binary (on or off), so these can be grouped together. This vocabulary does not differ much from the previous one, in the sence that if all devices have different states, it will result in the same behaviour, but it opens up possibilities for more complex rules. This approach is slightly more challenging to construct using blocks, but the possibilities this vocabulary offers outweigh this drawback.
+\begin{idplisting}
+    vocabulary V {
+    type Device
+
+    type BinaryDevice <: Device
+    type BinaryState := {on, off}
+
+    binaryDeviceState: BinaryDevice -> BinaryState    
+    }
+\end{idplisting}
+Having experimented with all tree of the possibilities, we have decided to go with the third vocabulary. It offers the user the flexibility they want, while still using the IDP-Z3 reasoning engine to correct any mistakes that could be made.
+
+An important note to make is the fact that these vocabularies limit the user in some way or another, this is by how the \fodot language is desinged. However, since this is not just the \fodot description, some functionality (that is not possible in \fodot) can be implemented in the blockly backend. This is further explored in ....
+
 \printbibliography
 \end{document}

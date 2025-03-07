@@ -1,0 +1,56 @@
+// No relation between areas is possible, but wanted...
+vocabulary V {
+    type Light1
+    type PossibleStateOfLight1
+    stateOfLight1: Light1 -> PossibleStateOfLight1
+
+    type Light2
+    type PossibleStateOfLight2
+    stateOfLight2: Light2 -> PossibleStateOfLight2
+
+    type Light3
+    type PossibleStateOfLight3
+    stateOfLight3: Light3 -> PossibleStateOfLight3
+
+    type Light4
+    type PossibleStateOfLight4
+    stateOfLight4: Light4 -> PossibleStateOfLight4
+
+    type RgbLight
+    type PossibleStateOfRgbLight
+    stateOfRgbLight: RgbLight -> PossibleStateOfRgbLight
+
+    type Lightswitch1
+    type PossibleStateOfLightswitch1
+    stateOfLightswitch1: Lightswitch1 -> PossibleStateOfLightswitch1
+
+    type Lightswitch2
+    type PossibleStateOfLightswitch2
+    stateOfLightswitch2: Lightswitch2 -> PossibleStateOfLightswitch2
+
+    type Lightswitch3
+    type PossibleStateOfLightswitch3
+    stateOfLightswitch3: Lightswitch3 -> PossibleStateOfLightswitch3
+
+    type Bell
+    type PossibleStateOfBell
+    stateOfBell: Bell -> PossibleStateOfBell
+
+    type MotionSensor
+    type PossibleStateOfMotionSensor
+    stateOfMotionSensor: MotionSensor -> PossibleStateOfMotionSensor
+}
+
+theory T:V {
+    
+    
+}
+
+structure S:V {
+
+}
+
+
+procedure main () {
+    pretty_print(model_expand(T, S))
+}
