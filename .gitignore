@@ -1,0 +1,21 @@
+
+# LaTeXmk cleanup
+non_code/thesis/*.blg
+non_code/thesis/*.lof
+non_code/thesis/*.lot
+non_code/thesis/*.synctex.gz
+non_code/thesis/*.aux
+non_code/thesis/*.bbl
+non_code/thesis/*.bcf*
+non_code/thesis/*.fdb_latexmk
+non_code/thesis/*.fls
+non_code/thesis/*.log
+non_code/thesis/*.out
+non_code/thesis/*.run.xml
+non_code/thesis/*.toc
+non_code/thesis/*.xdv
+
+# blockly irrelevant files
+code/blockly/homy/node_modules/*
+
+

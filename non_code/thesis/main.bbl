@@ -431,6 +431,40 @@
       \range{pages}{10}
       \keyw{High performance computing}
     \endentry
+    \entry{SOTA_KnowledgeBasedAIInHomeAutomation}{article}{}
+      \name{author}{2}{}{%
+        {{hash=00205351ab4f99c0159fcd1ce4793acc}{%
+           family={Kumar},
+           familyi={K\bibinitperiod},
+           given={Sandeep},
+           giveni={S\bibinitperiod}}}%
+        {{hash=da8aa2f87270fb37f3d4fe290e34015f}{%
+           family={Qadeer},
+           familyi={Q\bibinitperiod},
+           given={Mohammed\bibnamedelima Abdul},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IACSIT Press}%
+      }
+      \strng{namehash}{a6db9579c91afa8a26c5bf47c852f228}
+      \strng{fullhash}{a6db9579c91afa8a26c5bf47c852f228}
+      \strng{bibnamehash}{a6db9579c91afa8a26c5bf47c852f228}
+      \strng{authorbibnamehash}{a6db9579c91afa8a26c5bf47c852f228}
+      \strng{authornamehash}{a6db9579c91afa8a26c5bf47c852f228}
+      \strng{authorfullhash}{a6db9579c91afa8a26c5bf47c852f228}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Journal of Engineering and Technology}
+      \field{number}{6}
+      \field{title}{Application of AI in home automation}
+      \field{volume}{4}
+      \field{year}{2012}
+      \field{pages}{803}
+      \range{pages}{1}
+    \endentry
     \entry{SOTA_AutomationConfigurationSmarthome}{misc}{}
       \name{author}{5}{}{%
         {{hash=bfe0f89c119cb2a0f003efa52de19996}{%

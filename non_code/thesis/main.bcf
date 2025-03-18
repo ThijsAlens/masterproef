@@ -2380,10 +2380,10 @@
     <bcf:citekey order="13" intorder="1">IDPStructuredBlockbasedEditor</bcf:citekey>
     <bcf:citekey order="14" intorder="1">Blockly</bcf:citekey>
     <bcf:citekey order="15" intorder="1">SOTA_OntologyBased</bcf:citekey>
-    <bcf:citekey order="16" intorder="1">SOTA_AutomationConfigurationSmarthome</bcf:citekey>
-    <bcf:citekey order="17" intorder="1">SOTA_SmartBlock</bcf:citekey>
-    <bcf:citekey order="18" intorder="1">Blockly</bcf:citekey>
-    <bcf:citekey order="19" intorder="1">SOTA_AutomationConfigurationSmarthome</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">SOTA_KnowledgeBasedAIInHomeAutomation</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">SOTA_AutomationConfigurationSmarthome</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">SOTA_SmartBlock</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">Blockly</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
