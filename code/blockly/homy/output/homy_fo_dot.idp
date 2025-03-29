@@ -1,0 +1,23 @@
+vocabulary V {
+	// DEFAULT NEEDED TYPES AND FUNCTIONS
+	type Device := {light0, light1, light_switch0, light_switch1}
+	type Area := {home, floor1, floor2}
+
+
+	deviceIsInArea: Device -> Area
+	// subArea * superArea -> Bool
+	areaIsSubAreaOf: Area * Area -> Bool
+
+
+	// GENERATED VOCABULARY
+	type LightDevice := {light1} <: Device
+	type LightDeviceStates := {light_on, light_off}
+	type LightswitchDevice := {light_switch1} <: Device
+	type LightswitchDeviceStates := {lightswitch_on, lightswitch_off}
+}
+theory T : V {
+}
+structure S : V {
+	deviceIsInArea := {(light0 -> home), (light1 -> home), (light_switch0 -> home), (light_switch1 -> home)} .
+	areaIsSubAreaOf := {(floor1, home), (floor2, home)} .
+}

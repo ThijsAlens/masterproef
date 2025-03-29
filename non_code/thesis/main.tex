@@ -689,7 +689,7 @@ It is important to think about what the user would want to configure and what ru
     \item Turn off all the lights on the first floor when a motion sensor on the second floor is triggered.
 \end{itemize}
 
-\section{Vocabulary}
+\section{Vocabulary} 
 The vocabulary is an important part of the \fodot specification as it defines the possibilities and limits for the rest of the specification. There are lots of different aproaches possible, where each needs to be effective with the idea of ease of use and effectiveness in a real-world application.
 
 The first vocabulary is one that is easy to create from blocks due to the way devices are represented. Each device has its own constant, which is linked to an area. So when creating a possible model, a device could be ``light1 -> livingRoom''. The problem with this way of representing the devices is that there is no way to group the devices. A rule that states that all the devices in the living room should be turned off is not possible, but is something the user would defenitly want. The states of these devices are represented through a type that defines all possible states for that device. In combination with this, there is a function that represents what state the device is in. 

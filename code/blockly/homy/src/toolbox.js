@@ -634,12 +634,66 @@ export const homy = {
   contents: [
     {
       kind: 'category',
-      name: 'Vocabulary',
-      categorystyle: 'Vocabulary',
+      name: 'Devices',
+      categorystyle: 'Devices',
       contents: [
         {
+          kind: 'button',
+          text: 'Create new device type',
+          callbackKey: 'createDeviceTypeCallback',
+        },
+        {
           kind: 'block',
-          type: 'VOC_new_device',
+          type: 'DEVICE_device_type',
+        },
+        {
+          kind: 'block',
+          type: 'DEVICE_new_device',
+        },
+        {
+          kind: 'block',
+          type: 'DEVICE_device_type_dropdown',
+        },
+      ],
+    },
+    {
+      kind: 'category',
+      name: 'Areas and States',
+      categorystyle: 'Areas and States',
+      contents: [
+        {
+          kind: 'button',
+          text: 'Create State',
+          callbackKey: 'createStateCallback',
+        },
+        {
+          kind: 'block',
+          type: 'STATES_states_dropdown',
+        },
+        {
+          kind: 'button',
+          text: 'Create Area',
+          callbackKey: 'createAreaCallback',
+        },
+        {
+          kind: 'block',
+          type: 'AREA_area_dropdown'
+        },
+        {
+          kind: 'block',
+          type: 'AREA_relations',
+        }
+      ],
+    },
+    {
+      kind: 'category',
+      name: 'Save',
+      categorystyle: 'Save',
+      contents: [
+        {
+          kind: 'button',
+          text: 'Save',
+          callbackKey: 'saveCallback',
         },
       ],
     },

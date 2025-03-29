@@ -14,6 +14,7 @@ non_code/thesis/*.out
 non_code/thesis/*.run.xml
 non_code/thesis/*.toc
 non_code/thesis/*.xdv
+non_code/thesis/cache/*
 
 # blockly irrelevant files
 code/blockly/homy/node_modules/*

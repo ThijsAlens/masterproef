@@ -57,3 +57,6 @@ hdstk 3 als intro van hoofdstuk 4
 lijst aan regels die de user kan uitvoeren, wat willen wij dat een gebruiker kan uitdrukken + terugverwijzen. 5 a 8 regels verzinnen.
 limitaties voor fodot schrijven, bv temporale logica. In de keuken lopen vanuit living doe dan dat, als je uit de living komt, dan iets anders.
 hoe tijd definieren?
+
+26/03
+exclusiviteit voor state groups kan niet in IDP-Z3, maar kan ook niet voorkomen worden in Blockly omdat het een blokje is.
