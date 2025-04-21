@@ -15,4 +15,4 @@ def run_python():
     return jsonify({"message": "Python script started"}), 202
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(port=7000)

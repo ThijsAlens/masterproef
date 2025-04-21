@@ -1,0 +1,53 @@
+vocabulary V {
+    // DEFAULT VOCABULARY TYPES AND FUNCTIONS
+    type Device := {light0, light1, lightswitch0, lightswitch1}
+    type State := {light_on, light_off, light_switch_on, light_switch_off}
+    type Area := {house, floor1, floor2}
+
+    deviceIsInArea: Device -> Area
+    // subArea * superArea -> Bool
+    areaIsSubAreaOf: Area * Area -> Bool
+
+    deviceIsInState: Device -> State
+    deviceHasValue: Device -> Int
+
+    // GENERATED VOCABULARY
+    type LightDevice := {light0, light1} <: Device
+    type LightDeviceStates := {light_on, light_off} <: State
+
+    // type IntLightDevice := {light_2} <: Device
+    // type IntLightDeviceStates := {0..100} <: State
+
+    type LightSwitchDevice := {lightswitch0, lightswitch1} <: Device
+    type LightSwitchStates := {light_switch_on, light_switch_off} <: State
+
+}
+
+theory T:V {
+    !l in LightDevice: ?x in LightDeviceStates: deviceIsInState(l) = x.
+    !ls in LightSwitchDevice: ?x in LightSwitchStates: deviceIsInState(ls) = x.
+    //deviceIsInState(lightswitch0) = light_switch_on <=> deviceIsInState(light0) = light_on.
+    //deviceIsInState(lightswitch0) = light_switch_off <=> deviceIsInState(light0) = light_off.
+
+    !d in Device: deviceIsInArea(d) = house & (!DT in LightDevice: deviceIsInState(lightswitch0) = light_switch_off <=> deviceIsInState(DT) = light_off).
+    !d in Device: !DT in LightDevice: deviceIsInArea(d) = house & deviceIsInState(lightswitch0) = light_switch_off <=> deviceIsInState(DT) = light_off.
+
+    // deviceIsInState(lightswitch1) = light_switch_on <=> deviceIsInState(light2) = 50.
+    // deviceIsInState(lightswitch1) = light_switch_off <=> deviceIsInState(light2) = 0.
+
+    //deviceIsInState(lightswitch0) = light_switch_on <=> deviceIsInState(light0) = light_on & deviceIsInState(light1) = light_on.
+//
+    //!d in Device: deviceIsInArea(d) = floor1 & deviceIsInState(lightswitch1) = light_switch_on => deviceIsInState(d) = light_off.  // nog een manier vinden om zeker te zijn dat d van type light is
+
+    // ?ls in LightDeviceStates: deviceIsInState(ls) = light_switch_on <=> deviceIsInState(alarm) = ringing
+
+}
+
+structure S:V {
+    deviceIsInArea := {light0 -> floor1, lightswitch0 -> floor1, light1 -> floor2, lightswitch1 -> floor2} .
+    areaIsSubAreaOf := {(floor1, house), (floor2, house)} .
+}
+
+procedure main () {
+    pretty_print(model_expand(T, S))
+}

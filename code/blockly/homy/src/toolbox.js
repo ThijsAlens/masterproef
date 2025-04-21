@@ -654,6 +654,10 @@ export const homy = {
           kind: 'block',
           type: 'DEVICE_device_type_dropdown',
         },
+        {
+          kind: 'block',
+          type: 'STATES_states_dropdown',
+        },
       ],
     },
     {
@@ -668,7 +672,11 @@ export const homy = {
         },
         {
           kind: 'block',
-          type: 'STATES_states_dropdown',
+          type: 'STATE_value',
+        },
+        {
+          kind: 'block',
+          type: 'STATE_int',
         },
         {
           kind: 'button',
@@ -683,6 +691,33 @@ export const homy = {
           kind: 'block',
           type: 'AREA_relations',
         }
+      ],
+    },
+    {
+      kind: 'category',
+      name: 'Rules',
+      categorystyle: 'Rules',
+      contents: [
+        {
+          kind: 'block',
+          type: 'RULES_equivalence',
+        },
+        {
+          kind: 'block',
+          type: 'RULES_for_all_devices_of_type',
+        },
+        {
+          kind: 'block',
+          type: 'RULES_for_all_devices_of_type_equivalence',
+        },
+        {
+          kind: 'block',
+          type: 'RULES_for_all_devices_in_area',
+        },
+        {
+          kind: 'block',
+          type: 'RULES_single_rule',
+        },
       ],
     },
     {

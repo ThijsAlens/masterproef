@@ -2,6 +2,9 @@ import sys
 import re
 import json
 import os
+import subprocess
+import time
+import webbrowser
 
 from conversion_functions import * 
 
@@ -24,11 +27,17 @@ def match_function(function: str, arguments: dict[str, str], vocabulary: list[st
         case "NEW_DEVICE":
             res = new_device(vocabulary[:], theory[:], structure[:], arguments)         # copy the list to avoid changing the original
         case "NEW_DEVICE_TYPE":
-            res = new_device_type(vocabulary[:], theory[:], structure[:], arguments)    # copy the list to avoid changing the original
+            res = new_device_type(vocabulary[:], theory[:], structure[:], arguments)    
         case "NEW_AREA_RELATION":
-            res = new_area_relation(vocabulary[:], theory[:], structure[:], arguments)  # copy the list to avoid changing the original 
+            res = new_area_relation(vocabulary[:], theory[:], structure[:], arguments)  
         case "AREAS":
             res = areas(vocabulary[:], theory[:], structure[:], arguments)
+        case "STATES":
+            res = states(vocabulary[:], theory[:], structure[:], arguments)
+        case "NEW_RULE_FOR_ALL_DEVICES_IN_AREA":
+            res = new_rule_for_all_devices_in_area(vocabulary[:], theory[:], structure[:], arguments)
+        case "NEW_SINGLE_RULE":
+            res = new_single_rule(vocabulary[:], theory[:], structure[:], arguments)
         case _:
             # no matching function found, return the unchanged code
             print(f"no matching function found for {function}\n")
@@ -48,25 +57,24 @@ def match_function(function: str, arguments: dict[str, str], vocabulary: list[st
     if not vocab_diff and not theory_diff and not structure_diff:
         print(f"NO changes made for functioncall {function} with arguments {arguments}")
     else:
-        print(f"after calling {function} with arguments {arguments}")
+        print(f"after calling {function}")
     # Print the updated lines, skipping if no changes
     if vocab_diff:
         print("updated lines to vocabulary:")
         for item in vocab_diff:
             print(f"{item}")
-        print("\n")
 
     if theory_diff:
         print("updated lines to theory:")
         for item in theory_diff:
             print(f"{item}")
-        print("\n")
 
     if structure_diff:
         print("updated lines to structure:")
         for item in structure_diff:
             print(f"{item}")
-        print("\n")
+
+    print("--------------------------------------------------------------------------------------------------------------------\n")
     
     return res
     
@@ -105,6 +113,7 @@ def parse(code: str) -> str:
     vocabulary.append("vocabulary V {")
     vocabulary.append("\t// DEFAULT NEEDED TYPES AND FUNCTIONS")
     vocabulary.append("\ttype Device := {}")
+    vocabulary.append("\ttype State := {}")
     vocabulary.append("\ttype Area := {}")
     vocabulary.append("\n")
     vocabulary.append("\tdeviceIsInArea: Device -> Area")
@@ -115,6 +124,9 @@ def parse(code: str) -> str:
 
     # default code for the theory
     theory.append("theory T : V {")
+    theory.append("\t// DEFAULT NEEDED RULES")
+    theory.append("\t!dt in on_off_deviceDevice: ?x in on_off_deviceDeviceStates: deviceIsInState(dt) = x.")
+    theory.append("\t// NOG EEN MANIER VINDEN OM INT DEVICES TOE TE LATEN...")
 
     # default code for the structure
     structure.append("structure S : V {")
@@ -122,14 +134,14 @@ def parse(code: str) -> str:
     structure.append("\tareaIsSubAreaOf := {} .")
 
     # split the code into single function-calls
-    pattern = r'__(.*?)__\{(.*?)\}'
+    pattern = r'__(.*?)__\{\{(.*?)\}\}\n'
     re_matches = re.findall(pattern, code)
 
     for re_match in re_matches:
         function: str = re_match[0]
+        woo = "{"+re_match[1]+"}"
         arguments: dict = json.loads("{"+re_match[1]+"}")
         vocabulary, theory, structure = match_function(function, arguments, vocabulary[:], theory[:], structure[:])
-        
 
     vocabulary.append("}")
     theory.append("}")
@@ -140,7 +152,29 @@ def parse(code: str) -> str:
 
 if __name__ == '__main__':
     code = sys.argv[1]
-    print(code)
+
+    print("--------------------------------------------------------------------------------------------------------------------")
+    print("-------------------------------------------------------CODE---------------------------------------------------------")
+    print("--------------------------------------------------------------------------------------------------------------------\n")
+    print(f"{code}\n")
+    print("--------------------------------------------------------------------------------------------------------------------")
+    print("----------------------------------------------------CONVERSION------------------------------------------------------")
+    print("--------------------------------------------------------------------------------------------------------------------\n")
+
+    # process the code
     fo_dot_code = parse(code)
     write_file(fo_dot_code)
+
+    # run the IC
+    project_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'src', 'IDP-Z3_github') # get the correct path to start the poetry
+    # Current file: /.../homy/src/python/server.py
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    
+    # Move up one level to /.../homy/src
+    src_dir = os.path.dirname(current_dir)
+    
+    # Build full path to IDP-Z3_github
+    project_dir = os.path.join(src_dir, "IDP-Z3_github")
+    subprocess.Popen(["poetry", "run", "python3", "main.py"], cwd=project_dir)
+    webbrowser.open_new_tab("http://localhost:5000")
     

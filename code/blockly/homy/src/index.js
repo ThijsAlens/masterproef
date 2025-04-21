@@ -5,9 +5,10 @@
  */
 
 // some global vairables to track the possible states and areas
-export let possibleStates = [["on", "ON"], ["off", "OFF"]];
-export let possibleAreas = [["home", "HOME"]];
-export let deviceTypes = [["", ""]];
+export let possibleStates = [["on", "on"], ["off", "off"]];
+export let possibleAreas = [["home", "home"]];
+export let deviceTypes = [["on_off_device", "on_off_device"], ["integer_device", "integer_device"]];
+export let devices = [["add a new device", "null"]];
 
 import * as Blockly from 'blockly';
 import {blocks} from './blocks/text';
@@ -41,6 +42,7 @@ const runCode = () => {
 
 // Load the initial state from storage and run the code.
 load(ws);
+
 runCode();
 
 // Every time the workspace changes state, save the changes to storage.
@@ -48,7 +50,31 @@ ws.addChangeListener((e) => {
   // UI events are things like scrolling, zooming, etc.
   // No need to save after one of these.
   if (e.isUiEvent) return;
-  save(ws);
+
+  // Update the devices array based on current workspace
+
+  let code = javascriptGenerator.workspaceToCode(ws);
+
+  // Extract unique matches as you're already doing
+  const regex = /"deviceName":\s*"([^"]+)"/g;
+  const matches = [...code.matchAll(regex)].map(match => match[1]);
+  const uniqueMatches = [...new Set(matches)];
+
+  console.log("matches", JSON.stringify(matches));
+  console.log("devices before", JSON.stringify(devices));
+
+  // Update the devices array in place to avoid duplicates
+  devices.length = 0;
+  if (uniqueMatches.length > 0) {
+    uniqueMatches.forEach(name => devices.push([name, name]));
+  } else {
+    devices.push(["add a new device", "null"]);
+  }
+
+  console.log("devices after", JSON.stringify(devices));
+  
+  save(ws); 
+
 });
 
 // Whenever the workspace changes meaningfully, run the code again.
@@ -73,7 +99,7 @@ ws.registerButtonCallback('createStateCallback', function(button) {
   let stateName = prompt('Enter a new state name:');
   if (stateName) {
     stateName = String(stateName);
-    possibleStates.push([stateName, stateName.toUpperCase()]); // Add to the states list
+    possibleStates.push([stateName, stateName]); // Add to the states list
 
     // Update the dropdown in existing "STATES_states_dropdown" blocks
     ws.getAllBlocks().forEach(block => {
@@ -92,26 +118,15 @@ ws.registerButtonCallback('createAreaCallback', function(button) {
   let areaName = prompt('Enter a new area name:');
   if (areaName) {
     areaName = String(areaName);
-    possibleAreas.push([areaName, areaName.toUpperCase()]); // Add to areas
-
-    // Update the dropdown in existing "VOC_new_device" blocks
-    ws.getAllBlocks().forEach(block => {
-      if (block.type === 'VOC_new_device') {
-        const field = block.getField('device_area_value');
-        if (field && field.menuGenerator_) {
-          field.menuGenerator_ = () => possibleAreas.map(area => [area[0], area[1]]);
-          field.setValue(possibleAreas[0][0]);
-        }
-      }
-    });
+    possibleAreas.push([areaName, areaName]); // Add to areas
   }
 });
 
 ws.registerButtonCallback('saveCallback', function(button) {
   let code = javascriptGenerator.workspaceToCode(ws);
-  code += `\n__STATES__${JSON.stringify(Object.fromEntries(possibleStates))}\n__AREAS__${JSON.stringify(Object.fromEntries(possibleAreas))}`;
+  code += `\n__STATES__{${JSON.stringify(Object.fromEntries(possibleStates))}}\n__AREAS__{${JSON.stringify(Object.fromEntries(possibleAreas))}}\n`;
 
-  fetch('http://localhost:5000/run-python', { // Send a request to the server
+  fetch('http://localhost:7000/run-python', { // Send a request to the server
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({ text: code })
@@ -125,7 +140,7 @@ ws.registerButtonCallback('createDeviceTypeCallback', function(button) {
   let deviceTypeName = prompt('Enter a new device type name:');
   if (deviceTypeName) {
     deviceTypeName = String(deviceTypeName);
-    deviceTypes.push([deviceTypeName, deviceTypeName.toUpperCase()]); // Add to the states list
+    deviceTypes.push([deviceTypeName, deviceTypeName]); // Add to the states list
     if (Array.isArray(deviceTypes[0]) && deviceTypes[0].length === 2 && deviceTypes[0][0] === "" && deviceTypes[0][1] === ""){
       deviceTypes.shift(); // Remove the first element
     }

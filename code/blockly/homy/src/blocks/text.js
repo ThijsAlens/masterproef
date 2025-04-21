@@ -10,6 +10,7 @@ import * as Blockly from 'blockly/core';
 import {possibleStates} from '../index';
 import {possibleAreas} from '../index';
 import {deviceTypes} from '../index';
+import {devices} from '../index';
 
 // Create a custom block called 'add_text' that adds
 // text to the output div on the sample app.
@@ -62,11 +63,6 @@ const DEVICE_device_type_dropdown =
       type: "field_dropdown",
       name: "device_type_dropdown",
       options: function() {
-        console.log(deviceTypes.length);
-        console.log(deviceTypes[0]);
-        if (Array.isArray(deviceTypes[0]) && deviceTypes[0].length === 2 && deviceTypes[0][0] === "" && deviceTypes[0][1] === ""){
-          return [["No device types", "NO_DEVICE_TYPES"]];
-        }
         return deviceTypes.map(type => [type[0], type[1]]);
       }
     },
@@ -119,8 +115,54 @@ const STATES_states_dropdown =
   ],
   "previousStatement": null,
   "nextStatement": null,
-  "colour": 225
+  "colour": 15
 };
+
+const STATE_int = 
+{
+  type: "STATE_int",
+  tooltip: "",
+  helpUrl: "",
+  message0: "%1 %2",
+  args0: [
+    {
+      type: "field_input",
+      name: "STATE_int_value",
+      text: "integer value"
+    },
+    {
+      type: "input_dummy",
+      name: "STATE_int"
+    }
+  ],
+  output: null,
+  colour: 210
+}
+
+const STATE_value = 
+{
+  type: "STATE_value",
+  tooltip: "",
+  helpUrl: "",
+  message0: "%1 %2",
+  args0: [
+    {
+      type: "field_dropdown",
+      name: "STATE_value_dropdown",
+      options: function() {
+        return possibleStates.map(state => [state[0], state[1]]);
+      }
+    },
+    {
+      type: "input_dummy",
+      name: "STATE_value"
+    }
+  ],
+  output: null,
+  colour: 210
+}
+
+
 
 const AREA_area_dropdwon = 
 {
@@ -168,6 +210,164 @@ const AREA_relations =
   colour: 120
 };
 
+// ---------------- RULES --------------------
+const RULES_equivalence = 
+{
+  type: "RULES_equivalence",
+  tooltip: "",
+  helpUrl: "",
+  message0: "If %1 %2 is in state %3 then %4 %5 should be in state %6",
+  args0: [
+    {
+      type: "field_dropdown",
+      name: "sensor_name_value",
+      options: function() {
+          return devices.map(type => [type[0], type[1]]);
+      }
+    },
+    {
+      type: "input_dummy",
+      name: "sensor_name"
+    },
+    {
+      type: "input_value",
+      name: "state_of_sensor"
+    },
+    {
+      type: "field_dropdown",
+      name: "actuator_name_value",
+      options: function() {
+        return devices.map(type => [type[0], type[1]]);
+    }
+    },
+    {
+      type: "input_dummy",
+      name: "actuator_name"
+    },
+    {
+      type: "input_value",
+      name: "state_of_actuator"
+    }
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: 240,
+  inputsInline: true
+}
+
+const RULES_for_all_devices_of_type = 
+{
+  type: "RULES_for_all_devices_of_type",
+  tooltip: "",
+  helpUrl: "",
+  message0: "For every device called 'DT' of type %1 %2 %3",
+  args0: [
+    {
+      type: "field_dropdown",
+      name: "device_type_value",
+      options: function() {
+        return deviceTypes.map(type => [type[0], type[1]]);
+      }
+    },
+    {
+      type: "input_dummy",
+      name: "device_type"
+    },
+    {
+      type: "input_statement",
+      name: "rule"
+    }
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: 195
+}
+
+const RULES_for_all_devices_of_type_equivalence = 
+{
+  type: "RULES_for_all_devices_of_type_equivalence",
+  tooltip: "",
+  helpUrl: "",
+  message0: "If %1 is in state %2 %3 then 'DT' should be in state %4 %5",
+  args0: [
+    {
+      type: "field_dropdown",
+      name: "sensor_value_name",
+      options: function() {
+        return devices.map(device => [device[0], device[1]]);
+      }
+    },
+    {
+      type: "input_dummy",
+      name: "NAME"
+    },
+    {
+      type: "input_value",
+      name: "state_of_sensor"
+    },
+    {
+      type: "input_dummy",
+      name: "dummy"
+    },
+    {
+      type: "input_value",
+      name: "state_of_actuators"
+    }
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: 195,
+  inputsInline: true
+}
+
+const RULES_for_all_devices_in_area = 
+{
+  type: "RULES_for_all_devices_in_area",
+  tooltip: "",
+  helpUrl: "",
+  message0: "For every device in area %1 %2 %3",
+  args0: [
+    {
+      type: "field_dropdown",
+      name: "area_value",
+      options: function() {
+        return possibleAreas.map(area => [area[0], area[1]]);
+      }
+    },
+    {
+      type: "input_dummy",
+      name: "area"
+    },
+    {
+      type: "input_statement",
+      name: "rule"
+    }
+  ],
+  colour: 240
+}
+
+const RULES_single_rule = 
+{
+  type: "RULES_single_rule",
+  tooltip: "",
+  helpUrl: "",
+  message0: "Rule %1 %2",
+  args0: [
+    {
+      type: "input_dummy",
+      name: "dummy"
+    },
+    {
+      type: "input_statement",
+      name: "rule"
+    }
+  ],
+  colour: 240
+}
+
+
+
+
                     
 
 // Create the block definitions for the JSON-only blocks.
@@ -177,7 +377,18 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   DEVICE_new_device,
   DEVICE_device_type_dropdown,
   DEVICE_device_type,
+
   STATES_states_dropdown,
+  STATE_value,
+  STATE_int,
   AREA_area_dropdwon,
   AREA_relations,
+
+  RULES_equivalence,
+  RULES_single_rule,
+
+  RULES_for_all_devices_of_type,
+  RULES_for_all_devices_of_type_equivalence,
+
+  RULES_for_all_devices_in_area,
 ]); 

@@ -19,4 +19,10 @@ non_code/thesis/cache/*
 # blockly irrelevant files
 code/blockly/homy/node_modules/*
 
+# python venv
+code/blockly/homy/venv/*
+
+# IDP-Z3 github
+code/blockly/homy/IDP-Z3_github/*
+
 

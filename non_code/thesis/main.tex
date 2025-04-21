@@ -149,7 +149,7 @@ citestyle=numeric-comp, maxnames=99]{biblatex}  % make use of the biblatex packa
 
 \chapter{Introduction}
 \section{Positioning}
-We are living in a world where automation is increasing rapidly. From automatically sorting luggage to the right plane at the airport, to fully self-driving cars, automation is becoming an integral part of our lives. This evolution, paired with the emergence of the Internet of Things (IoT), where many devices have become ``smart'' and automation-ready, has not only revolutionized industries but also opened up new possibilities for homeowners.
+We are living in a world where automation is adopted increasing rapidly. From automatically sorting luggage to the right plane at the airport, to fully self-driving cars, automation is becoming an integral part of our lives. This evolution, paired with the emergence of the Internet of Things (IoT), where many devices have become ``smart'' and automation-ready, has not only revolutionized industries but also opened up new possibilities for homeowners.
 
 In essence, home automation is a way to automate tasks in a home. These can be simple tasks such as automatically turning on lights upon entering a room, to more advanced operations like regulating home climate. This has the potential to significantly streamline daily routines, reduce costs, and improve overall comfort.
 
@@ -160,12 +160,12 @@ A home automation system is essentially a set of rules that define the behavior 
 IDP-Z3 is an example of such a reasoning engine, utilizing a formal description to define these rules. One of the key advantages of IDP-Z3 is its ability to separate knowledge from its application. This separation allows users to focus on defining the rules without needing to program the decision-making process themselves, as the reasoning engine handles this automatically.
 
 \section{Problem statement}
-One of the main challenges is the steep learning curve associated with setting up and maintaining home automation systems. If users wish to implement their own home automation, they can use home assistants's user interface (UI). Automations, however, require that the user has a basic understanding of programming and is familiar with specific technical tools. This way they can manually modify the configuration files and troubleshoot any issues that may be presented, which is not easily done by non-experts.
+One of the main challenges is the steep learning curve associated with setting up and maintaining home automation systems. If users wish to implement their own home automation, they can use home assistants user interface (UI). Automations, however, require that the user has a basic understanding of programming and is familiar with specific technical tools. This way they can manually modify the configuration files and troubleshoot any issues that may be presented, which is not easily done by non-experts.
 
 IDP-Z3 can make this process simpler by making use of a declarative knowledge base, avoiding the need to program automations. However, the IDP-Z3 language itself is not particularly user-friendly for non-experts and can become quite complex, especially when dealing with intricate rules or scenarios. When users are confronted with a large problem domain, it can be difficult to maintain an overview and make necessary adjustments. It also has a lot of possibilities that are not useful in the context of home automation, which can be confusing or overwelming.
 
 \section{Objectives}
-This thesis seeks to address this issue by investigating how IDP, specifically IDP-Z3, can be utilized to make home automation more accessible. Instead of needing to create automations, triggers, and aligning them with each other, the user only needs to describe the desired behavior of the home in a declarative language. A graphical user interface (GUI) that provides structure, along with a more limited subset of the IDP language, could help make IDP a more viable option for home automation.\\
+This thesis seeks to address this issue by investigating how IDP-Z3, can be utilized to make home automation more accessible. Instead of needing to create automations, triggers, and aligning them with each other, the user only needs to describe the desired behavior of the home in a declarative language. A graphical user interface (GUI) that provides structure, along with a more limited subset of the IDP language, could help make IDP-Z3 a more viable option for home automation.\\
 The primary research question addressed in this thesis is:\\
 How do we design an IDP-Z3 framework that enables end-users to automate their homes in a user-friendly way?\\
 This overarching question is further explored through the following sub-questions:
@@ -227,7 +227,7 @@ These are a group of entities. It could be that a device has 1 entity (ex. a lig
 \paragraph{Areas}
 These are groups of devices that could correspond to rooms in a house. For instance, the living room could have devices like a light-switch, a motion sensor (that detects if someone is in the room), a set of speakers, etc. All of these devices could be grouped together in one area.
 \paragraph{Scenes}
-Scenes are used to automatically set a room to a predefined state. This could, for example, be to pre-configure the actuators of the living room to watch a movie. The user could set up a scene where, if activated, all the lights dim, the tv turns on and all the blinds in the living room close. 
+Scenes are used to automatically set a set of devices to a predefined state. This could, for example, be to pre-configure the actuators of the living room to watch a movie. The user could set up a scene where, if activated, all the lights dim, the tv turns on and all the blinds in the living room close. 
 \paragraph{Automations}
 Automations are used to automate things. These automations consist of three things.
 First a ``trigger'' needs to happen to activate the automation. This could, for example be, a motion sensor detecting movement. After the trigger, possible ``conditions'' are checked. These are additional requirements that need to be met before executing the automation, for example, ensuring someone is home. Finally ``actions'' are performed, these are the outcomes that occur after a trigger and when the conditions are met, like turning on the light in a room.
@@ -255,11 +255,20 @@ The automation editor is designed for creating and editing automations. It follo
 
 This consistent structure offers a key advantage: users only need to learn one framework for creating automations. However, this approach has its drawbacks. Users still need to understand how devices should be utilized within this framework, which can be challenging without prior knowledge. Additionally, by managing automations across separate user interfaces, it becomes difficult to maintain a clear overview of what each automation is designed to do.
 
+\subsection{Issues with the current automation configuration}
+\label{home_automation_problems}
+
+Home assistant is not perfect. It provides the user with an application that provides a UI for basic home configuration, for more complex ruling, the user will still need to dive in the configuration files themself to control their devices so they do what is needed. These configuration files are YAML-files, which are clear for people with an IT background, but can be difficult to follow for non-expert people. Fortunately, HA has an active community that often helps less experienced users navigate these difficulties.
+
+Despite this support, the community still struggles to address certain challenges. As highlighted in~\cite{SOTA_AutomationConfigurationSmarthome}, users face three primary issues when modeling their homes in YAML: debugging (68\%), implementation (27\%), and optimization (5\%). The paper evaluates six validation tools, including the HA IDE, and reports that while these tools demonstrate high precision -- meaning errors identified are likely genuine (75\%-94\%) -- they suffer from very low recall, identifying only 9-11 bugs out of 129.
+
+This indicates that while validation tools exist, they are not very effective in practice. Robust validation is essential for users, as they are likely to encounter bugs or problems that cannot be resolved through an IDE. This often forces them to edit YAML files directly, which is not ideal. Even worse, if mistakes are made in the YAML files, identifying and correcting them becomes nearly impossible without better tools or an active community. When designing a user-friendly application, validation should be kept in consideration.
+
 
 
 \section{\fodot}
 \label{fodot}
-\fodot \footnote{\fodot is pronounced ``Eff-Oh-dot''} (aka FO-dot) is the Knowledge Representation Language used by the IDP-Z3 reasoning engine~\cite{IDPZ3ReasoningEngine}. It is an extension of first-order logic (FOL), which makes use of the following logic operators $\land, \lor, \neg, \Rightarrow, \forall, \exists$, further described in Table~\ref{tab:fodot_symbols}.
+\fodot \footnote{\fodot is pronounced ``Eff-Oh-dot''} (aka FO-dot) is the Knowledge Representation Language used by the IDP-Z3 reasoning engine~\cite{IDPZ3ReasoningEngine}. It is an extension of first-order logic (FOL), which makes use of the following logic operators $\land, \lor, \neg, \Rightarrow, \Leftrightarrow, \forall, \exists$, further described in Table~\ref{tab:fodot_symbols}.
 
 \begin{table}
     \centering
@@ -272,13 +281,14 @@ This consistent structure offers a key advantage: users only need to learn one f
     $\lor$   & $\mid$ & logical or   \\ \hline
     $\neg$   & $\sim$ & logical not   \\ \hline
     $\Rightarrow$ & $=>$ & implication   \\ \hline
+    $\Leftrightarrow$ & $<=>$ & equivalence   \\ \hline
     $\forall$ & $!$ & for all   \\ \hline
     $\exists$   & $?$ & for at least 1   \\ \hline
     \end{tabular}
 \end{table}
 
 
-The IDP-Z3 language consists of, at a minimum, a vocabulary and a theory. The vocabulary is used to describe which symbols will be used in the theory. The theory consists of rules that apply to these symbols. The structure, which is optional, describes a single, specific situation. Here is a simple example to illustrate these blocks and the basics of \fodot:
+The IDP-Z3 language consists of, at a minimum, a vocabulary and a theory. The vocabulary defines the problem domain and specifies the symbols that will be used in the theory. The theory consists of rules that apply to these symbols. The structure, which is optional, describes a single, specific situation. Here is a simple example to illustrate these blocks and the basics of \fodot, which will be explained further on.
 
 \begin{idplisting}
 vocabulary V {
@@ -320,7 +330,7 @@ structure S:V {
 This \fodot description outlines the functionality of lights within a smart home. The following sections break down and explain each block in detail.
 
 \paragraph{Vocabulary}
-The lights are defined by creating a type called ``Light'' in the vocabulary. Additionally, a type called ``State'' is defined, which has two possible values: ``On'' and ``Off''. A type, in essence, represents a domain of values, in this example, for instance, a ``State'' that has 2 values: ``On'' and ``Off''. Alongside types, several functions are also defined in the vocabulary. These map one or more inputs to an output.
+The vocabulary is the first part of the \fodot description and specifies the domain of the problem. In this case it defines how a light is represented, as well as the state of the light. There is extra info about the possible states of the light, the value of ``State'' can only be ``On'' or ``Off''. There are two functions defined: ``stateOfLight'' and ``brightnessLvl''. Both map a ``Light'' to a ``State'' or an Integer, respectively. The third function, ``isSomeoneHome'', does not take any arguments and returns the build in type ``Boolean''.
 \begin{itemize}
     \item ``stateOfLight'': it takes a ``Light'' and maps it to a ``State''. In effect, it represents the state (``On'' or ``Off'') of a given light.
     \item ``brightnessLvl'': it takes a ``Light'' and maps it to an Integer. In effect, it represents the brightness-level of a given light.
@@ -328,12 +338,12 @@ The lights are defined by creating a type called ``Light'' in the vocabulary. Ad
 \end{itemize}
 
 \paragraph{Theory}
-We will now go over the four formula's in the theory.
+We will now go over the four formulas in the theory.
 \begin{idplisting}
 !l in Light: ~isSomeoneHome() => stateOfLight(l) = Off.
 \end{idplisting}
-The first rule ensures that if nobody is home, the lights should be off.\\
-In most cases, this can be interpreted as an ``if then'' structure. In the \fodot world, this is called an implication. If the statement on the left of the implication symbol ($\Rightarrow$) is true, then the right statement also needs to be true. However, this does not mean that if the left statement is false, the right statement can not be true.
+The first rule ensures that \textit{if} nobody is home, \textit{then} the lights should be off.\\
+In the \fodot world, this is called an implication. If the statement on the left of the implication symbol ($\Rightarrow$) is true, then the right statement also needs to be true. However, this does not mean that if the left statement is false, the right statement can not be true.
 \begin{idplisting}
 !l in Light: (brightnessLvl(l) >= 0) & (brightnessLvl(l) =< 100) & (brightnessLvl(l) % 10 = 0).
 \end{idplisting}
@@ -342,7 +352,7 @@ This rule ensures that the brightness level of a light remains within the range 
 !l in Light: stateOfLight(l) = Off <=> (~isSomeoneHome() | (brightnessLvl(l) = 0)).
 \end{idplisting}
 The third rule ensures that the light is off if either nobody is home or the brightness level is 0, and vice versa.\\
-This kind of rule uses an ``if and only if'' construct, which is more commonly referred to as an equivalence. It is used to eliminate any room for misunderstanding in an implication. If the left formula is true, the right one is too and vice versa. Consequently, if one is false, the other must be too.
+This kind of rule uses an ``if and only if'' construct, which is more commonly referred to as an equivalence. If the left formula is true, the right one is too and vice versa. Consequently, if one is false, the other must be too.
 
 \begin{idplisting}
 {
@@ -350,8 +360,9 @@ This kind of rule uses an ``if and only if'' construct, which is more commonly r
    !l in Light: stateOfLight(l) = On <- brightnessLvl(l) > 0.
 }
 \end{idplisting}
-A light is off, then the brightness level is 0 or smaler. A light is on when the brightness level is greater then 0.\\
-This last rule is a definition. It seems the same as an equivalence, but it is not. This is because using a definition explicitly indicates the intention to define the formula on the left-hand side based on the formula on the right-hand side. This sense of direction  is less apparent when using an equivalence.
+A light is off, then the brightness level is 0 or smaller. A light is on when the brightness level is greater then 0.\\
+This last rule is a definition. It is a convenient way to define a concept, in this case defining how a light should behave. All the relevant rules are grouped together, which makes it more elegant and more expressive. Important to note is the fact that definitions, unlike implications, need to be fully enumerated and need to capture the necessary and sufficient conditions. This means that all the possible cases need to be defined and when one of the conditions is met, it leads directly to the corresponding output.
+In this case, the light can be ``on'' or ``off'', so the definition has defined both of these situations. When one of the two conditions is true, the other must be false. In other words, the brightness level of a light can either be smaller or equal to 0 or greater then 0.
 
 \paragraph{Structure}
 In the structure, a specific situation is defined. In this case, we declare that there are 4 lights and partially map some lights to states and brightness levels. The ``$:>$'' symbol stands for a partial interpretation. In this case, not all the lights are mapped. 
@@ -376,7 +387,7 @@ In the first place IDP-Z3 can generate models based on a given vocabulary, theor
 \end{figure}
 
 \paragraph{Propagation}
-The reasoning engine can compute all the logical consequences of a certain rule. In the first implication of the theory, it is stated that if no one is home, the light needs to be in the ``Off'' state. So, if the lights are on, IDP-Z3 can infer that there must be someone home.
+The reasoning engine can compute all the logical consequences of a theory. In the first implication of the theory, it is stated that if no one is home, the light needs to be in the ``Off'' state. So, if the lights are on, IDP-Z3 can infer that there must be someone home.
 
 \paragraph{Explanation}
 IDP-Z3 can provide an explanation to certain models and tell the user why one can or cannot exist. This is a task that, among other uses, is used in the Interactive Consultant UI in the online IDE, which is shown below in Figure~\ref{fig:IDP-Z3_interactive-consultant_light-example} and is further explained in Section~\ref{interactive_consultant}.
@@ -385,19 +396,16 @@ IDP-Z3 can provide an explanation to certain models and tell the user why one ca
 The reasoning engine can optimize models. For example, the second rule of the theory states that the brightness-level of a light needs to be between 0 and 100 and that it is divisible by 10. It can work out that the smallest possible number of the brightness is 0. An example of this is shown in Figure~\ref{fig:IDP-Z3_interactive-consultant_optimization-example}
 
 \paragraph{Relevance}
-IDP-Z3 can figure out if there are any irrelevant symbols in the KB. Some rules of the theory are repeated below to further explain this. Rule 1 states that a light is ``Off'' either when the brightness-level of that lamp is 0 or nobody is home (and vice versa because it is an equivalence). However, this rule is irrelevant:
-\begin{itemize}
-    \item Rule 2 states that when nobody is home, the light should be off, making the first part of the right-hand side of the equivalence irrelevant.
-    \item The definition (rule 3), states that a light is ``Off'' when the brighness-level of the light is 0, making the second part irrelevant.
-\end{itemize}
+IDP-Z3 can figure out if there are any irrelevant symbols in the KB. Some rules of the theory are repeated below to further explain this. Rule 1 states that a light is ``Off'' either when the brightness-level of that lamp is 0 or nobody is home (and vice versa because it is an equivalence). However, not all the symbols this rule produces are meaningfull for the KB:\\
+The definition (1) states that a light is of when the brightness level of said light is 0 or smaler. So when the light is turned off, the constant ``isSomeoneHome()'' is not relevant anymore since it only defines when the light should be off. 
 
 \begin{idplisting}
-(1) !l in Light: stateOfLight(l) = Off <=> (~isSomeoneHome() | (brightnessLvl(l) = 0)).
-(2) !l in Light: ~isSomeoneHome() => stateOfLight(l) = Off.
-(3) {
-       !l in Light: stateOfLight(l) = Off <- brightnessLvl(l) =< 0.
-       !l in Light: stateOfLight(l) = On <- brightnessLvl(l) > 0.
-    }
+{
+   !l in Light: stateOfLight(l) = Off <- brightnessLvl(l) =< 0.
+   !l in Light: stateOfLight(l) = On <- brightnessLvl(l) > 0.
+}
+!l in Light: ~isSomeoneHome() => stateOfLight(l) = Off.
+!l in Light: stateOfLight(l) = Off <=> (~isSomeoneHome() | (brightnessLvl(l) = 0)).
 \end{idplisting}
 
 %\begin{itemize}
@@ -461,7 +469,7 @@ The IC can also optimize some values. As shown in Figure~\ref{fig:IDP-Z3_interac
 
 
 \section{Alternatives for \fodot}
-Given that \fodot can be difficult to learn and understand for non-expert users, it is useful to explore other options for more accessible interfaces. In this section, we consider alternative options in the context of home automation.
+Given that \fodot can be difficult to learn and understand for non-expert users, it is useful to explore other options for more accessible notations. In this section, we consider alternative options in the context of home automation.
 
 \subsection{DMN}
 The Decision Model and Notation (DMN) standard~\cite{DMN} is a user-friendly notation for decision logic. It is managed by the Object Management Group (OMG), and aims to be an intuitive language that can be used by anyone involved in the modeling process. A DMN model has two main components:
@@ -471,15 +479,16 @@ The Decision Model and Notation (DMN) standard~\cite{DMN} is a user-friendly not
 \end{itemize}
 
 \paragraph{Decision Requirements Diagram}
-A DRD is a graph-like structure that represents which decision should be made. It includes input fields (rounded boxes) that provide the system with data needed for making decisions. The squared boxes denote decisions.
+?? laten vallen ??
+A DRD is a graph-like structure that represents which decision should be made. It defines how the different decision tables are linked.
 \paragraph{Decision Tables}
 A DT describes a decision. It defines the output based on a set of input variables. It requires these variables to be fully enumerated, meaning that all possible combinations must be covered. It also needs to capture the necessary and sufficient conditions. These conditions ensure that all criteria must be met to produce a particular output, and when one condition is met, it leads directly to the corresponding output.\\
-The example shown in Figure~\ref{fig:DT} represents the definition of the lights example, its \fodot representation can be found below. It states that a light is ``On'' if the brightness level is greater then 0 and that it is ``Off'' if the brightness level is 0. Important to note is that all DTs can be represented by a \fodot definition, but not all \fodot definitions can be represented by a DT. Similarly, implications cannot be represented in a DT. 
+The example shown in Figure~\ref{fig:DT} represents the definition of the lights example, its \fodot representation can be found below. It states that \textit{if} the brightness level of a light is greater then 0, \textit{then} that light is ``On'' and \textit{if} the brightness level of a light is 0, \textit{then} that light is ``Off''. Important to note is that all DTs can be represented by a \fodot definition, but not all \fodot definitions can be represented by a DT. Similarly, implications cannot be represented in a DT. 
 
 \begin{idplisting}
 {
-   !l in Light: stateOfLight(l) = Off <- brightnessLvl(l) =< 0.
-   !l in Light: stateOfLight(l) = On <- brightnessLvl(l) > 0.
+   stateOfLight() = Off <- brightnessLvl() =< 0.
+   stateOfLight() = On <- brightnessLvl() > 0.
 }
 \end{idplisting}
 
@@ -493,15 +502,14 @@ The example shown in Figure~\ref{fig:DT} represents the definition of the lights
     \label{fig:DT}
 \end{figure}
 
-
 \paragraph{ Pros and cons}
 The main advantage of using DMN is its clarity and user-friendliness. The user does not need any programming knowledge to model with it effectively. However, a significant drawback is its limited capabilities. When the user attempts to describe more complex situations, it can quickly become very unreadable, so much so that some solutions to those situations fail to meet DMN's readability goals.
  
 \paragraph{cDMN}
-cDMN~\cite{cDMN} is an extension of DMN that addresses the shortcomings of standard DMN by introducing constraint modeling, quantification, types, and functions. Although this makes cDMN more complex, it is far more readable than a complex, standard DMN. By adding these things, an implication is possible, as shown in Figure~\ref{fig:cDMNTable}. If no one is home, the light should be off. The \fodot code that represents this table is shown below.
+cDMN~\cite{cDMN} is an extension of DMN that addresses the shortcomings of standard DMN by introducing constraint modeling, quantification, types, and functions. Although this makes cDMN more complex, it is far more readable than a complex, standard DMN. By adding these things, an implication is possible, as shown in Figure~\ref{fig:cDMNTable}. Not all possible states of ``isSomeoneHome'' are described in the table. If no one is home, the light should be off, it does not specify what should happen if someone is home. The \fodot code that represents this table is shown below.
  
 \begin{idplisting}
-!l in Light: ~isSomeoneHome() => stateOfLight(l) = Off.
+~isSomeoneHome() => stateOfLight() = Off.
 \end{idplisting}
 
 \begin{figure}
@@ -520,49 +528,29 @@ A Controlled Natural Language~\cite{CNL} (CNL) is a subset of a natural language
  	\item A subset of a language used as ``syntax'' 
      \item A parsing engine so the computer can understand the language
  \end{itemize}
- IDP-Z3 has its own CNL, which is used in its Interactive Consultant. This thesis will use this as an example.
+ IDP-Z3 has its own CNL, which we will use as an example.
 
 \paragraph{The IDP-Z3 CNL}
 The example of the lights, written in CNL and shown below, is used as an example. The CNL is likely to make it much more readable to the average person. Another way in which the online IDE makes use of this CNL is in its Interactive Consultant. In the screenshot shown in Figure~\ref{fig:IDP-Z3_interactive-consultant_light-example} the explanation is useful and helps the user understand what is going on, but it still requires some understanding of FO symbols, which is not ideal.
 The example below shows the CNL as a replacement for \fodot. While it is more readable, there is still a clear reference to the \fodot language. It feels unintuitive to say ``for all l in Light'', instead of ``for every Light l''. While the second phrasing is clearer for humans, the order change makes it so the IDP-Z3 system can not understand it.
 
 \begin{idplisting}
-vocabulary V {
-    type Light
-    type State is {On, Off}
-    stateOfLight: Light -> State
-    brightnessLvl: Light -> Int
-    isSomeoneHome: () -> Bool
-}
 theory T:V {
     {
         for all l in Light : stateOfLight(l) = Off if brightnessLvl(l) =< 0 .
         for all l in Light : stateOfLight(l) = On if brightnessLvl(l) > 0 .
     }
-    for all l in Light : not isSomeoneHome() are sufficient conditions for stateOfLight(l) is Off .
-    for all l in Light : (brightnessLvl(l) is greater than 0) & (brightnessLvl(l) is less than 100) & (brightnessLvl(l) % 10 is 0) .
-    for all l in Light : (stateOfLight(l) is Off) is the same as (not isSomeoneHome() or (brightnessLvl(l) is 0)) .
-}
-structure S:V {
-    Light := {light1, light2, light3, light4} .
 }
 \end{idplisting}
 
 \paragraph{Pros and cons}
 A CNL allows the user to create easy-to-read code because it uses a subset of a known language, removing the need of a technical expert on the used language. However, it is not the easiest to write due to its strictness with the ordering of words, which can introduce confusion. Two structures that seem the same to us humans, may be interpreted differently by the computer. The limited set of words available in a CNL can also pose challenges. While the user might prefer to write in natural, unrestricted text as they are accustomed to, the computer is unable to interpret such input. This challenge, known as the writability problem~\cite{CNL}, highlights the difficulty of creating a language that remains readable without introducing ambiguity, so the computer can still understand it.
-These restrictions can lead to an unintended consequence: writing in a CNL may become more challenging than learning the actual language it is meant to simplify. Users end up learning not only the syntax but also the boundaries of what is and is not possible within the CNL, which can be frustrating and counterproductive.
+These restrictions can lead to an unintended consequence: writing in a CNL may become more challenging than learning the actual language it is meant to simplify. Users can become frustrated because they need to learn the boundries of the CNL as well as the syntax.
 
 \subsection{Blocks-based editor}
 A blocks-based editor is a user-friendly way to write software using blocks. This allows the user to avoid memorizing syntax, as the blocks are provided and visually indicate what is possible and what is not, eliminating the need to understand complex syntax rules. In other words, syntax errors are non-existent, allowing the user to fully focus on what the application should do, rather than how to write it in a certain language. However, the workspace can become disorganized as projects grow larger.
 
-A well-known example of a blocks-based programming enviroment is Scratch~\cite{scratch}, a blocks-based interface in JavaScript. It allows users to create programs in a visual workspace, while processing the blocks into runnable JavaScript code. Scratch is a code editor designed for children, ensuring that it needs to be understandable even for the youngest users. In Figure~\ref{fig:scratch} an example of a workspace is shown.
-
-\begin{figure}
-    \centering
-    \includegraphics[width=1\linewidth]{images/block-based_scratch.png}
-    \caption{An example of the scratch UI}
-    \label{fig:scratch}
-\end{figure}
+A well-known example of a blocks-based programming enviroment is Scratch~\cite{scratch}, a blocks-based interface in JavaScript. It allows users to create programs in a visual workspace, while processing the blocks into runnable JavaScript code. Scratch is a code editor designed for children, ensuring that it needs to be understandable even for the youngest users.
 
 \paragraph{\fodot blocks-based editor}
 There already exists a blocks-based editor for \fodot~\cite{IDPStructuredBlockbasedEditor}. It uses Blockly~\cite{Blockly}, an extendable blocks-based editor developed by Google. It has two components:
@@ -570,7 +558,10 @@ There already exists a blocks-based editor for \fodot~\cite{IDPStructuredBlockba
 	\item A workspace where blocks can be placed
 	\item A generator where blocks are translated to a textual representation (in this case \fodot)
 \end{itemize}
-An example of this editor is shown in~\ref{fig:blockly_IDP_example}. This is, however, too complex for what is needed for IoT in home automation. Still, it provides a good baseline to start from.
+An example of this editor is shown in Figure~\ref{fig:blockly_IDP_example}. In this editor the three main blocks of the \fodot language are still clearly visible as well as the form of the \fodot syntax. The vocabulary has types, functions and predicates to define the problem domain. The theory has a formula and a definition, where the underlying \fodot syntax is still very apparent. The first block of the vocabulary can be easily translated into \fodot-syntax, as shown below. This is a blocks based editor for the entire \fodot syntax, this is, however, too complex for what is needed for IoT in home automation as will be further discussed in~\ref{home_automation_and_fodot}. Still, it provides a good baseline to start from.
+\begin{idplisting}
+type Vertex := {1..3}
+\end{idplisting}
 
 \begin{figure}
     \centering
@@ -598,23 +589,56 @@ An overview of the meaningful pro's and con's of all the discussed user-friendly
 \end{table}
 
 \section{State of the art}
-In this chapter we will describe previous works on logical reasoning and home automation. More specificially an example of other ways to implement knowledge bases. Why the use of YAML files for home automation configuration is not ideal for people without a background in programming. Why knowledge based systems work for home automation and why blocks-based editors are a good user-friendly option for non-experts.  
-
-\subsection{IntelliDomo}
-IntelliDomo~\cite{SOTA_OntologyBased} is an ontology-based interface for HA. It uses an ontology (OntoDomo) to represent the KB, production rules (written in SWRL (Semantic Web Rule Language)) to describe the system, and an inference engine (Jess) to make decisions.
-
-The KB is represented in OWL files (Ontology Web Language), which are created by the system using existing ontologies. This is convenient when an appropriate ontology already exists; however, if there is none, the user must understand OWL to create their own. IntelliDomo uses SWRL in combination with a custom-made UI for rule construction. This ensures that users cannot make syntax errors, as all possible options are predefined. However, the UI still has the SWRL syntax in it, so it still requires the user to know SWRL even tough they do not need to write any. Since SWRL is not the most intuitive language for writing rules for a non-expert, it can be challenging to follow the logic it describes.
-
-This paper demonstrates that a knowledge-based approach to home automation works, but it is important to note that their approach is not the most user-friendly one. This is however very important when it comes to automating your home.
-
 When considering how AI can help both with user-friendliness and how the user describes their home automation system, according to \cite{SOTA_KnowledgeBasedAIInHomeAutomation}, knowledge-based AI fits into this perfectly. It is easier for non-experts to create a knowledge-based home automation system than it is to create a traditional sequentially programmed system because a KB system is much more flexible. However, it still requires the user to modify the rules of the KB when circumstances change. While this can also be automated using AI, that will not be discussed here.
 
-\subsection{Issues with the current automation configuration}
-Home automation configuration often relies on YAML files for defining a home's setup, which is how HA manages configurations behind the scenes. If certain automations cannot be configured through the HA UI, users must modify these YAML files themselves. However, YAML is not the most user-friendly language for non-experts, making it challenging for users to implement these more complex automations. Fortunately, HA has an active community that often helps less experienced users navigate these difficulties.
+\subsection{IntelliDomo}
+IntelliDomo~\cite{SOTA_OntologyBased} is an ontology-based interface for home automation. It uses an ontology (OntoDomo) to represent the KB, production rules (written in SWRL (Semantic Web Rule Language)) to describe the system, and an inference engine (Jess) to make decisions.
 
-Despite this support, the community still struggles to address certain challenges. As highlighted in~\cite{SOTA_AutomationConfigurationSmarthome}, users face three primary issues when modeling their homes in YAML: debugging (68\%), implementation (27\%), and optimization (5\%). The paper evaluates six validation tools, including the HA IDE, and reports that while these tools demonstrate high precision -- meaning errors identified are likely genuine (75\%-94\%) -- they suffer from very low recall, identifying only 9-11 bugs out of 129.
+The KB is represented in OWL files (Ontology Web Language), which are created by the system using existing ontologies. This is convenient when an appropriate ontology already exists; however, if there is none, the user must understand OWL to create their own. IntelliDomo uses SWRL in combination with a custom-made UI for rule construction. This ensures that users cannot make syntax errors, as all possible options are predefined. However, the UI still has the SWRL syntax in it, so it still requires the user to know SWRL even tough they do not need to write any. Since SWRL is not the most intuitive language for writing rules for a non-expert, it can be challenging to follow the logic it describes as shown in~\ref{fig:IntelliDomo_UI}. Once the rules are constructed (the lowest part of the UI), they are difficult to read and understand. If there were to be a mistake made by the user, they would be required to change the rules in the SWRL syntax or completely reconstruct the rule from scratch. It also fails to give the user any feedback on the functionallity of thhere created rules, which is needed as explained in~\ref{home_automation_problems}. 
 
-This indicates that while validation tools exist, they are not very effective in practice. Robust validation is essential for users, as they are likely to encounter bugs or problems that cannot be resolved through an IDE. This often forces them to edit YAML files directly, which is not ideal. Even worse, if mistakes are made in the YAML files, identifying and correcting them becomes nearly impossible without better tools or an active community. When designing a user-friendly application, validation should be kept in consideration.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/IntelliDomo_UI.png}
+    \caption{The IntelliDomo UI~\cite{SOTA_OntologyBased}}
+    \label{fig:IntelliDomo_UI}
+\end{figure}
+
+\subsection{User-configurable semantic home automation}
+\label{USHAS}
+User-configurable semantic home automation~\cite{SOTA_AutomationConfigurationSmarthome} (USHAS) is another system that uses a knowledge-based approach to home automation. They use the Web Ontology Language, OWL for short, as a language for their ontology. They have six main concepts, also called first-level classes:
+
+\begin{itemize} 
+    \item Person, to represent people present in the home. The class is split into subclasses like child, adult... Each person has two properties: a name and their location. 
+    \item Location, to represent the different rooms in the house. These are connected semantically, which means that the system can understand the relationships between them. For example, a kitchen is part of the first floor, which is part of the house. This enables the user to create rules that can apply to all devices located in a certain room. 
+    \item Device, to represent the devices in the house. The class is split into two subclasses: ``ApplianceCategory'' (devices with the same states, for example light or a heater) and ``FunctionalCategory'' (devices with the same function, for example a volume controller or a music box). Each device has a location, states, and events. 
+    \item Time, to represent the time of day. This is important for home automation, as it can be used to trigger certain actions at specific times. Apart from the time, it is also capable of representing repeating events, like ``every Monday at 12:00''. 
+    \item Environment, to represent the environment in and around the house. This includes things like temperature, humidity, light, and noise levels, which can be used to trigger certain actions. Also, user-defined variables can be expressed by creating an extra environment property. 
+    \item Event, to represent the events that can occur in the house. This includes things like a person entering or leaving a room, a device being turned on or off, or a change in the environment. These events can be used to trigger certain actions. 
+\end{itemize}
+
+The USHAS system uses a UI to allow users to create their own ontology and rules (which are written in their custom Semantic Home Process Language (SHPL) in XML files). These consist of four main components: preconditions, variables, execution time, and flow of invocations. For example, given a command ``if the temperature is higher than 30 °C at 6:00 PM, turn on the air conditioner'', the value 30 is a variable; ``if the temperature is higher than 30 °C'' is a pre-condition, 6:00 PM is an execution time, and ``turn on the air conditioner'' is an invocation. All of these can be found in their UI. However, this is not the most intuitive way of creating rules for a user. As Figure~\ref{fig:USHAS_UI} shows, one rule requires many different components that are not intuitive for the user to fill in.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/USHAS_UI.png}
+    \caption{The USHAS UI~\cite{SOTA_AutomationConfigurationSmarthome}}
+    \label{fig:USHAS_UI}
+\end{figure}
+
+These papers demonstrate that a knowledge-based approach to home automation works, but it is important to note that their approach to model homes and create rules is not the most user-friendly one. This is however very important when it comes to automating your home.
+
+\subsection{Event based home automation}
+Another approach to home automation is an event-based system~\cite{SOTA_EventCalculus}. Instead of thinking in states and the changing of them, it focuses on events and the logical consequences of them. For example, if the front door opens, the lights in the hallway should turn on. After that, it is plausible that the person that just walked in, will either walk to the living room, kitchen or upstairs, so the system can predict this and narrow down the possible next actions that need to be taken. So instead of modeling different rules, this approach focusses on a stream of events that lead to a specific goal.
+
+The system used to achive this is called Event Calculus. It is a formalism for representing and reasoning about events and their effects over time. It is based on first-order logic and allows for the representation of complex temporal relationships between events. Because it is based on first-order logic, it is possible to reason on it. An example of how this could be done is explained with the example of preparing a cup of tea. Normally, one would boil water, grab a cup and a teabag, after which the water is poured into the cup and the teabag is added. The initial action (turning on the kettle) is the event that starts the process, so from that point, the system can predict what the next steps should be. If one of the steps is not done, it can be inferred and explained to the user, in that way the system can help users who are unfamiliar with the process or users that tend to forget the necessary steps. Another usefull side-effect of using a first-order-based system is the fact that it can be updated as new data comes in. This means that the system can learn from the actions of the user and adapt to their preferences. For example, if a user always turns on the kettle when they get home, the system can learn this and automatically turn on the kettle when it detects that the user is home. The initial action is now the user that comes home.
+
+However, all this knowledge needs to be provided by the user, which is not done in the most user-friendly way. They use a first-order logic language to describe these event-flows, which for a non-expert is not easy to write nor understand. The tea example, in the formalized language, is shown in Figure~\ref{fig:event_code}. However with the learning capabilities of the system this is somewhat masked, as the system can learn from the user and adapt to their preferences.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/event_code.png}
+    \caption{An example of the Event Calculus code for making a cup of tea~\cite{SOTA_EventCalculus}}
+    \label{fig:event_code}
+\end{figure}
 
 \subsection{Smart Block}
 \label{SmartBlock}
@@ -622,10 +646,11 @@ SmartBlock~\cite{SOTA_SmartBlock} is a user-friendly blocks-based interface for 
 
 They conducted a user study with 33 participants from diverse backgrounds (including IT). First, the participants were asked to model a rule to get familiar with the editor. 81\% of them responded positively or neutrally to the ease of use. After this introduction, the participants were tasked with modeling three progressively more challenging rules. Over time, they got better at this, which was shown by how much faster they were able to complete the tasks. Interestingly, the difference in performance between non-IT and IT participants was not that big, which further shows how user-friendly the editor is.
 
+The user study done by SmartBlock is something we also want to do with our blocks-based editor, it helps to give us an understanding of how our editor did. We probiably would like to change some specifics about the rules and situations, but the diversity of the group and the main objectives they had to do, can stay the same. 
+
 Another test required the participants to identify some errors in a given SmartApp. This proved to be more difficult without assistance, as the debugging tools lacked any semantic error correction. This highlights why having a tool to correct mistakes during the modeling process is so important.
 
 This paper proves that a blocks-based editor is a viable option for home automation. It shows that such an editor is user-friendly and accessible to people without an IT background. It also confirms the importance of tools that can help with semantic errors.
-
 
 % \chapter{Plans for next semester}
 % In the next part, I will focus on developing a user-friendly, blocks-based editor for IDP-Z3. In the next chapter, I will now elaborate on the reasoning behind this choice and outline the approach we plan to take for its development at this stage.
@@ -664,7 +689,8 @@ This paper proves that a blocks-based editor is a viable option for home automat
 % The user will want to configure their devices in a way that matches the layout of their home, this way they can create rules that apply to devices in a room, which can be very handy. The user can for example create a rule that turns off all the lights in the bedroom when nobody is in set bedroom. Since the user will set up the areas matching their house, it will create a new way that the user can understand % what they are doing. This is a great way to make the user feel more comfortable with the system.
 % 
 \chapter{An \fodot description for home automation}
-In this chapter we will discuss different ways to implement a home automation system in \fodot. However, before we can do that, we need to figure out what the user expects from their home automation system. How we can achive a meaningful and logic description that offers a lot of flexibility, while keeping it simple enough so it is doable using ``simple'' blocks. We will discuss the advantages and disadvantages of some implementation and which of these we will use going forward.
+\label{home_automation_and_fodot}
+In this chapter we will discuss different ways to model a home automation system in \fodot. However, before we can do that, we need to figure out what the user expects from their home automation system. How we can achive a meaningful and logic description that offers a lot of flexibility, while keeping it simple enough so it can be recreated in ``simple'' blocks. We will discuss the advantages and disadvantages of some implementation and which of these we will use going forward.
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{images/fodot-structure_example.png}
@@ -673,10 +699,11 @@ In this chapter we will discuss different ways to implement a home automation sy
 \end{figure}
 
 \section{Home automation description}
+To decide on the modeling approach for the home automation system, we use a goal-oriented approach. This means that we will look at what the system will need to do and how the user will want to be able to interact with it. We will discuss some example situations which the user would want to model. By doing this, the system will be made for the users convenience, and not necessarily the easiest to implement. By creating situations, we also get a good idea of what the limitations will be of our system. 
 \paragraph{Devices}
-The user will want to configure their devices in an intuitive way, which does not require them to understand how the devices are configured in the application. Each device has possible states it can be in, for example a lightswitch can be ``On'' or ``Off''. The user could configure these states themselves, but most devices already have a standard set of states. Home assistant also uses the standard states of the devices to configure them in their UI. This is great, since the user does not need to figure out the possible states of a device themselves. However, to implement this in an editor, we will need to read out the states of a lot of device-types, which will not be done in this editor.
+The user will want to configure their devices in an intuitive way, which does not require them to understand how the devices are configured in the application. Each device has possible states it can be in, for example a lightswitch can be ``On'' or ``Off''. The user could configure these states themselves, but most devices already have a standard set of states. Home assistant also uses the standard states of the devices to configure them in their UI. This is great, since the user does not need to figure out the possible states of a device themselves. However, to implement this in an editor, we would need to read out the states from Home Assistant, which means we would need to integrate our system into Home Assistant's. This will not be done in this editor.
 \paragraph{Areas}
-The user will want to configure their devices in a way that matches the layout of their home, this way they can create rules that apply to devices in a room, which can be very handy. The user can for example create a rule that turns off all the lights in the bedroom when nobody is in set bedroom. Since the user will set up the areas matching their house, it will create a new way that the user can understand what they are doing. This is a great way to make the user feel more comfortable with the system.
+The user will want to configure their devices in a way that matches the layout of their home, so that they can create rules that apply to devices in a room, which can be very handy. The user can for example create a rule that turns off all the lights in the bedroom when nobody is in said bedroom. Since the user will set up the areas matching their house, it will create a new way that the user can understand what they are doing. This is a great way to make the user feel more comfortable with the system. This is similar to they way USHAS does it, where all the areas are sementically connected, as explained in~\ref{USHAS}. This is a great way to make the user feel more comfortable with the system.
 \paragraph{Rules}
 It is important to think about what the user would want to configure and what rules they would want to create. Below are some examples of rules the user could want to create increasing in complexity the further down the list.
 \begin{itemize}
@@ -689,12 +716,9 @@ It is important to think about what the user would want to configure and what ru
     \item Turn off all the lights on the first floor when a motion sensor on the second floor is triggered.
 \end{itemize}
 
-\section{Vocabulary} 
-The vocabulary is an important part of the \fodot specification as it defines the possibilities and limits for the rest of the specification. There are lots of different aproaches possible, where each needs to be effective with the idea of ease of use and effectiveness in a real-world application.
+\section{Vocabulary and theory} 
+The vocabulary is an important part of the \fodot specification as it defines the possibilities and limits for the rest of the specification. There are lots of different aproaches possible, where each needs to be effective with the idea of ease of use and effectiveness in a real-world application. The theory, and therefore the possible rules, is directly affected by the choice of vocabulary, so this also needs to be considered.
 
-The first vocabulary is one that is easy to create from blocks due to the way devices are represented. Each device has its own constant, which is linked to an area. So when creating a possible model, a device could be ``light1 -> livingRoom''. The problem with this way of representing the devices is that there is no way to group the devices. A rule that states that all the devices in the living room should be turned off is not possible, but is something the user would defenitly want. The states of these devices are represented through a type that defines all possible states for that device. In combination with this, there is a function that represents what state the device is in. 
-
-An other shortcomming of this vocabulary is the inability to represent relations between areas. This is because the vocabulary does not allow to group devices, as stated earlier, as well as the inability to group areas. This is also something the user would want to have since it could be a way to structure their home in the application which makes it feel familiar.
 \begin{idplisting}
 vocabulary V {
     type Area := {living_room, kitchen, floor_1, floor_2, house}
@@ -702,30 +726,226 @@ vocabulary V {
     type stateOfLight <: Int
     stateOfLight1: -> stateOfLight
 }
+
+theory T:V {
+    stateOfLight_switch() = off => stateOfLight1() = 0.
+}
 \end{idplisting}
-The second vocabulary improves on both of these shortcomings by defining a type ``Device,'' under which all specific instances of devices fall. This allows for the creation of rules that apply to all devices, specific devices, and areas. The only slight drawback of this vocabulary is that IDP-Z3 does not provide much assistance if anything is wrongly defined. It would be preferable if IDP-Z3 could offer more support in preventing user mistakes.
+
+As a first approach, consider a vocabulary where all the devices are defined as constants. Every device is linked to an area. So when creating a possible model, a device could be ``light1~$\rightarrow$~livingRoom''. The problem with this way of representing the devices is that there is no way to group the devices. A rule that states that all the devices in the living room should be turned off is not possible, but is something the user would want. The states of these devices are represented through a type that defines all possible states for that device. In combination with this, there is a function that represents what state the device is in. The user also cannot implement any form of grouping in the devices; for example, a rule stating that all the lights should turn off when the lightswitch is off, is not possible with this vocabulary.
+
+An other shortcoming of this vocabulary is the inability to represent relations between areas. This is because the vocabulary does not allow to group devices, as stated earlier, as well as the inability to group areas. This is also something the user would want to have since it could be a way to structure their home in the application which makes it feel familiar.
+
 \begin{idplisting}
 vocabulary V {
-    type Device
-    type Area
+    type Device := {bell, light1, light2, motionSensor, lightSwitch}
+    type Area := {living_room, kitchen, floor_1, floor_2, house}
     deviceIsInArea: Device -> Area
+
     deviceIsBell: Device -> Bool
     type BellState := {ringing, off}
-    bellState : Device -> BellState 
+    bellState : Device -> BellState
 }
 \end{idplisting}
-This is where the third and final vocabulary comes in. Instead of focusing on the devices themselves, the focus now lies on the states of the devices and their grouping. By using subtypes, different instances of devices can be created according to their state. For example, a motion sensor is binary (motion detected or no motion detected), but a light switch is also binary (on or off), so these can be grouped together. This vocabulary does not differ much from the previous one, in the sence that if all devices have different states, it will result in the same behaviour, but it opens up possibilities for more complex rules. This approach is slightly more challenging to construct using blocks, but the possibilities this vocabulary offers outweigh this drawback.
+
+As a second aproach, we can add an explicit type ``Device,'' under which all specific instances of devices fall. This allows for the creation of rules that apply to all devices, specific devices, and areas. A slight drawback of this vocabulary is that IDP-Z3 does not provide much assistance if anything is wrongly defined. It would be preferable if IDP-Z3 could offer more support in preventing user mistakes. It also does not look that pretty in \fodot, since every new device, even if it is of the same type (light1, light2), it needs te be defined with its own type. This means that the user needs to specify, for each device, what states it has. This is not ideal, since the devices like lights, lightswitches, curtains... are pretty frequently used in houses.
+
 \begin{idplisting}
 vocabulary V {
-type Device
-type BinaryDevice <: Device
-type BinaryState := {on, off}
-binaryDeviceState: BinaryDevice -> BinaryState    
+    type Device := {light1, light2, motionSensor, lightSwitch, curtain}
+    type State := {on, off, opened, closed}
+    type Area := {house, floor1, floor2}
+
+    deviceIsInArea: Device -> Area
+    // subArea * superArea -> Bool
+    areaIsSubAreaOf: Area * Area -> Bool
+    deviceIsInState: Device -> State
+
+    type BinaryDevice := {light1, light2, motionSensor, lightSwitch} <: Device
+    type BinaryState := {on, off} <: State
 }
 \end{idplisting}
-Having experimented with all tree of the possibilities, we have decided to go with the second vocabulary. It offers the user the flexibility they want, while keeping it simple enough so they understand what is going on and being able to model it with simple blocks. The first vocabulary is a bit too simple and does not offer the user the flexibility they want, it is however very easy to create blocks for it. The thrid vocabulary is complexer but it does not offer more functionality then the second one, so it is not worth the extra work to make the conversion from blocks to IDP-Z3 more complex.
 
-An important note to make is the fact that these vocabularies limit the user in what they can do in the theory, this is how the \fodot language is desinged, so it is important that the vocabulary does not limit the posibilities. However, since this is not just the \fodot description, some functionality (that is not possible in \fodot) can be implemented in the blockly backend. This is further explored in ....
+This is where the third and final vocabulary comes in. Instead of focusing on the devices themselves, the focus now lies on the states of the devices and their grouping. By using subtypes, different instances of devices can be created according to their state. For example, a motion sensor is binary (motion detected or no motion detected), but a light switch is also binary (on or off), so these can be grouped together. This vocabulary does not differ much from the previous one, in the sence that if all devices have different states, it will result in the same behaviour, but it opens up possibilities for more complex rules. 
 
+Having experimented with all tree of the possibilities, we have decided to go with the third vocabulary. It offers the user the flexibility they want, while keeping it as simple and convenient enough to model in a blocks based editor. The first vocabulary is a bit too simple and does not offer the user the flexibility they want in rule creation, it is however very easy to create blocks for it. The secod vocabulary is complexer and offers a great flexibility in the rules that can be created. However, it is quite tedious to always specify the possible states for every device. While the third vocabulary is a bit more complex, it is still easy to understand while making the device-creation easier.
+
+\chapter{Implementation}
+In this chapter we will discuss what design-dissicions we have made while creating the blocks-based editor. We will also discuss how the application is structured and how it works.
+
+\section{Blockly}
+To create the blocks-based interface we used Blockly~\cite{Blockly}, as stated before, this is a JavaScript-based framework for blocks-based editors. It is, at its core, a very flexible framework that allows you to create custom blocks who translate to a code-snippet. We used it to create JSON-like structures that can be parsed into \fodot later on.
+
+When blockly is downloaded it already comes with the basic building blocks preconfigured. These blocks are there to offer the fundamental functionallity of most programming languages like Python, JavaScript, Dart... Think of for-loops, while-loops, print-statements... Since these are not at use for an \fodot description, we created our own set of blocks, also called a toolbox. This is the place where we define the lay-out of the editor with all the used blocks, how we group the blocks and which block apears where. However, no actual functionality or properties are given to the blocks in the toolbox. The actual components of the blocks (their look and feel) are defined in the ``blocks'' directory. We chose to all define them in one file, called ``text.js''. At this point we have defined the blocks and told Blockly how they look, but not how they should behave. The behaviour is described in the ``generators'' folder, where again we have desided to put all the generators in one file called ``javascript.js''. In this file every block gets translated into a JSON-like structure that later can be used to create the \fodot description. The ``index.js'' file located in the ``src'' folder is the main file where the real-time updates are done. Every time the workspace (ws) is updated, a function inside the ``index.js'' file is called. In this function Blockly does some things behid our backs to make sure the generated code is accurate to the blocks currently in the ws, but this is also used to make sure the dropdown menu's of the blocks are updated to have the correct information. An overview of the high-level Blockly structure can be found in Figure~\ref{fig:blockly_structure}.
+
+When creating the custom blocks and deciding where to place them in the editor, we did a few things to make it as user friendly as possible. We made sure that the blocks who are related to each other, for example the blocks who define an area and the block that displays the relations between areas, are close and have the same tint of colour. This is an extra way of showing the user which blocks should be put together. We also tried to make the blocks in a way that hides the underlying \fodot syntax as much as possible. We also dynamicially update the dropdown menu's inside the blocks so the user can, for example, not select a devicetype when a state is needed.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/blockly_structure.png}
+    \caption{The high-level structure of the Blockly-side of the application}
+    \label{fig:blockly_structure}
+\end{figure}
+
+\subsection{Custom blocks}
+In this section we will go over all the blocks we created, how they translate in \fodot and how we imagine them being used. Not all the functionality is done in blocks, there are, for example, buttons to create a new devicetype or a new area. These are different, but will also be discussed here. The blocks will not be discussed in the order they are placed in the editor, to make it easier to understand and follow. The \fodot descriptions are not complete, in the sence that they will not function without extra vocabulary and/or theory. The focus is on the blocks and how they translate to \fodot, not on the complete \fodot description.
+
+\paragraph{States}
+States are created using a button. When the button is clicked, the user gets a prompt asking for the name of the state. After the user has entered a name, the state is added to the globaly defined array that holds all the states. This is done so the blocks that require the states can only display the existing states. This is done so it is as easy as possible for the user to select the right state. The states are used to define what a device can do, for example a motionsensor can be in the states ``motion detected'' or ``no motion detected''. There is no imediate translation to \fodot code when a state is created. All the blocks related to the states are shown in Figure~\ref{fig:homy_state_blocks}, and will be further explained in the context with other blocks, since a state-block should not be used on its own.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.2\linewidth]{images/homy_state_blocks.png}
+    \caption{The blocks related to the states}
+    \label{fig:homy_state_blocks}
+\end{figure}
+
+\paragraph{Areas}
+Areas are created in the same way is states, they use a button who writes new areas to a globally defined array. There is however an extra block that is used to define the relations between the areas. This is so the user can define relations between the areas, for example ``the kitchen is on the first floor''. An example of this combination can be found in Figure~\ref{fig:homy_area_relation}.
+
+The block has a direct \fodot translation, both in the vocabulary and structure as shown below. 
+\begin{idplisting}
+structure S:V {
+    areaIsSubAreaOf := {(kitchen, floor1)}.
+}
+\end{idplisting}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/homy_area_relation.png}
+    \caption{An example of the blockly block that defines the relation between two areas}
+    \label{fig:homy_area_relation}
+\end{figure}
+
+\paragraph{Devicetypes creation}
+The devicetypes are created in the same way as areas and states. Since the devicetypes still require the user to specify the states of the devicetype, there is no explicit \fodot translation. There are two default devicetypes, who speak for themselfs: ``on\_off\_device'' and ``integer\_device''. The first one is a type that is used a lot in home automation, while the second one is difficult to specify the states in blocks. Specifying that an integer device has possible states of 0, 1, 2, ..., 100 is not something the user should need to bother with.
+
+\paragraph{Devicetypes definition}
+The block shown in Figure~\ref{fig:homy_device_type} is used to specify the states of a given devicetype. In this case, the devicetype ``blind'' has two states: ``open'' and ``closed''. The block is used to define the states of a device, so the user can select the states of a device when creating it. The block has a direct \fodot translation, both in the vocabulary and structure as shown below.
+\begin{idplisting}
+vocabulary V {
+    type blindDevice := {} <: Device
+    type blindDeviceStates := {open, closed} <: State
+}
+theory T:V {
+    !dt in blindDevice: ?x in blindDeviceStates: deviceIsInState(dt) = x.
+}
+\end{idplisting}
+
+The theory part of the \fodot description is there so, while using the Interactive Consultant, the user can only select the states of the devicetype, not every state.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.4\linewidth]{images/homy_device_type.png}
+    \caption{An example of the blockly block that defines the states of a device}
+    \label{fig:homy_device_type}
+\end{figure}
+
+\paragraph{Devices}
+A device is created using the block shown in Figure~\ref{fig:homy_device}. The user needs to specify the name of the device, the devicetype and the area it is in. For example, a device called ``bedroom_blind'' is of the type ``blind'' and is located in the bedroom. The block has a direct \fodot translation, shown below. The line created by the devicetype-block is changed sto include the newly defined device.
+
+\begin{idplisting}
+vocabulary V {
+    type Device := {bedroom_blind} 
+
+    type blindDevice := {bedroom_blind} <: Device
+}
+\end{idplisting}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/homy_device.png}
+    \caption{An example of the blockly block that creates a new device}
+    \label{fig:homy_device}
+\end{figure}
+
+\subsection{Single rules}
+The blocks shown in Figure~\ref{fig:homy_single_rule} are used to create a standalone rule. The user selects a device which state dictates wether or not the rule is true. After which the user selects a device of which the state is changed when the first part of the rule is true. For example, if the ``lightSwitch'' is in the state ``on'', the ``light'' should be in the state ``on''. The block has a direct \fodot translation, shown below.
+
+\begin{idplisting}
+theory T:V {
+    deviceIsInState(lightSwitch) = on <=> deviceIsInState(light) = on.
+}
+\end{idplisting}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/homy_single_rule.png}
+    \caption{An example of the blockly block that creates a single rule}
+    \label{fig:homy_single_rule}
+\end{figure}
+
+\subsection{Enumerating rules over devicetypes}
+The blocks shown in Figure~\ref{fig:homy_enumerate_rule_devicetype} are used to create a rule that is true for all devices of a certain type. The user selects a device which state dictates wether or not the rule is true. After which the user selects a state in which all the devices of that type should be in. For example, if the ``lightSwitch'' is in the state ``on'', all the lights should be in the state ``on''. The block has a direct \fodot translation, shown below.
+
+\begin{idplisting}
+theory T:V {
+    !DT in LightDevice: deviceIsInState(lightswitch) = on <=> deviceIsInState(DT) = off.
+}
+\end{idplisting}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/homy_enumerate_rule_devicetype.png}
+    \caption{An example of the blockly block that creates an enumerating rule}
+    \label{fig:homy_enumerate_rule_devicetype}
+\end{figure}
+
+\subsection{Enumerating rules over areas}
+The blocks shown in Figure~\ref{fig:homy_enumerate_rule_area} are used to create a rule that is true for all devices in a certain area. The user selects an area who limits the selected devices to the devices in that area. After which the user can input one of the previous rules to create a rule that applies only in a sertain area. For example, if the ``lightSwitch'' is in the state ``on'', all the lights in the living room should be in the state ``on''. The block has a direct \fodot translation, shown below.
+
+\begin{idplisting}
+theory T:V {
+    !d in Device: deviceIsInArea(d) = living_room & !DT in LightDevice: deviceIsInState(lightswitch) = on <=> deviceIsInState(DT) = on.
+}
+\end{idplisting}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/homy_enumerate_rule_area.png}
+    \caption{An example of the blockly block that creates an enumerating rule over areas}
+    \label{fig:homy_enumerate_rule_area}
+\end{figure}
+
+\subsection{Save}
+The save button is used to save the current workspace and translate it to \fodot. It takes the JSON-like structure and sends a post-request to the flask-server started at launch of the application. After the JSON-like structure is parsed into \fodot code, another server is started with the Interactive Consultant of IDP-Z3 where the \fodot description is already loaded. It is important to note that the user does not get corrected on their mistakes in the blocks-based editor, since the IDP-Z3 engine provides a way to explain errors.
+
+\section{\fodot parsing and IDP-Z3 integration}
+For the parsing of the \fodot code we used python, this is done locally on the user's machine. When the application is started a flask-servver is started which is used to get the generated JSON-like structures from the blocks and parse them into valid \fodot rules.
+An example of how the JSON-like structure is parsed is shown below.
+\begin{verbatim}
+__NEW_DEVICE__{{
+    "deviceName": "light0", 
+    "deviceType": "  on_off_device", 
+    "deviceArea": "home"
+}}
+\end{verbatim}
+Every JSON-like structure has the same format:
+\begin{itemize}
+    \item a function-name (always surrounded with double underscores), in this case NEW\_DEVICE
+    \item a JSON structure with the necessary parameters for that function (always encased in double curly brackets)
+    \item a ``\textbackslash n'' at the end of the line
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/blockly_new_device.png}
+    \caption{An example of a blockly block that creates a new device}
+    \label{fig:blockly_new_device}
+\end{figure}
+
+In this case the block shown in Figure~\ref{fig:blockly_new_device} would, by blockly, be parsed into the above JSON-like structure. After which it is translated into the following \fodot code:
+
+\begin{idplisting}
+vocabulary V {
+    type Device := {light0}
+    type on_off_device := {light0} <: Device
+}
+structure S:V {
+    deviceIsInArea := {light0 -> floor1}.
+}
+\end{idplisting}
+
+After parsing every block to valid \fodot code, the code is written to a file, after which a server is started that runs the Interactive Consultant of IDP-Z3. By creating a new server, the blockly server keeps running, so if the created KB has some semantic errors, the user can update the blocks accordingly without needing to reset everything.
 \printbibliography
 \end{document}
