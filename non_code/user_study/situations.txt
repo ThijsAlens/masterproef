@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------ INTRO ------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Create a devicetype called "door" with the following states:
+    - "opened"
+    - "closed"
+
+Create a new area called "living_room", it is part of the "home".
+
+Create a new device called "living_room_door" which is of the type "door", it is located in the area called "living_room".
+
+Create a new device called "living_room_motion_sensor" which is of the type "on_off_device", it is located in the area called "living_room".
+
+Create a new rule that states that if the "living_room_motion_sensor" is in state "on", the "living_room_door" should be in the state "opened".
+
+Save your blocks and see if they function as you imagined in the Interactive Consultant.
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------ CASE 1 -----------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Model the home given in CASE_1.
+

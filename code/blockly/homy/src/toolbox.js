@@ -658,11 +658,15 @@ export const homy = {
           kind: 'block',
           type: 'STATES_states_dropdown',
         },
+        {
+          kind: 'block',
+          type: 'STATE_number_state',
+        }
       ],
     },
     {
       kind: 'category',
-      name: 'Areas and States',
+      name: 'States',
       categorystyle: 'Areas and States',
       contents: [
         {
@@ -678,6 +682,13 @@ export const homy = {
           kind: 'block',
           type: 'STATE_int',
         },
+      ],
+    },
+    {
+      kind: 'category',
+      name: 'Areas',
+      categorystyle: 'Areas',
+      contents: [
         {
           kind: 'button',
           text: 'Create Area',
@@ -700,23 +711,24 @@ export const homy = {
       contents: [
         {
           kind: 'block',
+          type: 'RULES_single_rule',
+        },
+        {
+          kind: 'block',
           type: 'RULES_equivalence',
         },
         {
           kind: 'block',
           type: 'RULES_for_all_devices_of_type',
         },
+
+        {
+          kind: 'block',
+          type: 'RULES_for_all_devices_in_area_of_type',
+        },
         {
           kind: 'block',
           type: 'RULES_for_all_devices_of_type_equivalence',
-        },
-        {
-          kind: 'block',
-          type: 'RULES_for_all_devices_in_area',
-        },
-        {
-          kind: 'block',
-          type: 'RULES_single_rule',
         },
       ],
     },

@@ -7,7 +7,7 @@
 // some global vairables to track the possible states and areas
 export let possibleStates = [["on", "on"], ["off", "off"]];
 export let possibleAreas = [["home", "home"]];
-export let deviceTypes = [["on_off_device", "on_off_device"], ["integer_device", "integer_device"]];
+export let deviceTypes = [["on_off_device", "on_off_device"]];
 export let devices = [["add a new device", "null"]];
 
 import * as Blockly from 'blockly';
@@ -55,13 +55,10 @@ ws.addChangeListener((e) => {
 
   let code = javascriptGenerator.workspaceToCode(ws);
 
-  // Extract unique matches as you're already doing
+  // Extract unique the device names from the code
   const regex = /"deviceName":\s*"([^"]+)"/g;
   const matches = [...code.matchAll(regex)].map(match => match[1]);
   const uniqueMatches = [...new Set(matches)];
-
-  console.log("matches", JSON.stringify(matches));
-  console.log("devices before", JSON.stringify(devices));
 
   // Update the devices array in place to avoid duplicates
   devices.length = 0;
@@ -70,8 +67,6 @@ ws.addChangeListener((e) => {
   } else {
     devices.push(["add a new device", "null"]);
   }
-
-  console.log("devices after", JSON.stringify(devices));
   
   save(ws); 
 

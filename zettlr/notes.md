@@ -71,3 +71,12 @@ SOTA structure
 onderste deel p21
 3.1 Home automation description -> rules
 3.2 vocabulary + theorie?
+
+# 22/04
+buisiness logic
+vragenlijstje
+string en int device gebruiken
+regels aanpassen zodat beide werken
+LZ-based compression
+4 mei klaar.
+

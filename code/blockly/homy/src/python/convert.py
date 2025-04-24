@@ -112,14 +112,19 @@ def parse(code: str) -> str:
     # default code for the vocabulary
     vocabulary.append("vocabulary V {")
     vocabulary.append("\t// DEFAULT NEEDED TYPES AND FUNCTIONS")
-    vocabulary.append("\ttype Device := {}")
-    vocabulary.append("\ttype State := {}")
+    vocabulary.append("\ttype StringDevice := {}")
+    vocabulary.append("\ttype NumberDevice := {}")
+    vocabulary.append("\ttype StringState := {}")
     vocabulary.append("\ttype Area := {}")
+    vocabulary.append("\ttime: () -> Int")
     vocabulary.append("\n")
-    vocabulary.append("\tdeviceIsInArea: Device -> Area")
+    vocabulary.append("\tstringDeviceIsInArea: StringDevice -> Area")
+    vocabulary.append("\tnumberDeviceIsInArea: NumberDevice -> Area")
     vocabulary.append("\t// subArea * superArea -> Bool")
     vocabulary.append("\tareaIsSubAreaOf: Area * Area -> Bool")
     vocabulary.append("\n")
+    vocabulary.append("\tstringDeviceIsInState: StringDevice -> StringState")
+    vocabulary.append("\tnumberDeviceIsInState: NumberDevice -> Int")
     vocabulary.append("\t// GENERATED VOCABULARY")
 
     # default code for the theory
@@ -130,7 +135,8 @@ def parse(code: str) -> str:
 
     # default code for the structure
     structure.append("structure S : V {")
-    structure.append("\tdeviceIsInArea := {} .")
+    structure.append("\tstringDeviceIsInArea := {} .")
+    structure.append("\tnumberDeviceIsInArea := {} .")
     structure.append("\tareaIsSubAreaOf := {} .")
 
     # split the code into single function-calls
@@ -139,7 +145,6 @@ def parse(code: str) -> str:
 
     for re_match in re_matches:
         function: str = re_match[0]
-        woo = "{"+re_match[1]+"}"
         arguments: dict = json.loads("{"+re_match[1]+"}")
         vocabulary, theory, structure = match_function(function, arguments, vocabulary[:], theory[:], structure[:])
 

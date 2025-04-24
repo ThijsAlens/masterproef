@@ -16,8 +16,15 @@ def new_device(vocabulary: list[str], theory: list[str], structure: list[str], a
     if arguments["deviceType"].strip() == "No_device_types":
         # not a valid device type, skip it
         return vocabulary, theory, structure
+    
+    # set flags wether the device is a string or int device
+    line = next((s for s in vocabulary if arguments["deviceType"].strip() in s), None) # search for the device type in the vocabulary
+    is_int = True if line.endswith("NumberDevice") else False
+
     for i, line in enumerate(vocabulary):
-        if "type Device :=" in line:
+        key = "NumberDevice" if is_int else "StringDevice"
+        # add it to the correct device-group
+        if f"type {key} :=" in line:
             if line.strip().endswith("{}"):
                 # leave the "," if it is the first device
                 new_input_string = f"{arguments['deviceName'].strip()}"
@@ -25,22 +32,27 @@ def new_device(vocabulary: list[str], theory: list[str], structure: list[str], a
                 new_input_string = f", {arguments['deviceName'].strip()}"
             updated_line = line.rstrip("}") + new_input_string + "}"
             vocabulary[i] = updated_line
+
         if f"type {arguments["deviceType"].strip()}Device :=" in line:
-            if line.strip().endswith("{} <: Device"):
+            endswith = "NumberDevice" if is_int else "StringDevice"
+            # update the devicetype
+            if line.strip().endswith(f"{{}} <: {endswith}"):
                 # leave the "," if it is the first device
                 new_input_string = f"{arguments['deviceName'].strip()}"
             else:
                 new_input_string = f", {arguments['deviceName'].strip()}"
-            updated_line = line.rstrip("} <: Device") + new_input_string + "} <: Device"
+            updated_line = line.rstrip(f" <: {endswith}").rstrip("}") + new_input_string + f"}} <: {endswith}"
             vocabulary[i] = updated_line
     
     for i, line in enumerate(structure):
-        if "deviceIsInArea :=" in line:
+        key = "numberDeviceIsInArea" if is_int else "stringDeviceIsInArea"
+        # update the device area relation
+        if f"{key} :=" in line:
             if line.strip().endswith("{} ."):
                 # leave the "," if it is the first device
-                new_input_string = f"({arguments['deviceName'].strip()} -> {arguments['deviceArea'].strip()})"
+                new_input_string = f"{arguments['deviceName'].strip()} -> {arguments['deviceArea'].strip()}"
             else:
-                new_input_string = f", ({arguments['deviceName'].strip()} -> {arguments['deviceArea'].strip()})"
+                new_input_string = f", {arguments['deviceName'].strip()} -> {arguments['deviceArea'].strip()}"
             updated_line = line.rstrip("} .") + new_input_string + "} ."
             structure[i] = updated_line
             break
@@ -62,12 +74,26 @@ def new_device_type(vocabulary: list[str], theory: list[str], structure: list[st
     if arguments["deviceTypeName"].strip() == "No_device_types":
         # not a valid device type, skip it
         return vocabulary, theory, structure
-    vocabulary.append(f"\ttype {arguments['deviceTypeName'].strip()}Device := {{}} <: Device")
-    formatted_states = arguments['deviceTypeStates'][0].split(",")
-    formatted_states = ', '.join(formatted_states)
-    vocabulary.append(f"\ttype {arguments['deviceTypeName'].strip()}DeviceStates := {{{formatted_states}}}")
 
-    theory.append(f"\t!dt in {arguments['deviceTypeName'].strip()}Device: ?x in {arguments['deviceTypeName'].strip()}DeviceStates: deviceIsInState(dt) = x.") # make sure only the defined states show up in the IC
+    # set flags wether the device is a string or int device
+    is_int = True if arguments['deviceTypeStates'][0]["type"] == "number" else False
+
+    key = "NumberDevice" if is_int else "StringDevice"
+    vocabulary.append(f"\ttype {arguments['deviceTypeName'].strip()}Device := {{}} <: {key}")
+
+    if is_int:
+        formatted_states = arguments["deviceTypeStates"][0]["range"]
+        formatted_states = f"{formatted_states['min']}..{formatted_states['max']}"
+        key = "Int"
+    else:
+        formatted_states = arguments['deviceTypeStates'][0]["states"].split(",")
+        formatted_states = [state.strip() for state in formatted_states]
+        formatted_states = ', '.join(formatted_states)
+        key = "StringState"
+
+    vocabulary.append(f"\ttype {arguments['deviceTypeName'].strip()}DeviceStates := {{{formatted_states}}} <: {key}")
+
+    #theory.append(f"\t!dt in {arguments['deviceTypeName'].strip()}Device: ?x in {arguments['deviceTypeName'].strip()}DeviceStates: deviceIsInState(dt) = x.") # make sure only the defined states show up in the IC
     return vocabulary, theory, structure
 
 def new_area_relation(vocabulary: list[str], theory: list[str], structure: list[str], arguments: dict[str, str]) -> tuple[list[str], list[str], list[str]]:
@@ -141,7 +167,7 @@ def states(vocabulary: list[str], theory: list[str], structure: list[str], argum
     """
     new_input_string = ""
     for i, line in enumerate(vocabulary):
-        if "type State :=" in line:
+        if "type StringState :=" in line:
             if line.strip().endswith("{}"):
                 for j, key in enumerate(arguments.keys()):
                     if j == 0:
@@ -180,10 +206,15 @@ def _parse_single_rule(rule: dict[str, str]) -> str:
                     fo_dot_rule += f"{_parse_single_rule(rule)}"
                 else:
                     fo_dot_rule += f" & {_parse_single_rule(rule)}"
-        case "for_all_in_area":
-            fo_dot_rule = f"!d in Device: deviceIsInArea(d) = {rule['areaName'].strip()} & "
-            for i, rule in enumerate(rule["rules"]):
-                fo_dot_rule += f"{_parse_single_rule(rule)}"
+        case "for_all_in_area_of_devicetype":
+            fo_dot_rule = ""
+            orig_rule = rule.copy()
+            for i, rule in enumerate(orig_rule["rules"]):
+                if orig_rule['deviceTypeName'].strip().startswith("STRING_"):
+                    fo_dot_rule += f"!d in {orig_rule['deviceTypeName'].strip().removeprefix("STRING_")}: (stringDeviceIsInArea(d) = {orig_rule['areaName'].strip()} & stringDeviceIsInState({rule['sensor_name'].strip()}) = {rule['sensor_state'].strip()}) <=> stringDeviceIsInState(d) = {rule['actuator_state'].strip()}"
+            for i, rule in enumerate(orig_rule["rules"]):
+                if orig_rule['deviceTypeName'].strip().startswith("INT_"):
+                    fo_dot_rule += f"!d in {orig_rule['deviceTypeName'].strip().removeprefix("INT_")}: (stringDeviceIsInArea(d) = {orig_rule['areaName'].strip()} & stringDeviceIsInState({rule['sensor_name'].strip()}) = {rule['sensor_state'].strip()}) <=> stringDeviceIsInState(d) = {rule['actuator_state'].strip()}"
         case _:
             pass
     return fo_dot_rule

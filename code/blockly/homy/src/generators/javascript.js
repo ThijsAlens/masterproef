@@ -30,17 +30,23 @@ forBlock['DEVICE_device_type'] = function (block, generator) {
   const deviceTypeName = generator.statementToCode(block, 'device_type_value');
   let deviceTypeStates = generator.statementToCode(block, 'states_value');
 
-  // make deviceTypeStates look like a python list
-  
-  deviceTypeStates = deviceTypeStates
-  .split(",")                        // split by comma
-  .map(s => s.trim())                // remove spaces
-  .filter(s => s !== "")             // remove empty strings
-  .map(s => s.toLowerCase());        // lowercase each
-  console.log("deviceTypeStates", deviceTypeStates);
+  console.log(deviceTypeStates);
+
+  if (deviceTypeStates.includes(`NUMBER__{{"min":`)) {
+    deviceTypeStates = `{"type": "number", "range": ${deviceTypeStates.slice(11, -1)}}`;
+  } else {
+    // make deviceTypeStates look like a python list
+    
+    deviceTypeStates = deviceTypeStates
+    .split(",")                        // split by comma
+    .map(s => s.trim())                // remove spaces
+    .filter(s => s !== "")             // remove empty strings
+    .map(s => s.toLowerCase());        // lowercase each
+    deviceTypeStates = `{"type": "string", "states": "${deviceTypeStates}"}`;
+  }
 
   // Generate the JavaScript code
-  const code =`__NEW_DEVICE_TYPE__{{"deviceTypeName": "${deviceTypeName}", "deviceTypeStates": ["${deviceTypeStates}"]}}`;
+  const code =`__NEW_DEVICE_TYPE__{{"deviceTypeName": "${deviceTypeName}", "deviceTypeStates": [${deviceTypeStates}]}}`;
   return code;
 };
 
@@ -60,6 +66,17 @@ forBlock['STATES_states_dropdown'] = function (block, generator) {
 
   return code;
 }
+
+forBlock['STATE_number_state'] = function (block, generator) {
+  // Get the field values from the block
+  const min = block.getFieldValue('min');
+  const max = block.getFieldValue('max');
+
+  // Generate the JavaScript code
+  const code =`NUMBER__{{"min": ${min}, "max": ${max}}}`;
+  return code;
+}
+
 
 forBlock['STATE_value'] = function (block, generator) {
   // Get the field values from the block
@@ -120,7 +137,7 @@ forBlock['RULES_for_all_devices_of_type'] = function (block, generator) {
   // Generate the JavaScript code
   rules = rules.replace(/,\s*$/, ''); // get rid of the last comma to create a valid JSON
 
-  const code =`{"type": "for_all_of_devicetype", "deviceTypeName": "${deviceTypeName}", "rules": [${rules}]}`;
+  const code =`__NEW_RULE__{{"type": "for_all_of_devicetype", "deviceTypeName": "${deviceTypeName}", "rules": [${rules}]}}`;
   return code;
 }
 
@@ -135,12 +152,16 @@ forBlock['RULES_for_all_devices_of_type_equivalence'] = function (block, generat
   return code;
 }
 
-forBlock['RULES_for_all_devices_in_area'] = function (block, generator) {
+forBlock['RULES_for_all_devices_in_area_of_type'] = function (block, generator) {
   // Get the field values from the block
   const areaName = block.getFieldValue('area_value');
+  let deviceTypeName = block.getFieldValue('device_type_value');
   let rules = generator.statementToCode(block, 'rule');
 
-  const code =`__NEW_RULE_FOR_ALL_DEVICES_IN_AREA__{{"type": "for_all_in_area", "areaName": "${areaName}", "rules": [${rules}]}}`;
+  // Generate the JavaScript code
+  rules = rules.replace(/,\s*$/, ''); // get rid of the last comma to create a valid JSON
+
+  const code =`__NEW_RULE__{{"type": "for_all_in_area_of_devicetype", "areaName": "${areaName}", "deviceTypeName": "${deviceTypeName}", "rules": [${rules}]}}`;
   return code;
 }
 
@@ -148,7 +169,7 @@ forBlock['RULES_single_rule'] = function (block, generator) {
   // Get the field values from the block
   let rule = generator.statementToCode(block, 'rule');
   
-  const code =`__NEW_SINGLE_RULE__{{"rule": ${rule}}}`;
+  const code =`__NEW_RULE__{{"type": "single", "rule": ${rule}}}`;
   return code;
 }
 

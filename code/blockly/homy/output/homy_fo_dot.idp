@@ -1,29 +1,33 @@
 vocabulary V {
 	// DEFAULT NEEDED TYPES AND FUNCTIONS
-	type Device := {light0, lightswitch, light1, radiator, rgb_light}
-	type State := {on, off}
-	type Area := {home}
+	type StringDevice := {blindieee, blindieee2}
+	type NumberDevice := {dimmie, dimmie2}
+	type StringState := {on, off, opened, closed}
+	type Area := {home, floor1, floor2}
+	time: () -> Int
 
 
-	deviceIsInArea: Device -> Area
+	stringDeviceIsInArea: StringDevice -> Area
+	numberDeviceIsInArea: NumberDevice -> Area
 	// subArea * superArea -> Bool
 	areaIsSubAreaOf: Area * Area -> Bool
 
 
+	stringDeviceIsInState: StringDevice -> StringState
+	numberDeviceIsInState: NumberDevice -> Int
 	// GENERATED VOCABULARY
-	type on_off_deviceDevice := {} <: Device
-	type on_off_deviceDeviceStates := {on, on, on}
+	type blindDevice := {blindieee, blindieee2} <: StringDevice
+	type blindDeviceStates := {opened, closed} <: StringState
+	type dimmerDevice := {dimmie, dimmie2} <: NumberDevice
+	type dimmerDeviceStates := {0..100} <: Int
 }
 theory T : V {
 	// DEFAULT NEEDED RULES
 	!dt in on_off_deviceDevice: ?x in on_off_deviceDeviceStates: deviceIsInState(dt) = x.
 	// NOG EEN MANIER VINDEN OM INT DEVICES TOE TE LATEN...
-	!dt in on_off_deviceDevice: ?x in on_off_deviceDeviceStates: deviceIsInState(dt) = x.
-	!DT in on_off_device: deviceIsInState(null) = off <=> deviceIsInState(DT) = off.
-	!d in Device: deviceIsInArea(d) = home & !DT in on_off_device: deviceIsInState(null) = on <=> deviceIsInState(DT) = on.
-	!d in Device: deviceIsInArea(d) = home & !DT in integer_device: deviceIsInState(null) = on <=> deviceIsInState(DT) = 50.
 }
 structure S : V {
-	deviceIsInArea := {(light0 -> home), (lightswitch -> home), (light1 -> home), (radiator -> home), (rgb_light -> home)} .
-	areaIsSubAreaOf := {(home, home), (home, home)} .
+\stringDeviceIsInArea := {blindieee -> floor1, blindieee2 -> floor2} .
+	numberDeviceIsInArea := {dimmie -> floor1, dimmie2 -> floor2} .
+	areaIsSubAreaOf := {(floor1, home), (floor2, home)} .
 }

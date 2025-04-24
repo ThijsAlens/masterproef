@@ -23,6 +23,7 @@ code/blockly/homy/node_modules/*
 code/blockly/homy/venv/*
 
 # IDP-Z3 github
-code/blockly/homy/IDP-Z3_github/*
+code/blockly/homy/src/IDP-Z3_github/*
+code/idp/IDP-Z3_github/*
 
 

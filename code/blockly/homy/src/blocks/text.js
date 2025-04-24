@@ -94,6 +94,34 @@ const DEVICE_device_type =
   colour: 0
 }
 
+const STATE_number_state = 
+{
+  type: "STATE_number_state",
+  tooltip: "",
+  helpUrl: "",
+  message0: "numbers from %1 to %2 %3",
+  args0: [
+    {
+      type: "field_input",
+      name: "min",
+      text: "min value"
+    },
+    {
+      type: "field_input",
+      name: "max",
+      text: "max value"
+    },
+    {
+      type: "input_dummy",
+      name: "NAME"
+    }
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: 15
+}
+
+
 const STATES_states_dropdown = 
 {
   "type": "STATES_states_dropdown",
@@ -128,7 +156,7 @@ const STATE_int =
     {
       type: "field_input",
       name: "STATE_int_value",
-      text: "integer value"
+      text: "number"
     },
     {
       type: "input_dummy",
@@ -251,7 +279,7 @@ const RULES_equivalence =
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 240,
+  colour: 195,
   inputsInline: true
 }
 
@@ -260,7 +288,7 @@ const RULES_for_all_devices_of_type =
   type: "RULES_for_all_devices_of_type",
   tooltip: "",
   helpUrl: "",
-  message0: "For every device called 'DT' of type %1 %2 %3",
+  message0: "For every device of type %1 %2 %3",
   args0: [
     {
       type: "field_dropdown",
@@ -278,9 +306,40 @@ const RULES_for_all_devices_of_type =
       name: "rule"
     }
   ],
-  previousStatement: null,
-  nextStatement: null,
-  colour: 195
+  colour: 240
+}
+
+const RULES_for_all_devices_in_area_of_type = 
+{
+  type: "RULES_for_all_devices_in_area_of_type",
+  tooltip: "",
+  helpUrl: "",
+  message0: "For every device in area %1 of type %2 %3 %4",
+  args0: [
+    {
+      type: "field_dropdown",
+      name: "area_value",
+      options: function() {
+        return possibleAreas.map(area => [area[0], area[1]]);
+      }
+    },
+    {
+      type: "field_dropdown",
+      name: "device_type_value",
+      options: function() {
+        return deviceTypes.map(type => [type[0], type[1]]);
+      }
+    },
+    {
+      type: "input_dummy",
+      name: "device_type"
+    },
+    {
+      type: "input_statement",
+      name: "rule"
+    }
+  ],
+  colour: 240
 }
 
 const RULES_for_all_devices_of_type_equivalence = 
@@ -288,7 +347,7 @@ const RULES_for_all_devices_of_type_equivalence =
   type: "RULES_for_all_devices_of_type_equivalence",
   tooltip: "",
   helpUrl: "",
-  message0: "If %1 is in state %2 %3 then 'DT' should be in state %4 %5",
+  message0: "If %1 is in state %2 %3 then the devices should be in state %4 %5",
   args0: [
     {
       type: "field_dropdown",
@@ -318,32 +377,6 @@ const RULES_for_all_devices_of_type_equivalence =
   nextStatement: null,
   colour: 195,
   inputsInline: true
-}
-
-const RULES_for_all_devices_in_area = 
-{
-  type: "RULES_for_all_devices_in_area",
-  tooltip: "",
-  helpUrl: "",
-  message0: "For every device in area %1 %2 %3",
-  args0: [
-    {
-      type: "field_dropdown",
-      name: "area_value",
-      options: function() {
-        return possibleAreas.map(area => [area[0], area[1]]);
-      }
-    },
-    {
-      type: "input_dummy",
-      name: "area"
-    },
-    {
-      type: "input_statement",
-      name: "rule"
-    }
-  ],
-  colour: 240
 }
 
 const RULES_single_rule = 
@@ -377,6 +410,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   DEVICE_new_device,
   DEVICE_device_type_dropdown,
   DEVICE_device_type,
+  STATE_number_state,
 
   STATES_states_dropdown,
   STATE_value,
@@ -388,7 +422,6 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   RULES_single_rule,
 
   RULES_for_all_devices_of_type,
+  RULES_for_all_devices_in_area_of_type,
   RULES_for_all_devices_of_type_equivalence,
-
-  RULES_for_all_devices_in_area,
 ]); 
