@@ -57,13 +57,13 @@
 \contentsline {chapter}{\numberline {4}Implementation}{29}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Blockly}{29}{section.4.1}%
 \contentsline {subsection}{\numberline {4.1.1}Custom blocks}{30}{subsection.4.1.1}%
-\contentsline {paragraph}{States}{30}{section*.49}%
-\contentsline {paragraph}{Areas}{32}{section*.51}%
-\contentsline {paragraph}{Devicetypes creation}{32}{section*.53}%
-\contentsline {paragraph}{Devicetypes definition}{32}{section*.54}%
-\contentsline {paragraph}{Devices}{33}{section*.56}%
-\contentsline {subsection}{\numberline {4.1.2}Single rules}{33}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}Enumerating rules over devicetypes}{34}{subsection.4.1.3}%
-\contentsline {subsection}{\numberline {4.1.4}Enumerating rules over areas}{34}{subsection.4.1.4}%
-\contentsline {subsection}{\numberline {4.1.5}Save}{35}{subsection.4.1.5}%
-\contentsline {section}{\numberline {4.2}FO($\cdot $)\xspace parsing and IDP-Z3 integration}{35}{section.4.2}%
+\contentsline {paragraph}{States}{30}{section*.48}%
+\contentsline {paragraph}{Areas}{31}{section*.50}%
+\contentsline {paragraph}{Devicetypes creation}{31}{section*.52}%
+\contentsline {paragraph}{Devicetypes definition}{31}{section*.53}%
+\contentsline {paragraph}{Devices}{32}{section*.55}%
+\contentsline {subsection}{\numberline {4.1.2}Single rules}{32}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Enumerating rules over devicetypes}{33}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}Enumerating rules over areas}{33}{subsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.1.5}Save}{34}{subsection.4.1.5}%
+\contentsline {section}{\numberline {4.2}FO($\cdot $)\xspace parsing and IDP-Z3 integration}{34}{section.4.2}%

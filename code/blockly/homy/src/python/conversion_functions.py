@@ -182,89 +182,30 @@ def states(vocabulary: list[str], theory: list[str], structure: list[str], argum
             break
     return vocabulary, theory, structure
 
-def _parse_single_rule(rule: dict[str, str]) -> str:
+def new_rule(vocabulary: list[str], theory: list[str], structure: list[str], arguments: dict[str, str]) -> tuple[list[str], list[str], list[str]]:
     """
-    parse a single rule based on its type and return the correct fodot rule
+    Create a new rule in the vocabulary, theory and structure code.
 
     Args:
-        rule (dict[str, str]): The rule that needs to be parsed
-    
+        vocabulary (list[str]): The current vocabulary code.
+        theory (list[str]): The current theory code.
+        structure (list[str]): The current structure code.
+        arguments (dict[str, str]): The arguments for the function. KEY: argument name, VALUE: argument value.
+
     Returns:
-        string (string): The parsed fodot rule (no '.' is added after the rule, so if used as a standalone, it should be added)
+        tuple (tuple[list[str], list[str], list[str]]): The updated vocabulary, theory and structure code.
     """
-    fo_dot_rule = ""
-    # Thijs ni vergete van het type argument nog toe te voegen aan de js
-    match rule["type"]:
-        case "equivalence":
-            fo_dot_rule = f"deviceIsInState({rule['sensor_name'].strip()}) = {rule['sensor_state'].strip()} <=> deviceIsInState({rule['actuator_name'].strip()}) = {rule['actuator_state'].strip()}"
-        case "for_all_of_devicetype":
-            fo_dot_rule = f"!DT in {rule['deviceTypeName'].strip()}: "
-            for i, rule in enumerate(rule["rules"]):
-                rule["actuator_name"] = "DT"
-                rule["type"] = "equivalence"
-                if i == 0:
-                    fo_dot_rule += f"{_parse_single_rule(rule)}"
-                else:
-                    fo_dot_rule += f" & {_parse_single_rule(rule)}"
-        case "for_all_in_area_of_devicetype":
-            fo_dot_rule = ""
-            orig_rule = rule.copy()
-            for i, rule in enumerate(orig_rule["rules"]):
-                if orig_rule['deviceTypeName'].strip().startswith("STRING_"):
-                    fo_dot_rule += f"!d in {orig_rule['deviceTypeName'].strip().removeprefix("STRING_")}: (stringDeviceIsInArea(d) = {orig_rule['areaName'].strip()} & stringDeviceIsInState({rule['sensor_name'].strip()}) = {rule['sensor_state'].strip()}) <=> stringDeviceIsInState(d) = {rule['actuator_state'].strip()}"
-            for i, rule in enumerate(orig_rule["rules"]):
-                if orig_rule['deviceTypeName'].strip().startswith("INT_"):
-                    fo_dot_rule += f"!d in {orig_rule['deviceTypeName'].strip().removeprefix("INT_")}: (stringDeviceIsInArea(d) = {orig_rule['areaName'].strip()} & stringDeviceIsInState({rule['sensor_name'].strip()}) = {rule['sensor_state'].strip()}) <=> stringDeviceIsInState(d) = {rule['actuator_state'].strip()}"
+    # add the new rule to the theory
+    match arguments["type"]:
+        case "single_rule":
+            # add all the specified rules to the theory
+            for rule in arguments["rules"]:
+                theory.append(f"\t{rule}.")
+
+        case "for_all_of_devicetype" | "for_all_in_area_of_devicetype":
+            # add all the specified rules to the theory
+            for rule in arguments["rules"]:
+                theory.append(f"\t!d in {arguments['deviceTypeName'].strip()}Device: {rule}.")
         case _:
             pass
-    return fo_dot_rule
-
-def new_rule_for_all_devices_in_area(vocabulary: list[str], theory: list[str], structure: list[str], arguments: dict[str, str]) -> tuple[list[str], list[str], list[str]]:
-    """
-    Create a new rule for all devices in an area in the vocabulary, theory and structure code.
-
-    Args:
-        vocabulary (list[str]): The current vocabulary code.
-        theory (list[str]): The current theory code.
-        structure (list[str]): The current structure code.
-        arguments (dict[str, str]): The arguments for the function. KEY: argument name, VALUE: argument value.
-
-    Returns:
-        tuple (tuple[list[str], list[str], list[str]]): The updated vocabulary, theory and structure code.
-    """
-    theory.append(f"\t{_parse_single_rule(arguments)}.")
-    return vocabulary, theory, structure
-
-def new_rule_for_all_devices_of_type(vocabulary: list[str], theory: list[str], structure: list[str], arguments: dict[str, str]) -> tuple[list[str], list[str], list[str]]:
-    """
-    Create a new rule for all devices of a type in the vocabulary, theory and structure code.
-
-    Args:
-        vocabulary (list[str]): The current vocabulary code.
-        theory (list[str]): The current theory code.
-        structure (list[str]): The current structure code.
-        arguments (dict[str, str]): The arguments for the function. KEY: argument name, VALUE: argument value.
-
-    Returns:
-        tuple (tuple[list[str], list[str], list[str]]): The updated vocabulary, theory and structure code.
-    """
-    for rule in json.loads(arguments['rules']):
-        rule["deviceTypeName"] = arguments["deviceTypeName"]
-        theory.append(f"\t{_parse_single_rule(rule)}.")
-    return vocabulary, theory, structure
-
-def new_single_rule(vocabulary: list[str], theory: list[str], structure: list[str], arguments: dict[str, str]) -> tuple[list[str], list[str], list[str]]:
-    """
-    Create a new single rule in the vocabulary, theory and structure code.
-
-    Args:
-        vocabulary (list[str]): The current vocabulary code.
-        theory (list[str]): The current theory code.
-        structure (list[str]): The current structure code.
-        arguments (dict[str, str]): The arguments for the function. KEY: argument name, VALUE: argument value.
-
-    Returns:
-        tuple (tuple[list[str], list[str], list[str]]): The updated vocabulary, theory and structure code.
-    """
-    theory.append(f"\t{_parse_single_rule(arguments['rule'])}.")
     return vocabulary, theory, structure

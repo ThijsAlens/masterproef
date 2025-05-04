@@ -7,6 +7,7 @@
 import {Order} from 'blockly/javascript';
 import {updateSuperAreaDropdown} from '../index';
 import {devices} from '../index';
+import {current_code} from '../index';
 
 // Export all the code generators for our custom blocks,
 // but don't register them with Blockly yet.
@@ -56,6 +57,18 @@ forBlock['DEVICE_device_type_dropdown'] = function (block, generator) {
   const code = `${deviceTypeName}`;
   return code;
 }
+
+
+forBlock['DEVICE_device_dropdown'] = function (block, generator) {
+  // Get the field values from the block
+  const deviceName = block.getFieldValue('device_name');
+  const code = `${deviceName}`;
+  return code;
+}
+
+
+
+
 
 forBlock['STATES_states_dropdown'] = function (block, generator) {
   // Get the field values from the block
@@ -121,11 +134,9 @@ forBlock['AREA_relations'] = function (block, generator) {
 
 forBlock['RULES_equivalence'] = function (block, generator) {
   // Get the field values from the block
-  const sensor_name = block.getFieldValue('sensor_name_value');
-  const sensor_state = generator.statementToCode(block, 'state_of_sensor');
-  const actuator_name = block.getFieldValue('actuator_name_value');
-  const actuator_state = generator.statementToCode(block, 'state_of_actuator');
-  const code =`{"type": "equivalence", "sensor_name": "${sensor_name}", "sensor_state": "${sensor_state}", "actuator_name": "${actuator_name}", "actuator_state": "${actuator_state}"}`;
+  const condition = generator.statementToCode(block, 'condition');
+  const action = generator.statementToCode(block, 'action');
+  const code =`"(${condition}) <=> (${action})", `;
   return code;
 }
 
@@ -143,12 +154,13 @@ forBlock['RULES_for_all_devices_of_type'] = function (block, generator) {
 
 forBlock['RULES_for_all_devices_of_type_equivalence'] = function (block, generator) {
   // Get the field values from the block
-  const sensor_value_name = block.getFieldValue('sensor_value_name');
-  const state_of_sensor = generator.statementToCode(block, 'state_of_sensor');
+  const condition = generator.statementToCode(block, 'condition');
   const state_of_actuators = generator.statementToCode(block, 'state_of_actuators');
 
+  const key = !isNaN(state_of_actuators) ? "number" : "string";
+
   // Generate the JavaScript code
-  const code =`{"sensor_name": "${sensor_value_name}", "sensor_state": "${state_of_sensor}", "actuator_state": "${state_of_actuators}"}, `; // escape the quotes because JSON in JSON...
+  const code = `"(${condition}) <=> (${key}DeviceIsInState(d) = ${state_of_actuators})", `;
   return code;
 }
 
@@ -161,15 +173,68 @@ forBlock['RULES_for_all_devices_in_area_of_type'] = function (block, generator) 
   // Generate the JavaScript code
   rules = rules.replace(/,\s*$/, ''); // get rid of the last comma to create a valid JSON
 
-  const code =`__NEW_RULE__{{"type": "for_all_in_area_of_devicetype", "areaName": "${areaName}", "deviceTypeName": "${deviceTypeName}", "rules": [${rules}]}}`;
+  // add the area restriction to the rules
+  let rules_array = rules.split(',').map(str => {
+    let match = str.match(/<=>\s*\(\s*([\w\d_]+)\s*\(/);
+    match = match ? match[1] : null;
+    let key = match == "stringDeviceIsInState" ? "string" : "number";
+    let index = str.indexOf('(');
+    return str.slice(0, index + 1) + `(${key}DeviceIsInArea(d) = ${areaName}) & ` + str.slice(index + 1);
+  });
+  rules = rules_array.join(', ');
+  const code =`__NEW_RULE__{{"type": "for_all_in_area_of_devicetype", "deviceTypeName": "${deviceTypeName}", "rules": [${rules}]}}`;
   return code;
 }
 
 forBlock['RULES_single_rule'] = function (block, generator) {
   // Get the field values from the block
-  let rule = generator.statementToCode(block, 'rule');
+  let rules = generator.statementToCode(block, 'rule');
+
+  rules = rules.replace(/,\s*$/, ''); // get rid of the last comma to create a valid JSON
   
-  const code =`__NEW_RULE__{{"type": "single", "rule": ${rule}}}`;
+  let code = `__NEW_RULE__{{"type": "single_rule", "rules": [${rules}]}}`;
+  return code;
+}
+
+forBlock['RULES_is_always_in_same_state'] = function (block, generator) {
+  // Get the field values from the block
+  const device_1_name = block.getFieldValue('device_1_name');
+  const device_2_name = block.getFieldValue('device_2_name');
+
+  // Generate the JavaScript code
+  const code =`{"type": "is_always_in_same_state", "device_1_name": "${device_1_name}", "device_2_name": "${device_2_name}"}, `;
+  return code;
+}
+
+forBlock['RULES_is_in_state'] = function (block, generator) {
+  // Get the field values from the block
+  const device = generator.statementToCode(block, 'device');
+  const state = generator.statementToCode(block, 'state');
+
+  // Generate the JavaScript code
+  const lines = current_code.split('\n').filter(s => 
+    s.includes(device.trim()) && s.endsWith('')
+  );
+  
+  let key = "string";
+  for (const line of lines) {
+    if (line.endsWith("NumberDevice")) {
+      key = "number";
+      break;
+    }
+  }
+
+  const code =`(${key}DeviceIsInState(${device}) = ${state})`;
+  return code;
+}
+
+forBlock['RULES_and'] = function (block, generator) {
+  // Get the field values from the block
+  let part_1 = generator.statementToCode(block, 'part_1');
+  let part_2 = generator.statementToCode(block, 'part_2');
+
+  // Generate the JavaScript code
+  const code =`${part_1} & ${part_2} `;
   return code;
 }
 

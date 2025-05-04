@@ -20,5 +20,34 @@ Save your blocks and see if they function as you imagined in the Interactive Con
 ------------------------------------------------------------------ CASE 1 -----------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------------------
 
-Model the home given in CASE_1.
+Model the home with its rooms and devices given in CASE_1.
 
+The devicetype light consists of 2 states: 'light_on' and 'light_off'.
+The devicetype light_switch consists of 2 states: 'light_switch_on' and 'light_switch_off'.
+
+The home should follow the rules below:
+    - light_3 should turn on, if light_switch_1 is on.
+    - light_1 and light_2 should turn off, if light_switch_1 is turned on.
+    - light_1 and light_2 should turn on, if light_switch_1 is turned off.
+    - light_3 should turn off, if light_switch_1 is off.
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------ CASE 2 -----------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Model the home with its rooms and devices given in CASE_2.
+
+The devicetype light consists of 2 states: 'light_on' and 'light_off'.
+The devicetype light_switch consists of 2 states: 'light_switch_on' and 'light_switch_off'.
+The devicetype alarm consists of 2 states: 'alarm_on' and 'alarm_off'.
+The devicetype motion_sensor consists of 2 states: 'motion_sensor_on' and 'motion_sensor_off'.
+The devicetype variable_light consists of a range of numbers: 0 to 100.
+The devicetype variable_light_switch consists of a range of numbers: 0 to 100.
+The devicetype blind consists of 3 states: 'opened', 'half_opened' and 'closed'.
+
+The home should follow the rules below:
+    - 'light_1'  and 'light_2' should turn on, if either light_switch_1 or light_switch_2 is toggled.
+    - all the lights of type 'light' should turn on and the alarm should turn on, if the time is 2 and 'motion_sensor_1' is in the state 'motion_sensor_on'.
+    - 'variable_light_switch_1' controls the state of 'variable_light_1'.
+    - 'variable_light_1' should turn off (value = 0) and 'light_3' should turn on if it the time is 4.
+    - 'variable_light_1' should have a value of 40 and 'blind_1' should be half_opened, if the time is 6.

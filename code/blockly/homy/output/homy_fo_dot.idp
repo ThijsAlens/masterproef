@@ -1,9 +1,9 @@
 vocabulary V {
 	// DEFAULT NEEDED TYPES AND FUNCTIONS
-	type StringDevice := {blindieee, blindieee2}
-	type NumberDevice := {dimmie, dimmie2}
-	type StringState := {on, off, opened, closed}
-	type Area := {home, floor1, floor2}
+	type StringDevice := {light_1, light_2, light_3, light_switch_1}
+	type NumberDevice := {}
+	type StringState := {on, off, on, off}
+	type Area := {home}
 	time: () -> Int
 
 
@@ -16,18 +16,27 @@ vocabulary V {
 	stringDeviceIsInState: StringDevice -> StringState
 	numberDeviceIsInState: NumberDevice -> Int
 	// GENERATED VOCABULARY
-	type blindDevice := {blindieee, blindieee2} <: StringDevice
-	type blindDeviceStates := {opened, closed} <: StringState
-	type dimmerDevice := {dimmie, dimmie2} <: NumberDevice
-	type dimmerDeviceStates := {0..100} <: Int
+
+
+	// DEFAULT ON_OFF_TYPE
+	type On_offDevice := {} <: StringDevice
+	type On_offDeviceStates := {on, off} <: StringState
+	type nullDevice := {light_1, light_2, light_3, light_switch_1} <: StringDevice
+	type nullDeviceStates := {on, on} <: StringState
+	type nullDevice := {light_1, light_2, light_3, light_switch_1} <: StringDevice
+	type nullDeviceStates := {on, on} <: StringState
 }
 theory T : V {
 	// DEFAULT NEEDED RULES
 	!dt in on_off_deviceDevice: ?x in on_off_deviceDeviceStates: deviceIsInState(dt) = x.
 	// NOG EEN MANIER VINDEN OM INT DEVICES TOE TE LATEN...
+	(  (stringDeviceIsInState(  null) =   on)) <=> (  (stringDeviceIsInState(  null) =   on)).
+	!d in nullDevice: ((stringDeviceIsInArea(d) = home) &   (stringDeviceIsInState(  null) =   on)) <=> (stringDeviceIsInState(d) =   on).
+	!d in nullDevice: ((stringDeviceIsInArea(d) = home) &   (stringDeviceIsInState(  null) =   on)) <=> (stringDeviceIsInState(d) =   on).
+	(  (stringDeviceIsInState(  null) =   on)) <=> (  (stringDeviceIsInState(  null) =   on)).
 }
 structure S : V {
-\stringDeviceIsInArea := {blindieee -> floor1, blindieee2 -> floor2} .
-	numberDeviceIsInArea := {dimmie -> floor1, dimmie2 -> floor2} .
-	areaIsSubAreaOf := {(floor1, home), (floor2, home)} .
+	stringDeviceIsInArea := {light_1 -> home, light_2 -> home, light_3 -> home, light_switch_1 -> home} .
+	numberDeviceIsInArea := {} .
+	areaIsSubAreaOf := {(home, home), (home, home)} .
 }

@@ -94,6 +94,36 @@ const DEVICE_device_type =
   colour: 0
 }
 
+const DEVICE_device_dropdown = 
+{
+  type: "DEVICE_device_dropdown",
+  tooltip: "",
+  helpUrl: "",
+  message0: "%1 %2",
+  args0: [
+    {
+      type: "field_dropdown",
+      name: "device_name",
+      options: function() {
+        return devices.map(device => [device[0], device[1]]);
+      }
+    },
+    {
+      type: "input_dummy",
+      name: "NAME"
+    }
+  ],
+  output: null,
+  colour: 180
+}
+
+
+
+
+
+
+
+
 const STATE_number_state = 
 {
   type: "STATE_number_state",
@@ -164,7 +194,7 @@ const STATE_int =
     }
   ],
   output: null,
-  colour: 210
+  colour: 180
 }
 
 const STATE_value = 
@@ -187,7 +217,7 @@ const STATE_value =
     }
   ],
   output: null,
-  colour: 210
+  colour: 180
 }
 
 
@@ -244,44 +274,23 @@ const RULES_equivalence =
   type: "RULES_equivalence",
   tooltip: "",
   helpUrl: "",
-  message0: "If %1 %2 is in state %3 then %4 %5 should be in state %6",
+  message0: "If %1 then %2",
   args0: [
     {
-      type: "field_dropdown",
-      name: "sensor_name_value",
-      options: function() {
-          return devices.map(type => [type[0], type[1]]);
-      }
-    },
-    {
-      type: "input_dummy",
-      name: "sensor_name"
+      type: "input_value",
+      name: "condition"
     },
     {
       type: "input_value",
-      name: "state_of_sensor"
-    },
-    {
-      type: "field_dropdown",
-      name: "actuator_name_value",
-      options: function() {
-        return devices.map(type => [type[0], type[1]]);
-    }
-    },
-    {
-      type: "input_dummy",
-      name: "actuator_name"
-    },
-    {
-      type: "input_value",
-      name: "state_of_actuator"
+      name: "action"
     }
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 195,
+  colour: 270,
   inputsInline: true
 }
+
 
 const RULES_for_all_devices_of_type = 
 {
@@ -306,7 +315,7 @@ const RULES_for_all_devices_of_type =
       name: "rule"
     }
   ],
-  colour: 240
+  colour: 300
 }
 
 const RULES_for_all_devices_in_area_of_type = 
@@ -339,7 +348,7 @@ const RULES_for_all_devices_in_area_of_type =
       name: "rule"
     }
   ],
-  colour: 240
+  colour: 300
 }
 
 const RULES_for_all_devices_of_type_equivalence = 
@@ -347,22 +356,11 @@ const RULES_for_all_devices_of_type_equivalence =
   type: "RULES_for_all_devices_of_type_equivalence",
   tooltip: "",
   helpUrl: "",
-  message0: "If %1 is in state %2 %3 then the devices should be in state %4 %5",
+  message0: "If %1 then the devices should be in state %2 %3",
   args0: [
     {
-      type: "field_dropdown",
-      name: "sensor_value_name",
-      options: function() {
-        return devices.map(device => [device[0], device[1]]);
-      }
-    },
-    {
-      type: "input_dummy",
-      name: "NAME"
-    },
-    {
       type: "input_value",
-      name: "state_of_sensor"
+      name: "condition"
     },
     {
       type: "input_dummy",
@@ -375,9 +373,47 @@ const RULES_for_all_devices_of_type_equivalence =
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 195,
+  colour: 270,
   inputsInline: true
 }
+
+
+const RULES_is_always_in_same_state = 
+{
+  type: "RULES_is_always_in_same_state",
+  tooltip: "",
+  helpUrl: "",
+  message0: "%1 %2 is always in the same state as %3 %4",
+  args0: [
+    {
+      type: "field_dropdown",
+      name: "device_1_name",
+      options: function() {
+        return devices.map(device => [device[0], device[1]]);
+      }
+    },
+    {
+      type: "input_dummy",
+      name: "device_1"
+    },
+    {
+      type: "field_dropdown",
+      name: "device_2_name",
+      options: function() {
+        return devices.map(device => [device[0], device[1]]);
+      }
+    },
+    {
+      type: "input_dummy",
+      name: "device_2"
+    }
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: 180,
+  inputsInline: true
+}
+
 
 const RULES_single_rule = 
 {
@@ -395,8 +431,53 @@ const RULES_single_rule =
       name: "rule"
     }
   ],
-  colour: 240
+  colour: 300
 }
+
+const RULES_is_in_state = 
+{
+  type: "RULES_is_in_state",
+  tooltip: "",
+  helpUrl: "",
+  message0: "%1 is in state %2",
+  args0: [
+    {
+      type: "input_value",
+      name: "device"
+    },
+    {
+      type: "input_value",
+      name: "state"
+    }
+  ],
+  output: null,
+  colour: 210,
+  inputsInline: true
+}
+
+const RULES_and = 
+{
+  type: "RULES_and",
+  tooltip: "",
+  helpUrl: "",
+  message0: "%1 and %2",
+  args0: [
+    {
+      type: "input_value",
+      name: "part_1"
+    },
+    {
+      type: "input_value",
+      name: "part_2"
+    }
+  ],
+  output: null,
+  colour: 240,
+  inputsInline: true
+}
+
+
+
 
 
 
@@ -411,6 +492,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   DEVICE_device_type_dropdown,
   DEVICE_device_type,
   STATE_number_state,
+  DEVICE_device_dropdown,
 
   STATES_states_dropdown,
   STATE_value,
@@ -419,9 +501,13 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   AREA_relations,
 
   RULES_equivalence,
+  RULES_is_always_in_same_state,
   RULES_single_rule,
 
   RULES_for_all_devices_of_type,
   RULES_for_all_devices_in_area_of_type,
   RULES_for_all_devices_of_type_equivalence,
+  
+  RULES_is_in_state,
+  RULES_and,
 ]); 

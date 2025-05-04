@@ -3,8 +3,12 @@ import re
 import json
 import os
 import subprocess
-import time
 import webbrowser
+import time
+
+
+from lzstring import LZString
+from urllib.parse import quote
 
 from conversion_functions import * 
 
@@ -34,10 +38,9 @@ def match_function(function: str, arguments: dict[str, str], vocabulary: list[st
             res = areas(vocabulary[:], theory[:], structure[:], arguments)
         case "STATES":
             res = states(vocabulary[:], theory[:], structure[:], arguments)
-        case "NEW_RULE_FOR_ALL_DEVICES_IN_AREA":
-            res = new_rule_for_all_devices_in_area(vocabulary[:], theory[:], structure[:], arguments)
-        case "NEW_SINGLE_RULE":
-            res = new_single_rule(vocabulary[:], theory[:], structure[:], arguments)
+        case "NEW_RULE":
+            res = new_rule(vocabulary[:], theory[:], structure[:], arguments)
+        
         case _:
             # no matching function found, return the unchanged code
             print(f"no matching function found for {function}\n")
@@ -114,7 +117,7 @@ def parse(code: str) -> str:
     vocabulary.append("\t// DEFAULT NEEDED TYPES AND FUNCTIONS")
     vocabulary.append("\ttype StringDevice := {}")
     vocabulary.append("\ttype NumberDevice := {}")
-    vocabulary.append("\ttype StringState := {}")
+    vocabulary.append("\ttype StringState := {on, off}")
     vocabulary.append("\ttype Area := {}")
     vocabulary.append("\ttime: () -> Int")
     vocabulary.append("\n")
@@ -126,6 +129,10 @@ def parse(code: str) -> str:
     vocabulary.append("\tstringDeviceIsInState: StringDevice -> StringState")
     vocabulary.append("\tnumberDeviceIsInState: NumberDevice -> Int")
     vocabulary.append("\t// GENERATED VOCABULARY")
+    vocabulary.append("\n")
+    vocabulary.append("\t// DEFAULT ON_OFF_TYPE")
+    vocabulary.append("\ttype On_offDevice := {} <: StringDevice")
+    vocabulary.append("\ttype On_offDeviceStates := {on, off} <: StringState")
 
     # default code for the theory
     theory.append("theory T : V {")
@@ -153,7 +160,21 @@ def parse(code: str) -> str:
     structure.append("}")
     return "\n".join(vocabulary) + "\n" + "\n".join(theory) + "\n" + "\n".join(structure)
 
-    
+def open_ic(code_string: str) -> None:
+    """
+    Open the IC with the given code string.
+
+    Args:
+        code_string (str): The code string to open in the IC.
+
+    Returns:
+        None
+    """
+    lz = LZString()
+    compressed = lz.compressToEncodedURIComponent(code_string)
+    url_safe_compressed = quote(compressed)
+    webbrowser.open_new_tab(f"http://localhost:5000/?{url_safe_compressed}")
+    return
 
 if __name__ == '__main__':
     code = sys.argv[1]
@@ -181,5 +202,5 @@ if __name__ == '__main__':
     # Build full path to IDP-Z3_github
     project_dir = os.path.join(src_dir, "IDP-Z3_github")
     subprocess.Popen(["poetry", "run", "python3", "main.py"], cwd=project_dir)
-    webbrowser.open_new_tab("http://localhost:5000")
+    open_ic(code_string=fo_dot_code)
     

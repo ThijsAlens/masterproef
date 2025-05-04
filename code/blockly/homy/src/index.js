@@ -7,8 +7,9 @@
 // some global vairables to track the possible states and areas
 export let possibleStates = [["on", "on"], ["off", "off"]];
 export let possibleAreas = [["home", "home"]];
-export let deviceTypes = [["on_off_device", "on_off_device"]];
+export let deviceTypes = [["add a new device type", "null"]];
 export let devices = [["add a new device", "null"]];
+export let current_code = "";
 
 import * as Blockly from 'blockly';
 import {blocks} from './blocks/text';
@@ -50,7 +51,7 @@ ws.addChangeListener((e) => {
   // UI events are things like scrolling, zooming, etc.
   // No need to save after one of these.
   if (e.isUiEvent) return;
-
+  current_code = javascriptGenerator.workspaceToCode(ws);
   // Update the devices array based on current workspace
 
   let code = javascriptGenerator.workspaceToCode(ws);
@@ -136,7 +137,7 @@ ws.registerButtonCallback('createDeviceTypeCallback', function(button) {
   if (deviceTypeName) {
     deviceTypeName = String(deviceTypeName);
     deviceTypes.push([deviceTypeName, deviceTypeName]); // Add to the states list
-    if (Array.isArray(deviceTypes[0]) && deviceTypes[0].length === 2 && deviceTypes[0][0] === "" && deviceTypes[0][1] === ""){
+    if (Array.isArray(deviceTypes[0]) && deviceTypes[0].length === 2 && deviceTypes[0][0] === "add a new device type" && deviceTypes[0][1] === "null"){
       deviceTypes.shift(); // Remove the first element
     }
 

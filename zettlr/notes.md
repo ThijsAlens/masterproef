@@ -80,3 +80,27 @@ regels aanpassen zodat beide werken
 LZ-based compression
 4 mei klaar.
 
+devices met meerdere states en numbers niet mogelijk, vermelden.
+regels in thesis modeleren.
+meerdere inputs.
+
+THESIS
+not the most intuitive way wat verzachten (p20)
+niet based on maar effectief eerste orde logica (p20)
+chapter3 user wat anders verwoorden
+begin reas and devices
+This is a great way to make the user feel more comfortable with the system (te hard)
+sence -> sense
+3.2 blokjes zo kort mogelijk bij IDP-Z3 houden zodat we de volledige cappaciteiten van de solver gebruikt kunnen worden. 
+De structuur van blockly minder uitleggen
+deviceType anders formateren
+this is done so in states
+figuren nog is bezien, kloppen niet helemaal
+The theory part of the FO(·) description is there so, while using the Interactive Consultant, the user can only select the states of the devicetype, not every state. (nog zeggen wrm we ze nodig hebben en wrm we een regel hebben om de states in de IC te beperken. Ook zeggen wrm niet gwn aparte states in vocabularium)
+running example doorheen uitleg van de blokjes en dan achteraf IC
+
+
+
+
+
+

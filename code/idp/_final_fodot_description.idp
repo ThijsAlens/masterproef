@@ -1,36 +1,47 @@
 vocabulary V {
     // DEFAULT VOCABULARY TYPES AND FUNCTIONS
-    type Device := {light0, light1, lightswitch0, lightswitch1}
-    type State := {light_on, light_off, light_switch_on, light_switch_off}
+    type StringDevice := {light0, light1, lightswitch0, lightswitch1}
+    type NumberDevice := {}
+    type StringState := {on, off, light_switch_on, light_switch_off}
     type Area := {house, floor1, floor2}
+    time: ()-> Int
 
-    deviceIsInArea: Device -> Area
+    stringDeviceIsInArea: StringDevice -> Area
+    numberDeviceIsInArea: NumberDevice -> Area
+
     // subArea * superArea -> Bool
     areaIsSubAreaOf: Area * Area -> Bool
 
-    deviceIsInState: Device -> State
-    deviceHasValue: Device -> Int
+    stringDeviceIsInState: StringDevice -> StringState
+    numberDeviceIsInState: NumberDevice -> Int
 
     // GENERATED VOCABULARY
-    type LightDevice := {light0, light1} <: Device
-    type LightDeviceStates := {light_on, light_off} <: State
 
-    // type IntLightDevice := {light_2} <: Device
-    // type IntLightDeviceStates := {0..100} <: State
+    // new String deviceType
+    type LightDevice := {light0, light1} <: StringDevice
+    type LightDeviceStates := {on, off} <: StringState
 
-    type LightSwitchDevice := {lightswitch0, lightswitch1} <: Device
-    type LightSwitchStates := {light_switch_on, light_switch_off} <: State
+    type LightSwitchDevice := {lightswitch0, lightswitch1} <: StringDevice
+    type LightSwitchStates := {light_switch_on, light_switch_off} <: StringState
+
+    // new Number deviceType
+    type DimmerLightDevice := {dimmer_light} <: NumberDevice
+    type DimmerLightDeviceStates := {0..100} <: Int
+
 
 }
 
 theory T:V {
-    !l in LightDevice: ?x in LightDeviceStates: deviceIsInState(l) = x.
-    !ls in LightSwitchDevice: ?x in LightSwitchStates: deviceIsInState(ls) = x.
+    //!l in LightDevice: ?x in LightDeviceStates: deviceIsInState(l) = x.
+    //!ls in LightSwitchDevice: ?x in LightSwitchStates: deviceIsInState(ls) = x.
     //deviceIsInState(lightswitch0) = light_switch_on <=> deviceIsInState(light0) = light_on.
     //deviceIsInState(lightswitch0) = light_switch_off <=> deviceIsInState(light0) = light_off.
 
-    !d in Device: deviceIsInArea(d) = house & (!DT in LightDevice: deviceIsInState(lightswitch0) = light_switch_off <=> deviceIsInState(DT) = light_off).
-    !d in Device: !DT in LightDevice: deviceIsInArea(d) = house & deviceIsInState(lightswitch0) = light_switch_off <=> deviceIsInState(DT) = light_off.
+    //!d in Device: deviceIsInArea(d) = house & (!DT in LightDevice: deviceIsInState(lightswitch0) = light_switch_off <=> deviceIsInState(DT) = light_off).
+    //!d in Device: !DT in LightDevice: deviceIsInArea(d) = house & deviceIsInState(lightswitch0) = light_switch_off <=> deviceIsInState(DT) = light_off.
+
+    //!d in Device: (area & type & initial => state).
+    !d in LightDevice: (stringDeviceIsInArea(d) = floor1 & stringDeviceIsInState(lightswitch0) = off) <=> stringDeviceIsInState(d) = off.
 
     // deviceIsInState(lightswitch1) = light_switch_on <=> deviceIsInState(light2) = 50.
     // deviceIsInState(lightswitch1) = light_switch_off <=> deviceIsInState(light2) = 0.
@@ -44,7 +55,7 @@ theory T:V {
 }
 
 structure S:V {
-    deviceIsInArea := {light0 -> floor1, lightswitch0 -> floor1, light1 -> floor2, lightswitch1 -> floor2} .
+    stringDeviceIsInArea := {light0 -> floor1, lightswitch0 -> floor1, light1 -> floor2, lightswitch1 -> floor2} .
     areaIsSubAreaOf := {(floor1, house), (floor2, house)} .
 }
 
