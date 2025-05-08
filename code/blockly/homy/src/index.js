@@ -5,7 +5,7 @@
  */
 
 // some global vairables to track the possible states and areas
-export let possibleStates = [["on", "on"], ["off", "off"]];
+export let possibleStates = [["add a new state", "null"]];
 export let possibleAreas = [["home", "home"]];
 export let deviceTypes = [["add a new device type", "null"]];
 export let devices = [["add a new device", "null"]];
@@ -96,17 +96,9 @@ ws.registerButtonCallback('createStateCallback', function(button) {
   if (stateName) {
     stateName = String(stateName);
     possibleStates.push([stateName, stateName]); // Add to the states list
-
-    // Update the dropdown in existing "STATES_states_dropdown" blocks
-    ws.getAllBlocks().forEach(block => {
-      if (block.type === 'STATES_states_dropdown') {
-        const field = block.getField('states_dropdown_value');
-        if (field && field.menuGenerator_) {
-          field.menuGenerator_ = () => possibleStates.map(state => [state[0], state[1]]);
-          field.setValue(possibleStates[0][0]);
-        }
-      }
-    });
+    if (Array.isArray(possibleStates[0]) && possibleStates[0].length === 2 && possibleStates[0][0] === "add a new state" && possibleStates[0][1] === "null"){
+      possibleStates.shift(); // Remove the first element
+    }
   }
 });
 
@@ -140,17 +132,6 @@ ws.registerButtonCallback('createDeviceTypeCallback', function(button) {
     if (Array.isArray(deviceTypes[0]) && deviceTypes[0].length === 2 && deviceTypes[0][0] === "add a new device type" && deviceTypes[0][1] === "null"){
       deviceTypes.shift(); // Remove the first element
     }
-
-    // Update the dropdown in existing "STATES_states_dropdown" blocks
-    ws.getAllBlocks().forEach(block => {
-      if (block.type === 'DEVICE_device_type_dropdown') {
-        const field = block.getField('device_type_dropdown');
-        if (field && field.menuGenerator_) {
-          field.menuGenerator_ = () => deviceTypes.map(state => [state[0], state[1]]);
-          field.setValue(deviceTypes[0][0]);
-        }
-      }
-    });
   }
 });
 

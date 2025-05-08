@@ -680,6 +680,10 @@ export const homy = {
         },
         {
           kind: 'block',
+          type: 'STATES_states_dropdown',
+        },
+        {
+          kind: 'block',
           type: 'STATE_value',
         },
         {
@@ -727,7 +731,19 @@ export const homy = {
         },
         {
           kind: 'block',
+          type: 'RULES_or',
+        },
+        {
+          kind: 'block',
+          type: 'RULES_xor',
+        },
+        {
+          kind: 'block',
           type: 'RULES_is_in_state',
+        },
+        {
+          kind: 'block',
+          type: 'TIME_time',
         },
         {
           kind: 'block',

@@ -18,7 +18,7 @@ def new_device(vocabulary: list[str], theory: list[str], structure: list[str], a
         return vocabulary, theory, structure
     
     # set flags wether the device is a string or int device
-    line = next((s for s in vocabulary if arguments["deviceType"].strip() in s), None) # search for the device type in the vocabulary
+    line = next((s for s in vocabulary if arguments["deviceType"].strip().lower() in s), None) # search for the device type in the vocabulary
     is_int = True if line.endswith("NumberDevice") else False
 
     for i, line in enumerate(vocabulary):
@@ -27,20 +27,20 @@ def new_device(vocabulary: list[str], theory: list[str], structure: list[str], a
         if f"type {key} :=" in line:
             if line.strip().endswith("{}"):
                 # leave the "," if it is the first device
-                new_input_string = f"{arguments['deviceName'].strip()}"
+                new_input_string = f"{arguments['deviceName'].strip().lower()}"
             else:
-                new_input_string = f", {arguments['deviceName'].strip()}"
+                new_input_string = f", {arguments['deviceName'].strip().lower()}"
             updated_line = line.rstrip("}") + new_input_string + "}"
             vocabulary[i] = updated_line
 
-        if f"type {arguments["deviceType"].strip()}Device :=" in line:
+        if f"type {arguments["deviceType"].strip().lower()}Device :=" in line:
             endswith = "NumberDevice" if is_int else "StringDevice"
             # update the devicetype
             if line.strip().endswith(f"{{}} <: {endswith}"):
                 # leave the "," if it is the first device
-                new_input_string = f"{arguments['deviceName'].strip()}"
+                new_input_string = f"{arguments['deviceName'].strip().lower()}"
             else:
-                new_input_string = f", {arguments['deviceName'].strip()}"
+                new_input_string = f", {arguments['deviceName'].strip().lower()}"
             updated_line = line.rstrip(f" <: {endswith}").rstrip("}") + new_input_string + f"}} <: {endswith}"
             vocabulary[i] = updated_line
     
@@ -50,9 +50,9 @@ def new_device(vocabulary: list[str], theory: list[str], structure: list[str], a
         if f"{key} :=" in line:
             if line.strip().endswith("{} ."):
                 # leave the "," if it is the first device
-                new_input_string = f"{arguments['deviceName'].strip()} -> {arguments['deviceArea'].strip()}"
+                new_input_string = f"{arguments['deviceName'].strip().lower()} -> {arguments['deviceArea'].strip().lower()}"
             else:
-                new_input_string = f", {arguments['deviceName'].strip()} -> {arguments['deviceArea'].strip()}"
+                new_input_string = f", {arguments['deviceName'].strip().lower()} -> {arguments['deviceArea'].strip().lower()}"
             updated_line = line.rstrip("} .") + new_input_string + "} ."
             structure[i] = updated_line
             break
@@ -79,21 +79,21 @@ def new_device_type(vocabulary: list[str], theory: list[str], structure: list[st
     is_int = True if arguments['deviceTypeStates'][0]["type"] == "number" else False
 
     key = "NumberDevice" if is_int else "StringDevice"
-    vocabulary.append(f"\ttype {arguments['deviceTypeName'].strip()}Device := {{}} <: {key}")
+    vocabulary.append(f"\ttype {arguments['deviceTypeName'].strip().lower()}Device := {{}} <: {key}")
 
     if is_int:
         formatted_states = arguments["deviceTypeStates"][0]["range"]
-        formatted_states = f"{formatted_states['min']}..{formatted_states['max']}"
+        formatted_states = f"{formatted_states['min'].lower()}..{formatted_states['max'].lower()}"
         key = "Int"
     else:
         formatted_states = arguments['deviceTypeStates'][0]["states"].split(",")
-        formatted_states = [state.strip() for state in formatted_states]
+        formatted_states = [state.strip().lower() for state in formatted_states]
         formatted_states = ', '.join(formatted_states)
         key = "StringState"
 
-    vocabulary.append(f"\ttype {arguments['deviceTypeName'].strip()}DeviceStates := {{{formatted_states}}} <: {key}")
+    vocabulary.append(f"\ttype {arguments['deviceTypeName'].strip().lower()}DeviceStates := {{{formatted_states}}} <: {key}")
 
-    #theory.append(f"\t!dt in {arguments['deviceTypeName'].strip()}Device: ?x in {arguments['deviceTypeName'].strip()}DeviceStates: deviceIsInState(dt) = x.") # make sure only the defined states show up in the IC
+    theory.append(f"\t!dt in {arguments['deviceTypeName'].strip().lower()}Device: ?x in {arguments['deviceTypeName'].strip().lower()}DeviceStates: {"number" if is_int else "string"}DeviceIsInState(dt) = x.") # make sure only the defined states show up in the IC
     return vocabulary, theory, structure
 
 def new_area_relation(vocabulary: list[str], theory: list[str], structure: list[str], arguments: dict[str, str]) -> tuple[list[str], list[str], list[str]]:
@@ -114,9 +114,9 @@ def new_area_relation(vocabulary: list[str], theory: list[str], structure: list[
         if "areaIsSubAreaOf :=" in line:
             if line.strip().endswith("{} ."):
                 # leave the "," if it is the first subArea-superArea pair
-                new_input_string = f"({arguments['subArea'].strip()}, {arguments['superArea'].strip()})"
+                new_input_string = f"({arguments['subArea'].strip().lower()}, {arguments['superArea'].strip().lower()})"
             else:
-                new_input_string = f", ({arguments['subArea'].strip()}, {arguments['superArea'].strip()})"
+                new_input_string = f", ({arguments['subArea'].strip().lower()}, {arguments['superArea'].strip().lower()})"
             updated_line = line.rstrip("} .") + new_input_string + "} ."
             structure[i] = updated_line # update the structure code
             break
@@ -141,12 +141,12 @@ def areas(vocabulary: list[str], theory: list[str], structure: list[str], argume
             if line.strip().endswith("{}"):
                 for j, key in enumerate(arguments.keys()):
                     if j == 0:
-                        new_input_string += f"{key.strip()}"
+                        new_input_string += f"{key.strip().lower()}"
                     else:
-                        new_input_string += f", {key.strip()}"
+                        new_input_string += f", {key.strip().lower()}"
             else:
                 for j, key in enumerate(arguments.keys()):
-                    new_input_string += f", {key.strip()}"
+                    new_input_string += f", {key.strip().lower()}"
             updated_line = line.rstrip("}") + new_input_string + "}"
             vocabulary[i] = updated_line
             break

@@ -6,13 +6,17 @@ Create a devicetype called "door" with the following states:
     - "opened"
     - "closed"
 
+Create a devicetype called "motion_sensor" with the following states:
+    - "motion_detected"
+    - "no_motion_detected"
+
 Create a new area called "living_room", it is part of the "home".
 
 Create a new device called "living_room_door" which is of the type "door", it is located in the area called "living_room".
 
-Create a new device called "living_room_motion_sensor" which is of the type "on_off_device", it is located in the area called "living_room".
+Create a new device called "living_room_motion_sensor" which is of the type "motion_sensor", it is located in the area called "living_room".
 
-Create a new rule that states that if the "living_room_motion_sensor" is in state "on", the "living_room_door" should be in the state "opened".
+Create a new rule that states that if the "living_room_motion_sensor" is in state "motion_detected", the "living_room_door" should be in the state "opened".
 
 Save your blocks and see if they function as you imagined in the Interactive Consultant.
 
@@ -36,6 +40,22 @@ The home should follow the rules below:
 -------------------------------------------------------------------------------------------------------------------------------------------
 
 Model the home with its rooms and devices given in CASE_2.
+
+The devicetype light consists of 2 states: 'light_on' and 'light_off'.
+The devicetype fan consists of a range of numbers: 0 to 100.
+The devicetype motion_sensor consists of 2 states: 'motion_sensor_on', 'motion_sensor_off'.
+The devicetype temperature_sensor consists of a range of numbers: 0 to 50.
+
+The home should follow the rules below:
+    - light_3 should turn on, if motion_sensor_1 or motion_sensor_2 is active.
+    - fan_1 should turn on to 80, if the temperature_sensor is 30
+    - light_1 and light_2 should turn off, if the time is 8.
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------ CASE 3 -----------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Model the home with its rooms and devices given in CASE_3.
 
 The devicetype light consists of 2 states: 'light_on' and 'light_off'.
 The devicetype light_switch consists of 2 states: 'light_switch_on' and 'light_switch_off'.

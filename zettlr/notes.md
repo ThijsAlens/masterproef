@@ -100,6 +100,11 @@ The theory part of the FO(·) description is there so, while using the Interacti
 running example doorheen uitleg van de blokjes en dan achteraf IC
 
 
+XOR-blokje
+OR-blokje
+voorblad
+
+
 
 
 

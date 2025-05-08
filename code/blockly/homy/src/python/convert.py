@@ -117,7 +117,7 @@ def parse(code: str) -> str:
     vocabulary.append("\t// DEFAULT NEEDED TYPES AND FUNCTIONS")
     vocabulary.append("\ttype StringDevice := {}")
     vocabulary.append("\ttype NumberDevice := {}")
-    vocabulary.append("\ttype StringState := {on, off}")
+    vocabulary.append("\ttype StringState := {}")
     vocabulary.append("\ttype Area := {}")
     vocabulary.append("\ttime: () -> Int")
     vocabulary.append("\n")
@@ -130,15 +130,9 @@ def parse(code: str) -> str:
     vocabulary.append("\tnumberDeviceIsInState: NumberDevice -> Int")
     vocabulary.append("\t// GENERATED VOCABULARY")
     vocabulary.append("\n")
-    vocabulary.append("\t// DEFAULT ON_OFF_TYPE")
-    vocabulary.append("\ttype On_offDevice := {} <: StringDevice")
-    vocabulary.append("\ttype On_offDeviceStates := {on, off} <: StringState")
 
     # default code for the theory
     theory.append("theory T : V {")
-    theory.append("\t// DEFAULT NEEDED RULES")
-    theory.append("\t!dt in on_off_deviceDevice: ?x in on_off_deviceDeviceStates: deviceIsInState(dt) = x.")
-    theory.append("\t// NOG EEN MANIER VINDEN OM INT DEVICES TOE TE LATEN...")
 
     # default code for the structure
     structure.append("structure S : V {")

@@ -1,9 +1,9 @@
 vocabulary V {
 	// DEFAULT NEEDED TYPES AND FUNCTIONS
-	type StringDevice := {light_1, light_2, light_3, light_switch_1}
-	type NumberDevice := {}
-	type StringState := {on, off, on, off}
-	type Area := {home}
+	type StringDevice := {light_1, light_2, motion_sensor_1, motion_sensor_2, light_3}
+	type NumberDevice := {fan_1, temperature_sensor_1}
+	type StringState := {light_OFF, light_ON, motion_sensor_ON, motion_sensor_OFF}
+	type Area := {home, reading_corner, living_room}
 	time: () -> Int
 
 
@@ -18,25 +18,26 @@ vocabulary V {
 	// GENERATED VOCABULARY
 
 
-	// DEFAULT ON_OFF_TYPE
-	type On_offDevice := {} <: StringDevice
-	type On_offDeviceStates := {on, off} <: StringState
-	type nullDevice := {light_1, light_2, light_3, light_switch_1} <: StringDevice
-	type nullDeviceStates := {on, on} <: StringState
-	type nullDevice := {light_1, light_2, light_3, light_switch_1} <: StringDevice
-	type nullDeviceStates := {on, on} <: StringState
+	type lightDevice := {light_1, light_2, light_3} <: StringDevice
+	type lightDeviceStates := {light_on, light_off} <: StringState
+	type motion_sensorDevice := {motion_sensor_1, motion_sensor_2} <: StringDevice
+	type motion_sensorDeviceStates := {motion_sensor_on, motion_sensor_off} <: StringState
+	type fanDevice := {fan_1} <: NumberDevice
+	type fanDeviceStates := {0..100} <: Int
+	type temperature_sensorDevice := {temperature_sensor_1} <: NumberDevice
+	type temperature_sensorDeviceStates := {0..50} <: Int
 }
 theory T : V {
-	// DEFAULT NEEDED RULES
-	!dt in on_off_deviceDevice: ?x in on_off_deviceDeviceStates: deviceIsInState(dt) = x.
-	// NOG EEN MANIER VINDEN OM INT DEVICES TOE TE LATEN...
-	(  (stringDeviceIsInState(  null) =   on)) <=> (  (stringDeviceIsInState(  null) =   on)).
-	!d in nullDevice: ((stringDeviceIsInArea(d) = home) &   (stringDeviceIsInState(  null) =   on)) <=> (stringDeviceIsInState(d) =   on).
-	!d in nullDevice: ((stringDeviceIsInArea(d) = home) &   (stringDeviceIsInState(  null) =   on)) <=> (stringDeviceIsInState(d) =   on).
-	(  (stringDeviceIsInState(  null) =   on)) <=> (  (stringDeviceIsInState(  null) =   on)).
+	!dt in lightDevice: ?x in lightDeviceStates: stringDeviceIsInState(dt) = x.
+	!dt in motion_sensorDevice: ?x in motion_sensorDeviceStates: stringDeviceIsInState(dt) = x.
+	!dt in fanDevice: ?x in fanDeviceStates: numberDeviceIsInState(dt) = x.
+	!dt in temperature_sensorDevice: ?x in temperature_sensorDeviceStates: numberDeviceIsInState(dt) = x.
+	(    (stringDeviceIsInState(  motion_sensor_1) =   motion_sensor_ON) |   (stringDeviceIsInState(  motion_sensor_2) =   motion_sensor_ON) ) => (  (stringDeviceIsInState(  light_3) =   light_OFF)).
+	(  (stringDeviceIsInState(  temperature_sensor_1) =   30)) => (  (stringDeviceIsInState(  fan_1) =   80)).
+	(  time() = 8) => (    (stringDeviceIsInState(  light_1) =   light_OFF) &   (stringDeviceIsInState(  light_2) =   light_OFF) ).
 }
 structure S : V {
-	stringDeviceIsInArea := {light_1 -> home, light_2 -> home, light_3 -> home, light_switch_1 -> home} .
-	numberDeviceIsInArea := {} .
-	areaIsSubAreaOf := {(home, home), (home, home)} .
+	stringDeviceIsInArea := {light_1 -> reading_corner, light_2 -> reading_corner, motion_sensor_1 -> living_room, motion_sensor_2 -> living_room, light_3 -> living_room} .
+	numberDeviceIsInArea := {fan_1 -> reading_corner, temperature_sensor_1 -> reading_corner} .
+	areaIsSubAreaOf := {(reading_corner, home), (living_room, home)} .
 }

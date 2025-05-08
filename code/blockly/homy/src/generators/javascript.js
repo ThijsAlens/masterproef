@@ -136,7 +136,7 @@ forBlock['RULES_equivalence'] = function (block, generator) {
   // Get the field values from the block
   const condition = generator.statementToCode(block, 'condition');
   const action = generator.statementToCode(block, 'action');
-  const code =`"(${condition}) <=> (${action})", `;
+  const code =`"(${condition}) => (${action})", `;
   return code;
 }
 
@@ -160,7 +160,7 @@ forBlock['RULES_for_all_devices_of_type_equivalence'] = function (block, generat
   const key = !isNaN(state_of_actuators) ? "number" : "string";
 
   // Generate the JavaScript code
-  const code = `"(${condition}) <=> (${key}DeviceIsInState(d) = ${state_of_actuators})", `;
+  const code = `"(${condition}) => (${key}DeviceIsInState(d) = ${state_of_actuators})", `;
   return code;
 }
 
@@ -175,7 +175,7 @@ forBlock['RULES_for_all_devices_in_area_of_type'] = function (block, generator) 
 
   // add the area restriction to the rules
   let rules_array = rules.split(',').map(str => {
-    let match = str.match(/<=>\s*\(\s*([\w\d_]+)\s*\(/);
+    let match = str.match(/=>\s*\(\s*([\w\d_]+)\s*\(/);
     match = match ? match[1] : null;
     let key = match == "stringDeviceIsInState" ? "string" : "number";
     let index = str.indexOf('(');
@@ -213,7 +213,7 @@ forBlock['RULES_is_in_state'] = function (block, generator) {
 
   // Generate the JavaScript code
   const lines = current_code.split('\n').filter(s => 
-    s.includes(device.trim()) && s.endsWith('')
+    s.includes(device.trim().toLowerCase()) && s.endsWith('')
   );
   
   let key = "string";
@@ -235,6 +235,33 @@ forBlock['RULES_and'] = function (block, generator) {
 
   // Generate the JavaScript code
   const code =`${part_1} & ${part_2} `;
+  return code;
+}
+
+forBlock['RULES_or'] = function (block, generator) {
+  // Get the field values from the block
+  let part_1 = generator.statementToCode(block, 'part_1');
+  let part_2 = generator.statementToCode(block, 'part_2');
+
+  // Generate the JavaScript code
+  const code =`${part_1} | ${part_2} `;
+  return code;
+}
+
+forBlock['RULES_xor'] = function (block, generator) {
+  // Get the field values from the block
+  let part_1 = generator.statementToCode(block, 'part_1');
+  let part_2 = generator.statementToCode(block, 'part_2');
+
+  // Generate the JavaScript code
+  const code =`(${part_1} & ~${part_2}) | (~${part_1} & ${part_2})`;
+  return code;
+}
+
+forBlock['TIME_time'] = function (block, generator) {
+  // Get the field values from the block
+  const time = block.getFieldValue('TIME');
+  const code =`time() = ${time}`;
   return code;
 }
 

@@ -476,6 +476,71 @@ const RULES_and =
   inputsInline: true
 }
 
+const TIME_time = 
+{
+  "type": "TIME_time",
+  "tooltip": "",
+  "helpUrl": "",
+  "message0": "it is %1 %2",
+  "args0": [
+    {
+      "type": "field_input",
+      "name": "TIME",
+      "text": "time"
+    },
+    {
+      "type": "input_dummy",
+      "name": "NAME"
+    }
+  ],
+  "output": null,
+  "colour": 210
+}
+
+const RULES_or = 
+{
+  "type": "RULES_or",
+  "tooltip": "",
+  "helpUrl": "",
+  "message0": "%1 or %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "part_1"
+    },
+    {
+      "type": "input_value",
+      "name": "part_2"
+    }
+  ],
+  "output": null,
+  "colour": 240,
+  "inputsInline": true
+}
+
+const RULES_xor = 
+{
+  "type": "RULES_xor",
+  "tooltip": "",
+  "helpUrl": "",
+  "message0": "either %1 or %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "part_1"
+    },
+    {
+      "type": "input_value",
+      "name": "part_2"
+    }
+  ],
+  "output": null,
+  "colour": 240,
+  "inputsInline": true
+}
+
+
+
 
 
 
@@ -510,4 +575,8 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   
   RULES_is_in_state,
   RULES_and,
+  RULES_or,
+  RULES_xor,
+
+  TIME_time,
 ]); 
