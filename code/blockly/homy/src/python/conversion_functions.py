@@ -83,7 +83,7 @@ def new_device_type(vocabulary: list[str], theory: list[str], structure: list[st
 
     if is_int:
         formatted_states = arguments["deviceTypeStates"][0]["range"]
-        formatted_states = f"{formatted_states['min'].lower()}..{formatted_states['max'].lower()}"
+        formatted_states = f"{formatted_states['min']}..{formatted_states['max']}"
         key = "Int"
     else:
         formatted_states = arguments['deviceTypeStates'][0]["states"].split(",")

@@ -660,10 +660,6 @@ export const homy = {
         },
         {
           kind: 'block',
-          type: 'STATE_number_state',
-        },
-        {
-          kind: 'block',
           type: 'DEVICE_device_dropdown',
         }
       ],
@@ -681,6 +677,10 @@ export const homy = {
         {
           kind: 'block',
           type: 'STATES_states_dropdown',
+        },
+        {
+          kind: 'block',
+          type: 'STATE_number_state',
         },
         {
           kind: 'block',
