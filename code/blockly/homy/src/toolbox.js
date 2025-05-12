@@ -650,18 +650,6 @@ export const homy = {
           kind: 'block',
           type: 'DEVICE_new_device',
         },
-        {
-          kind: 'block',
-          type: 'DEVICE_device_type_dropdown',
-        },
-        {
-          kind: 'block',
-          type: 'STATES_states_dropdown',
-        },
-        {
-          kind: 'block',
-          type: 'DEVICE_device_dropdown',
-        }
       ],
     },
     {
@@ -682,14 +670,6 @@ export const homy = {
           kind: 'block',
           type: 'STATE_number_state',
         },
-        {
-          kind: 'block',
-          type: 'STATE_value',
-        },
-        {
-          kind: 'block',
-          type: 'STATE_int',
-        },
       ],
     },
     {
@@ -701,10 +681,6 @@ export const homy = {
           kind: 'button',
           text: 'Create Area',
           callbackKey: 'createAreaCallback',
-        },
-        {
-          kind: 'block',
-          type: 'AREA_area_dropdown'
         },
         {
           kind: 'block',
@@ -727,6 +703,14 @@ export const homy = {
         },
         {
           kind: 'block',
+          type: 'RULES_is_in_state_string',
+        },
+        {
+          kind: 'block',
+          type: 'RULES_is_in_state_int',
+        },
+        {
+          kind: 'block',
           type: 'RULES_and',
         },
         {
@@ -736,10 +720,6 @@ export const homy = {
         {
           kind: 'block',
           type: 'RULES_xor',
-        },
-        {
-          kind: 'block',
-          type: 'RULES_is_in_state',
         },
         {
           kind: 'block',
@@ -760,7 +740,11 @@ export const homy = {
         },
         {
           kind: 'block',
-          type: 'RULES_for_all_devices_of_type_equivalence',
+          type: 'RULES_for_all_devices_of_type_equivalence_string',
+        },
+        {
+          kind: 'block',
+          type: 'RULES_for_all_devices_of_type_equivalence_number',
         },
       ],
     },

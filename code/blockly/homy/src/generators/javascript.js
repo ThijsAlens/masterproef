@@ -17,7 +17,7 @@ export const forBlock = Object.create(null);
 forBlock['DEVICE_new_device'] = function (block, generator) {
   // Get the field values from the block
   const deviceName = block.getFieldValue('device_name_value').toLowerCase();
-  const deviceType = generator.statementToCode(block, 'device_type');
+  const deviceType = block.getFieldValue('device_type').toLowerCase();
   const deviceArea = block.getFieldValue('device_area_value').toLowerCase();
 
   // Generate the JavaScript code
@@ -28,9 +28,8 @@ forBlock['DEVICE_new_device'] = function (block, generator) {
 
 forBlock['DEVICE_device_type'] = function (block, generator) {
   // Get the field values from the block
-  const deviceTypeName = generator.statementToCode(block, 'device_type_value');
+  let deviceTypeName = block.getFieldValue('device_type_value').toLowerCase();
   let deviceTypeStates = generator.statementToCode(block, 'states_value');
-
   console.log(deviceTypeStates);
 
   if (deviceTypeStates.includes(`NUMBER__{{"min":`)) {
@@ -121,8 +120,8 @@ forBlock['AREA_area_dropdown'] = function (block, generator) {
 
 forBlock['AREA_relations'] = function (block, generator) {
   // Get the field values from the block
-  const subArea = generator.statementToCode(block, 'sub_area');
-  const superArea = generator.statementToCode(block, 'super_area');
+  const subArea = block.getFieldValue('sub_area').toLowerCase();
+  const superArea = block.getFieldValue('super_area').toLowerCase();
 
   // Generate the JavaScript code
   const code =`__NEW_AREA_RELATION__{{"subArea": "${String(subArea)}", "superArea": "${String(superArea)}"}}`;
@@ -152,15 +151,23 @@ forBlock['RULES_for_all_devices_of_type'] = function (block, generator) {
   return code;
 }
 
-forBlock['RULES_for_all_devices_of_type_equivalence'] = function (block, generator) {
+forBlock['RULES_for_all_devices_of_type_equivalence_string'] = function (block, generator) {
   // Get the field values from the block
   const condition = generator.statementToCode(block, 'condition');
-  const state_of_actuators = generator.statementToCode(block, 'state_of_actuators');
-
-  const key = !isNaN(state_of_actuators) ? "number" : "string";
+  const state_of_actuators = block.getFieldValue('state_of_actuators').toLowerCase();
 
   // Generate the JavaScript code
-  const code = `"(${condition}) => (${key}DeviceIsInState(d) = ${state_of_actuators})", `;
+  const code = `"(${condition}) => (stringDeviceIsInState(d) = ${state_of_actuators})", `;
+  return code;
+}
+
+forBlock['RULES_for_all_devices_of_type_equivalence_number'] = function (block, generator) {
+  // Get the field values from the block
+  const condition = generator.statementToCode(block, 'condition');
+  const state_of_actuators = block.getFieldValue('state_of_actuators');
+
+  // Generate the JavaScript code
+  const code = `"(${condition}) => (numberDeviceIsInState(d) = ${state_of_actuators})", `;
   return code;
 }
 
@@ -202,25 +209,27 @@ forBlock['RULES_is_always_in_same_state'] = function (block, generator) {
   const device_2_name = block.getFieldValue('device_2_name').toLowerCase();
 
   // Generate the JavaScript code
-  const code =`{"type": "is_always_in_same_state", "device_1_name": "${device_1_name}", "device_2_name": "${device_2_name}"}, `;
+  const code =`{numberDeviceIsInState(${device_1_name}) = numberDeviceIsInState(${device_2_name})`;
   return code;
 }
 
-forBlock['RULES_is_in_state'] = function (block, generator) {
+forBlock['RULES_is_in_state_string'] = function (block, generator) {
   // Get the field values from the block
-  const device = generator.statementToCode(block, 'device');
-  const state = generator.statementToCode(block, 'state');
-
-  // Generate the JavaScript code
-  let key = "string";
-  if (Number.isInteger(Number(state))) {
-    key = "number";
-  }
-  
-  console.log(`Device: ${device}, Key: ${key}`);
+  const device = block.getFieldValue('device').toLowerCase();
+  const state = block.getFieldValue('state').toLowerCase();
   
 
-  const code =`(${key}DeviceIsInState(${device}) = ${state})`;
+  const code =`(stringDeviceIsInState(${device}) = ${state})`;
+  return code;
+}
+
+forBlock['RULES_is_in_state_int'] = function (block, generator) {
+  // Get the field values from the block
+  const device = block.getFieldValue('device').toLowerCase();
+  const state = block.getFieldValue('state');
+  
+
+  const code =`(numberDeviceIsInState(${device}) = ${state})`;
   return code;
 }
 
