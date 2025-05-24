@@ -209,7 +209,7 @@ forBlock['RULES_is_always_in_same_state'] = function (block, generator) {
   const device_2_name = block.getFieldValue('device_2_name').toLowerCase();
 
   // Generate the JavaScript code
-  const code =`{numberDeviceIsInState(${device_1_name}) = numberDeviceIsInState(${device_2_name})`;
+  const code =`"numberDeviceIsInState(${device_1_name}) = numberDeviceIsInState(${device_2_name})", `;
   return code;
 }
 

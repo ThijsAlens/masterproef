@@ -105,6 +105,16 @@ OR-blokje
 voorblad
 
 
+We made sure that the blocks that of which are related to each other
+4.2.5 underscore
+enumeration over devices effectief vermelden dat maar 1 over 1 type quantisatie
+Grotere lijnen bij implementatie bij parsing 4.3
+regels effectief uitwerken
+
+
+
+
+
 
 
 

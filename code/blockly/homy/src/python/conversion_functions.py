@@ -18,7 +18,7 @@ def new_device(vocabulary: list[str], theory: list[str], structure: list[str], a
         return vocabulary, theory, structure
     
     # set flags wether the device is a string or int device
-    line = next((s for s in vocabulary if arguments["deviceType"].strip().lower() in s), None) # search for the device type in the vocabulary
+    line = next((s for s in vocabulary if f"type {arguments['deviceType'].strip().lower()}Device" in s), None) # search for the device type in the vocabulary
     is_int = True if line.endswith("NumberDevice") else False
 
     for i, line in enumerate(vocabulary):

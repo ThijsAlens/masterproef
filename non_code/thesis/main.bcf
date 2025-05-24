@@ -2380,19 +2380,32 @@
     <bcf:citekey order="13" intorder="1">scratch</bcf:citekey>
     <bcf:citekey order="14" intorder="1">IDPStructuredBlockbasedEditor</bcf:citekey>
     <bcf:citekey order="15" intorder="1">Blockly</bcf:citekey>
-    <bcf:citekey order="16" intorder="1">SOTA_KnowledgeBasedAIInHomeAutomation</bcf:citekey>
-    <bcf:citekey order="17" intorder="1">SOTA_OntologyBased</bcf:citekey>
-    <bcf:citekey order="18" intorder="1">SOTA_OntologyBased</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">IDPStructuredBlockbasedEditor</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">IDPStructuredBlockbasedEditor</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">SOTA_KnowledgeBasedAIInHomeAutomation</bcf:citekey>
     <bcf:citekey order="19" intorder="1">SOTA_OntologyBased</bcf:citekey>
-    <bcf:citekey order="20" intorder="1">SOTA_AutomationConfigurationSmarthome</bcf:citekey>
-    <bcf:citekey order="21" intorder="1">SOTA_AutomationConfigurationSmarthome</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">SOTA_OntologyBased</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">SOTA_OntologyBased</bcf:citekey>
     <bcf:citekey order="22" intorder="1">SOTA_AutomationConfigurationSmarthome</bcf:citekey>
-    <bcf:citekey order="23" intorder="1">SOTA_EventCalculus</bcf:citekey>
-    <bcf:citekey order="24" intorder="1">SOTA_EventCalculus</bcf:citekey>
-    <bcf:citekey order="25" intorder="1">SOTA_EventCalculus</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">OWL</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">SOTA_AutomationConfigurationSmarthome</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">SOTA_AutomationConfigurationSmarthome</bcf:citekey>
     <bcf:citekey order="26" intorder="1">SOTA_SmartBlock</bcf:citekey>
     <bcf:citekey order="27" intorder="1">Blockly</bcf:citekey>
-    <bcf:citekey order="28" intorder="1">Blockly</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">SOTA_SmartBlock</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">SOTA_SmartBlock</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">SOTA_EventCalculus</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">SOTA_EventCalculus</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">SOTA_EventCalculus</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">SOTA_AutomationConfigurationSmarthome</bcf:citekey>
+    <bcf:citekey order="34" intorder="1">Blockly</bcf:citekey>
+    <bcf:citekey order="35" intorder="1">SOTA_AutomationConfigurationSmarthome</bcf:citekey>
+    <bcf:citekey order="36" intorder="1">SOTA_SmartBlock</bcf:citekey>
+    <bcf:citekey order="37" intorder="1">SOTA_SmartBlock</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">Blockly</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">SOTA_SmartBlock</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">HA</bcf:citekey>
+    <bcf:citekey order="41" intorder="1">SOTA_OntologyBased</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

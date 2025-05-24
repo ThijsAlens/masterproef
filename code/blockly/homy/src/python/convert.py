@@ -144,6 +144,13 @@ def parse(code: str) -> str:
     pattern = r'__(.*?)__\{\{(.*?)\}\}\n'
     re_matches = re.findall(pattern, code)
 
+    # device types must be handled first, because they are needed for the other functions, so put them first in the matches list
+    for re_match in re_matches:
+        if re_match[0] == "NEW_DEVICE_TYPE":
+            re_matches.remove(re_match)
+            re_matches.insert(0, re_match)
+    print(f"re_matches after: {re_matches}")
+
     for re_match in re_matches:
         function: str = re_match[0]
         arguments: dict = json.loads("{"+re_match[1]+"}")

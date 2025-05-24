@@ -5,69 +5,83 @@
 \contentsline {section}{\numberline {1.3}Objectives}{2}{section.1.3}%
 \contentsline {chapter}{\numberline {2}Literature review}{3}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Home automation}{3}{section.2.1}%
-\contentsline {paragraph}{Smart home devices}{3}{section*.2}%
-\contentsline {paragraph}{Smart hub/server}{4}{section*.3}%
-\contentsline {paragraph}{Application}{4}{section*.4}%
+\contentsline {paragraph}{Smart home devices}{3}{section*.5}%
+\contentsline {paragraph}{Smart hub/server}{4}{section*.6}%
+\contentsline {paragraph}{Application}{4}{section*.7}%
 \contentsline {subsection}{\numberline {2.1.1}Home assistant}{4}{subsection.2.1.1}%
-\contentsline {paragraph}{Entities}{4}{section*.6}%
-\contentsline {paragraph}{Devices}{4}{section*.7}%
-\contentsline {paragraph}{Areas}{4}{section*.8}%
-\contentsline {paragraph}{Scenes}{5}{section*.9}%
-\contentsline {paragraph}{Automations}{5}{section*.10}%
-\contentsline {paragraph}{Scripts}{5}{section*.11}%
+\contentsline {paragraph}{Entities}{4}{section*.9}%
+\contentsline {paragraph}{Devices}{4}{section*.10}%
+\contentsline {paragraph}{Areas}{4}{section*.11}%
+\contentsline {paragraph}{Scenes}{5}{section*.12}%
+\contentsline {paragraph}{Automations}{5}{section*.13}%
+\contentsline {paragraph}{Scripts}{5}{section*.14}%
 \contentsline {subsection}{\numberline {2.1.2}Home assistant's UI}{6}{subsection.2.1.2}%
-\contentsline {paragraph}{Dashboard}{6}{section*.12}%
-\contentsline {paragraph}{Automation editor}{6}{section*.14}%
+\contentsline {paragraph}{Dashboard}{6}{section*.15}%
+\contentsline {paragraph}{Automation editor}{6}{section*.17}%
 \contentsline {subsection}{\numberline {2.1.3}Issues with the current automation configuration}{7}{subsection.2.1.3}%
 \contentsline {section}{\numberline {2.2}FO($\cdot $)\xspace }{7}{section.2.2}%
-\contentsline {paragraph}{Vocabulary}{9}{section*.16}%
-\contentsline {paragraph}{Theory}{9}{section*.17}%
-\contentsline {paragraph}{Structure}{10}{section*.18}%
+\contentsline {paragraph}{Vocabulary}{9}{section*.19}%
+\contentsline {paragraph}{Theory}{9}{section*.20}%
+\contentsline {paragraph}{Structure}{10}{section*.21}%
 \contentsline {section}{\numberline {2.3}IDP-Z3}{10}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}The Knowledge-Base Paradigm}{10}{subsection.2.3.1}%
-\contentsline {paragraph}{Model expansion}{10}{section*.19}%
-\contentsline {paragraph}{Propagation}{11}{section*.21}%
-\contentsline {paragraph}{Explanation}{11}{section*.22}%
-\contentsline {paragraph}{Optimisation}{11}{section*.23}%
-\contentsline {paragraph}{Relevance}{11}{section*.24}%
+\contentsline {paragraph}{Model expansion}{11}{section*.22}%
+\contentsline {paragraph}{Propagation}{11}{section*.24}%
+\contentsline {paragraph}{Explanation}{11}{section*.25}%
+\contentsline {paragraph}{Optimisation}{11}{section*.26}%
+\contentsline {paragraph}{Relevance}{12}{section*.27}%
 \contentsline {subsection}{\numberline {2.3.2}Interactive consultant}{12}{subsection.2.3.2}%
-\contentsline {section}{\numberline {2.4}Alternatives for FO($\cdot $)\xspace }{12}{section.2.4}%
+\contentsline {section}{\numberline {2.4}Alternatives for FO($\cdot $)\xspace }{13}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}DMN}{13}{subsection.2.4.1}%
-\contentsline {paragraph}{Decision Requirements Diagram}{13}{section*.28}%
-\contentsline {paragraph}{Decision Tables}{13}{section*.29}%
-\contentsline {paragraph}{ Pros and cons}{14}{section*.31}%
-\contentsline {paragraph}{cDMN}{14}{section*.32}%
+\contentsline {paragraph}{Decision Tables}{13}{section*.31}%
+\contentsline {paragraph}{ Pros and cons}{14}{section*.33}%
+\contentsline {paragraph}{cDMN}{14}{section*.34}%
 \contentsline {subsection}{\numberline {2.4.2}CNL}{15}{subsection.2.4.2}%
-\contentsline {paragraph}{The IDP-Z3 CNL}{15}{section*.34}%
-\contentsline {paragraph}{Pros and cons}{15}{section*.35}%
+\contentsline {paragraph}{The IDP-Z3 CNL}{15}{section*.36}%
+\contentsline {paragraph}{Pros and cons}{15}{section*.37}%
 \contentsline {subsection}{\numberline {2.4.3}Blocks-based editor}{16}{subsection.2.4.3}%
-\contentsline {paragraph}{FO($\cdot $)\xspace blocks-based editor}{16}{section*.36}%
-\contentsline {paragraph}{Pros and cons}{18}{section*.38}%
+\contentsline {paragraph}{FO($\cdot $)\xspace blocks-based editor}{16}{section*.38}%
+\contentsline {paragraph}{Pros and cons}{16}{section*.40}%
 \contentsline {section}{\numberline {2.5}State of the art}{18}{section.2.5}%
 \contentsline {subsection}{\numberline {2.5.1}IntelliDomo}{18}{subsection.2.5.1}%
 \contentsline {subsection}{\numberline {2.5.2}User-configurable semantic home automation}{19}{subsection.2.5.2}%
-\contentsline {subsection}{\numberline {2.5.3}Event based home automation}{20}{subsection.2.5.3}%
-\contentsline {subsection}{\numberline {2.5.4}Smart Block}{22}{subsection.2.5.4}%
+\contentsline {subsection}{\numberline {2.5.3}Smart Block}{20}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.4}Event based home automation}{22}{subsection.2.5.4}%
 \contentsline {chapter}{\numberline {3}An FO($\cdot $)\xspace description for home automation}{24}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Home automation description}{24}{section.3.1}%
-\contentsline {paragraph}{Devices}{24}{section*.44}%
-\contentsline {paragraph}{Areas}{25}{section*.45}%
-\contentsline {paragraph}{Rules}{25}{section*.46}%
-\contentsline {section}{\numberline {3.2}Vocabulary and theory}{26}{section.3.2}%
+\contentsline {paragraph}{Devices}{24}{section*.47}%
+\contentsline {paragraph}{Areas}{24}{section*.48}%
+\contentsline {paragraph}{Behaviour}{25}{section*.49}%
+\contentsline {section}{\numberline {3.2}FO($\cdot $)\xspace knowledge base}{26}{section.3.2}%
+\contentsline {paragraph}{Approach 1}{26}{section*.50}%
+\contentsline {paragraph}{Approach 2}{27}{section*.51}%
+\contentsline {paragraph}{Approach 3}{27}{section*.52}%
 \contentsline {chapter}{\numberline {4}Implementation}{30}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Blockly}{30}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Custom blocks}{31}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}States}{31}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Areas}{32}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Devicetypes creation}{32}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Devicetypes definition}{32}{subsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.2.5}Devices}{33}{subsection.4.2.5}%
-\contentsline {subsection}{\numberline {4.2.6}Single rules}{34}{subsection.4.2.6}%
-\contentsline {subsection}{\numberline {4.2.7}Enumerating rules over devicetypes}{34}{subsection.4.2.7}%
-\contentsline {subsection}{\numberline {4.2.8}Enumerating rules over areas}{35}{subsection.4.2.8}%
-\contentsline {subsection}{\numberline {4.2.9}Save}{35}{subsection.4.2.9}%
-\contentsline {section}{\numberline {4.3}FO($\cdot $)\xspace parsing and IDP-Z3 integration}{35}{section.4.3}%
-\contentsline {chapter}{\numberline {5}User study}{37}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Cases}{37}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Results}{37}{section.5.2}%
-\contentsline {chapter}{\numberline {6}Conclusion}{38}{chapter.6}%
+\contentsline {subsection}{\numberline {4.2.2}Areas}{33}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Devicetypes creation}{33}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Devicetypes definition}{34}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Devices}{34}{subsection.4.2.5}%
+\contentsline {subsection}{\numberline {4.2.6}Specific rules}{35}{subsection.4.2.6}%
+\contentsline {subsection}{\numberline {4.2.7}Enumerating rules over devicetypes}{35}{subsection.4.2.7}%
+\contentsline {subsection}{\numberline {4.2.8}Quantifying rules over areas}{36}{subsection.4.2.8}%
+\contentsline {section}{\numberline {4.3}Interactive Consultant}{38}{section.4.3}%
+\contentsline {chapter}{\numberline {5}User study}{39}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Methodology}{39}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Cases}{40}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Case 1}{40}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Case 2}{41}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Case 3}{42}{subsection.5.2.3}%
+\contentsline {section}{\numberline {5.3}Results}{45}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Modeling the cases}{45}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Questionnaire}{45}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Discussion}{47}{subsection.5.3.3}%
+\contentsline {paragraph}{Limitations of the application}{47}{section*.69}%
+\contentsline {chapter}{\numberline {6}Conclusion}{48}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Future work}{48}{section.6.1}%
+\contentsline {chapter}{\numberline {A}Appendix}{52}{appendix.A}%
+\contentsline {section}{\numberline {A.1}The application}{52}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Hoe noem ik dit best?}{52}{section.A.2}%
+\contentsline {section}{\numberline {A.3}The manual}{52}{section.A.3}%
