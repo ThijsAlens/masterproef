@@ -30,10 +30,10 @@
 \contentsline {paragraph}{Explanation}{11}{section*.25}%
 \contentsline {paragraph}{Optimisation}{11}{section*.26}%
 \contentsline {paragraph}{Relevance}{12}{section*.27}%
-\contentsline {subsection}{\numberline {2.3.2}Interactive consultant}{12}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.2}Interactive Consultant}{12}{subsection.2.3.2}%
 \contentsline {section}{\numberline {2.4}Alternatives for FO($\cdot $)\xspace }{13}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}DMN}{13}{subsection.2.4.1}%
-\contentsline {paragraph}{Decision Tables}{13}{section*.31}%
+\contentsline {paragraph}{Decision Tables}{14}{section*.31}%
 \contentsline {paragraph}{ Pros and cons}{14}{section*.33}%
 \contentsline {paragraph}{cDMN}{14}{section*.34}%
 \contentsline {subsection}{\numberline {2.4.2}CNL}{15}{subsection.2.4.2}%
@@ -54,34 +54,37 @@
 \contentsline {paragraph}{Behaviour}{25}{section*.49}%
 \contentsline {section}{\numberline {3.2}FO($\cdot $)\xspace knowledge base}{26}{section.3.2}%
 \contentsline {paragraph}{Approach 1}{26}{section*.50}%
-\contentsline {paragraph}{Approach 2}{27}{section*.51}%
+\contentsline {paragraph}{Approach 2}{26}{section*.51}%
 \contentsline {paragraph}{Approach 3}{27}{section*.52}%
-\contentsline {chapter}{\numberline {4}Implementation}{30}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Blockly}{30}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Custom blocks}{31}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}States}{31}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Areas}{33}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Devicetypes creation}{33}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Devicetypes definition}{34}{subsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.2.5}Devices}{34}{subsection.4.2.5}%
-\contentsline {subsection}{\numberline {4.2.6}Specific rules}{35}{subsection.4.2.6}%
-\contentsline {subsection}{\numberline {4.2.7}Enumerating rules over devicetypes}{35}{subsection.4.2.7}%
-\contentsline {subsection}{\numberline {4.2.8}Quantifying rules over areas}{36}{subsection.4.2.8}%
-\contentsline {section}{\numberline {4.3}Interactive Consultant}{38}{section.4.3}%
-\contentsline {chapter}{\numberline {5}User study}{39}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Methodology}{39}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Cases}{40}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Case 1}{40}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Case 2}{41}{subsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.2.3}Case 3}{42}{subsection.5.2.3}%
-\contentsline {section}{\numberline {5.3}Results}{45}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Modeling the cases}{45}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Questionnaire}{45}{subsection.5.3.2}%
-\contentsline {subsection}{\numberline {5.3.3}Discussion}{47}{subsection.5.3.3}%
-\contentsline {paragraph}{Limitations of the application}{47}{section*.69}%
-\contentsline {chapter}{\numberline {6}Conclusion}{48}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Future work}{48}{section.6.1}%
-\contentsline {chapter}{\numberline {A}Appendix}{52}{appendix.A}%
-\contentsline {section}{\numberline {A.1}The application}{52}{section.A.1}%
-\contentsline {section}{\numberline {A.2}Hoe noem ik dit best?}{52}{section.A.2}%
-\contentsline {section}{\numberline {A.3}The manual}{52}{section.A.3}%
+\contentsline {chapter}{\numberline {4}Implementation}{29}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Blockly}{29}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Custom blocks}{30}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}States}{30}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Areas}{32}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}devicetypes creation}{32}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Devicetypes definition}{33}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Devices}{33}{subsection.4.2.5}%
+\contentsline {subsection}{\numberline {4.2.6}Specific rules}{34}{subsection.4.2.6}%
+\contentsline {subsection}{\numberline {4.2.7}Enumerating rules over devicetypes}{34}{subsection.4.2.7}%
+\contentsline {subsection}{\numberline {4.2.8}Quantifying rules over areas}{35}{subsection.4.2.8}%
+\contentsline {subsection}{\numberline {4.2.9}Save}{35}{subsection.4.2.9}%
+\contentsline {section}{\numberline {4.3}FO($\cdot $)\xspace parsing and IDP-Z3 integration}{35}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Interactive Consultant}{36}{section.4.4}%
+\contentsline {chapter}{\numberline {5}User study}{37}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Methodology}{37}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Cases}{38}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Case 1}{38}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Case 2}{38}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Case 3}{40}{subsection.5.2.3}%
+\contentsline {section}{\numberline {5.3}Results}{40}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Modeling the cases}{43}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Questionnaire}{43}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Discussion}{44}{subsection.5.3.3}%
+\contentsline {paragraph}{Limitations of the application}{45}{section*.67}%
+\contentsline {chapter}{\numberline {6}Conclusion}{47}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Future work}{47}{section.6.1}%
+\contentsline {chapter}{\numberline {A}Appendix}{51}{appendix.A}%
+\contentsline {section}{\numberline {A.1}The application}{51}{section.A.1}%
+\contentsline {section}{\numberline {A.2}The manual}{51}{section.A.2}%
+\contentsline {section}{\numberline {A.3}Results of the questionaire}{57}{section.A.3}%
+\contentsline {section}{\numberline {A.4}Modeling of the rules}{57}{section.A.4}%

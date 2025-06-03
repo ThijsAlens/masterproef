@@ -517,6 +517,39 @@
       \range{pages}{10}
       \keyw{High performance computing}
     \endentry
+    \entry{OWL}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{2}{}{%
+        {{hash=1c75e12800e4181c2aae0a6753d2d812}{%
+           family={McGuinness},
+           familyi={M\bibinitperiod},
+           given={Deborah\bibnamedelima L},
+           giveni={D\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=f91a850ad4b664e97e4d336d54002c43}{%
+           family={Van\bibnamedelima Harmelen},
+           familyi={V\bibinitperiod\bibinitdelim H\bibinitperiod},
+           given={Frank},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{ae62710b6e29ce5d79b20f7f8bfb332c}
+      \strng{fullhash}{ae62710b6e29ce5d79b20f7f8bfb332c}
+      \strng{bibnamehash}{ae62710b6e29ce5d79b20f7f8bfb332c}
+      \strng{authorbibnamehash}{ae62710b6e29ce5d79b20f7f8bfb332c}
+      \strng{authornamehash}{ae62710b6e29ce5d79b20f7f8bfb332c}
+      \strng{authorfullhash}{ae62710b6e29ce5d79b20f7f8bfb332c}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{W3C recommendation}
+      \field{number}{10}
+      \field{title}{OWL web ontology language overview}
+      \field{volume}{10}
+      \field{year}{2004}
+      \field{pages}{2004}
+      \range{pages}{1}
+    \endentry
     \entry{SOTA_SmartBlock}{misc}{}
       \name{author}{3}{}{%
         {{hash=7f39971b0c098158ffb4926dc360cdee}{%
@@ -562,6 +595,59 @@
       \verb https://www.sciencedirect.com/science/article/pii/S2590118420300599
       \endverb
       \keyw{Visual block language,IoT,SmartThings,SmartApp ECA rule,IoTa,Blockly}
+    \endentry
+    \entry{SOTA_EventCalculus}{article}{}
+      \name{author}{6}{}{%
+        {{hash=c2f69f7687ee3801f5f5af38ca56e612}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Luke},
+           giveni={L\bibinitperiod}}}%
+        {{hash=39fdee8ff26c7e3b6d79d11e8fad617d}{%
+           family={Nugent},
+           familyi={N\bibinitperiod},
+           given={Chris\bibnamedelima D.},
+           giveni={C\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=9d6f38f8f7b27d4b8e90f151a3d2e8ad}{%
+           family={Mulvenna},
+           familyi={M\bibinitperiod},
+           given={Maurice},
+           giveni={M\bibinitperiod}}}%
+        {{hash=388b9b0810a8b964671caf6c82f340a1}{%
+           family={Finlay},
+           familyi={F\bibinitperiod},
+           given={Dewar},
+           giveni={D\bibinitperiod}}}%
+        {{hash=00de7c607ab6fd3e9490e4c516406ab1}{%
+           family={Hong},
+           familyi={H\bibinitperiod},
+           given={Xin},
+           giveni={X\bibinitperiod}}}%
+        {{hash=1d7099606a90a982f34fc80fac42ec44}{%
+           family={Poland},
+           familyi={P\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{be6ccf9c113ed38a0f1b2c8c3efe1525}
+      \strng{fullhash}{be6ccf9c113ed38a0f1b2c8c3efe1525}
+      \strng{bibnamehash}{be6ccf9c113ed38a0f1b2c8c3efe1525}
+      \strng{authorbibnamehash}{be6ccf9c113ed38a0f1b2c8c3efe1525}
+      \strng{authornamehash}{be6ccf9c113ed38a0f1b2c8c3efe1525}
+      \strng{authorfullhash}{be6ccf9c113ed38a0f1b2c8c3efe1525}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Smart Homes (SH) have emerged as a realistic intelligent assistive environment capable of providing assistive living for the elderly and the disabled. Nevertheless, it still remains a challenge to assist the inhabitants of a SH in performing the ``right'' action(s) at the ``right'' time in the ``right'' place. To address this challenge, this paper introduces a novel logical framework for cognitive behavioural modelling, reasoning and assistance based on a highly developed logical theory of actions - the Event Calculus. Cognitive models go beyond data-centric behavioural models in that they govern an inhabitant's behaviour by reasoning about its knowledge, actions and environmental events. In our work we outline the theoretical foundation of such an approach and describe cognitive modelling of SH. We discuss the reasoning capabilities and algorithms of the cognitive SH model and present the details of the various tasks it can support. A system architecture is proposed to illustrate the use of the framework in facilitating assistive living. We demonstrate the perceived effectiveness of the approach through presentation of its operation in the context of a real world daily activity scenario.}
+      \field{journaltitle}{International Journal of Assistive Robotics and Mechatronics}
+      \field{month}{12}
+      \field{number}{4}
+      \field{title}{A {{Logical Framework}} for {{Behaviour Reasoning}} and {{Assistance}} in a {{Smart Home}}}
+      \field{volume}{9}
+      \field{year}{2008}
+      \field{pages}{20\bibrangedash 34}
+      \range{pages}{15}
     \endentry
   \enddatalist
 \endrefsection

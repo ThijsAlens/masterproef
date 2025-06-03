@@ -113,6 +113,19 @@ regels effectief uitwerken
 
 
 
+\n in de fodot
+alle devices kunnen een belstate hebben
+subarea op subarea weg
+subfig bij de cases en cases kleiner maken (subcaption package)
+methodology cases meer over observaties geven
+conclusie splitsen in 2 paragrafen
+verdere analyse op leken met blokjes en foutloze
+
+5 thesissen
+usb-stick met code
+excel van vragenlijst
+pdf
+code op github
 
 
 

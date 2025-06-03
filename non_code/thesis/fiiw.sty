@@ -180,10 +180,13 @@
 	\begin{picture}(0,0)(0,26)
 	\hspace{-10em}\includegraphics[width=\paperwidth]{covers/cover_fiiw_denayer.pdf}
 	\end{picture}
+		\AtEndDocument{\includepdf{covers/back_fiiw_denayer_eng.pdf}}
 	}{}
 	\ifthenelse{\equal{\@campus}{denayereng}}{
 	\begin{picture}(0,0)(0,26)
 	\hspace{-10em}\includegraphics[width=\paperwidth]{covers/cover_fiiw_denayer_eng.pdf}
+	\end{picture}%
+		\AtEndDocument{\includepdf{covers/back_fiiw_denayer_eng.pdf}}
 	\end{picture}%
 	}{}
 	\ifthenelse{\equal{\@campus}{geel}}{
@@ -398,20 +401,34 @@ This master's thesis is an examination document that has not been corrected for 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\preface{
 \pagenumbering{roman}
-\titlep        
+\titlep
 
-\ifacknowledgementspage 
-\ifthenelse{\equal{\@campus}{denayer}\OR \equal{\@campus}{geel} \OR \equal{\@campus}{gent} \OR \equal{\@campus}{groept} \OR \equal{\@campus}{brugge}}{
-\chapter*{Dankwoord} \@acknowledgementsfile
-}{
-\chapter*{Acknowledgment} \@acknowledgementsfile
-}
+\cleardoublepage
+\chapter*{Acknowledgement}
+I would like to thank my Promotor, S. Vandevelde, and supervisor L. Van Laer, for their guidance and support throughout this thesis. Their expertise and insights have been invaluable in shaping the direction of this work. I would also like to thank my family and friends who supported me throughout the journey of my studies and this thesis.
+
+\cleardoublepage
+\chapter*{Samenvatting}
+Een domotica dient om een woning te automatiseren. Dit kan variëren van heel eenvoudige taken, zoals een licht inschakelen wanneer een schakelaar wordt omgezet, tot complexere taken zoals het regelen van de temperatuur — en daarbij ook de ramen, verwarming en gordijnen — afhankelijk van allerlei factoren. Het opzetten van dergelijke automatisaties is echter niet zo vanzelfsprekend: de gebruiker moet enige kennis hebben van domotica en eerdere ervaring hebben met programmeren. De meeste mensen beschikken niet over deze kennis en kunnen daardoor niet ten volle profiteren van de voordelen die domotica biedt.
+
+Wij ontwikkelden een gebruiksvriendelijke applicatie die het voor iedereen mogelijk moet maken om hun huis te automatiseren, zonder dat daarvoor diepgaande technische kennis vereist is. We deden dit door bestaande domotica-systemen onder de loep te nemen en te onderzoeken waar verbeteringen mogelijk waren. We maakten gebruik van \fodot, een taal gebaseerd op eerste-orde logica. Deze taal kan worden gebruikt met IDP-Z3, die redeneert over de in \fodot beschreven kennis om verschillende taken uit te voeren. De \fodot-taal is echter, net als andere talen in de wereld van domotica, niet eenvoudig te begrijpen of te gebruiken. Daarom onderzochten we mogelijke alternatieven voor \fodot, waaruit bleek dat een blocks-based editor een goede optie zou zijn.
+
+Vervolgens ontwikkelden we een applicatie die gebruikmaakt van zelfgemaakte blokjes om automatisaties te creëren. De blokjes worden vertaald naar een \fodot-beschrijving, die vervolgens door IDP-Z3 gebruikt kan worden om de automatisaties uit te voeren. We besteedden daarbij bijzondere aandacht aan de gebruiksvriendelijkheid van de applicatie, omdat we willen dat iedereen ermee aan de slag kan.
+
+Om dit te testen voerden we een gebruikerstest uit met 14 proefpersonen. Hoewel de resultaten van deze test met enige voorzichtigheid ge\"interpreteerd moeten worden, wijzen ze erop dat de applicatie gebruiksvriendelijk is. De testpersonen gaven aan dat ze zich, met behulp van de applicatie, redelijk zelfzeker voelen in hun vermogen om hun huis te automatiseren. Deze applicatie is echter nog niet af; er zijn nog vele mogelijkheden om hierop verder te bouwen, bijvoorbeeld een integratie met bestaande domotica-systemen of verdere uitwerking van de blokjes.
+
+\cleardoublepage
+\chapter*{Summary}
+A home automation system is designed to automate a house. This can range from very simple tasks, such as turning on a light when a switch is flipped, to more complex tasks like regulating the temperature — and with that, controlling windows, heating and curtains — depending on various factors. However, setting up such automations is not always straightforward. The user needs to be somewhat familiar with home automation and have basic programming skills. Most people lack this knowledge and therefore cannot fully enjoy the benefits that home automation has to offer.
+
+We developed a user-friendly application that aims to make it possible for anyone to automate their home, without requiring in-depth technical knowledge. We did this by analyzing existing home automation systems and identifying areas for improvement. In this process, we used \fodot, a language based on first-order logic. This language can be used with the reasoning engine IDP-Z3, which reasons over the knowledge described in \fodot to perform various tasks. However, the \fodot language — like many others in the home automation field — is not easy to understand or use. For this reason, we conducted a study of possible alternatives to \fodot, which showed that a blocks-based editor could be a good solution.
+
+We then developed an application that uses custom-made blocks to create automations. These blocks are translated into a \fodot description, which can then be used by IDP-Z3 to execute the automations. We paid particular attention to the application's user-friendliness, as our goal was to make it accessible to everyone.
+
+To test this, we conducted a user study with 14 participants. Although the results should be taken with a grain of salt, they indicate that the application is user-friendly. Participants reported feeling reasonably confident in their ability to automate their home using the application. However, this application is not yet complete; there are still many possibilities for further development, such as integration with existing home automation systems or further refinement of the blocks.
 \fi
 
-\ifabstractpage 
-\chapter*{Abstract} \@abstractfile
-\fi
-
+\cleardoublepage
 \tableofcontents
 
 \iflistoffigurespage
